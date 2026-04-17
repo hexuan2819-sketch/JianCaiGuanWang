@@ -1,0 +1,46 @@
+---
+---
+
+<header id="global-header" class="fixed left-0 top-0 z-50 w-full px-5 py-5 text-neutral-100 transition-all duration-500 md:px-10">
+  <div class="mx-auto flex max-w-[1600px] items-center justify-between">
+    <a href="#hero" class="font-display text-sm font-light tracking-[0.36em] text-neutral-100 md:text-base">
+      筑 物 为 诗
+    </a>
+
+    <nav class="hidden items-center gap-8 lg:flex">
+      <a href="#hero" class="editorial-label transition-colors duration-500 hover:text-white">首章</a>
+      <a href="#global-vision" class="editorial-label transition-colors duration-500 hover:text-white">版图</a>
+      <a href="#category-stone" class="editorial-label transition-colors duration-500 hover:text-white">原石</a>
+      <a href="#category-wood" class="editorial-label transition-colors duration-500 hover:text-white">木艺</a>
+      <a href="#bento-scenarios" class="editorial-label transition-colors duration-500 hover:text-white">场景</a>
+      <a href="#core-features" class="editorial-label transition-colors duration-500 hover:text-white">优势</a>
+      <a href="#craftsmanship" class="editorial-label transition-colors duration-500 hover:text-white">工艺</a>
+      <a href="#contact-form" class="editorial-label transition-colors duration-500 hover:text-white">洽询</a>
+    </nav>
+
+    <a href="#contact-form" class="hidden border-b border-white/30 pb-1 text-[11px] font-light tracking-[0.28em] text-neutral-300 transition-colors duration-500 hover:border-white hover:text-white md:inline-block">
+      项目洽询
+    </a>
+  </div>
+</header>
+
+<script>
+  if (typeof window !== 'undefined') {
+    const header = document.getElementById('global-header');
+
+    const updateHeaderState = () => {
+      if (!header) return;
+
+      if (window.scrollY > 24) {
+        header.classList.add('backdrop-blur-xl', 'bg-neutral-950/70');
+        header.classList.remove('bg-transparent');
+      } else {
+        header.classList.remove('backdrop-blur-xl', 'bg-neutral-950/70');
+        header.classList.add('bg-transparent');
+      }
+    };
+
+    window.addEventListener('scroll', updateHeaderState, { passive: true });    
+    window.addEventListener('load', updateHeaderState, { once: true });
+  }
+</script>

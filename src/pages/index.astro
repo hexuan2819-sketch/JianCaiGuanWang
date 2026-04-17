@@ -1,17 +1,29 @@
 ---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/common/Header.astro';
+import Hero from '../components/sections/Hero.astro';
+import GlobalVision from '../components/sections/GlobalVision.astro';
+import CategoryStone from '../components/sections/CategoryStone.astro';
+import CategoryWood from '../components/sections/CategoryWood.astro';
+import BentoScenarios from '../components/sections/BentoScenarios.astro';
+import CoreFeatures from '../components/sections/CoreFeatures.astro';
+import Craftsmanship from '../components/sections/Craftsmanship.astro';
+import ContactForm from '../components/sections/ContactForm.astro';
+import Footer from '../components/sections/Footer.astro';
 
+const title = '筑物为诗 | 全球建材供应链';
+const description = '深色沉浸式叙事网页，呈现全球建材供应、王牌品类、应用场景、核心优势与项目咨询。';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout title={title} description={description} lang="zh-CN" dir="ltr">
+  <Header />
+  <Hero />
+  <GlobalVision />
+  <CategoryStone />
+  <CategoryWood />
+  <BentoScenarios />
+  <CoreFeatures />
+  <Craftsmanship />
+  <ContactForm />
+  <Footer />
+</Layout>

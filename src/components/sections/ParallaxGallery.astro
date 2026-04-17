@@ -1,0 +1,145 @@
+---
+const slides = [
+  {
+    title: '云脉石',
+    meta: 'Calacatta Marble',
+    desc: '源自意大利卡拉拉矿区，每一道灰色纹理都如水墨般在白底上晕开。极度纯净的底色与天然裂纹形成克制的张力，是高端住宅与酒店大堂的灵魂所在。',
+    image: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=2070&auto=format&fit=crop',
+    alt: '大理石肌理',
+  },
+  {
+    title: '静木纹',
+    meta: 'Walnut Timber',
+    desc: '选用北美黑胡桃木，经过精准的碳化与表面哑光处理。保留了木材的呼吸感与温润触觉，同时赋予其抵抗岁月侵蚀的稳定性，让空间沉淀下来。',
+    image: 'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?q=80&w=2070&auto=format&fit=crop',
+    alt: '木纹肌理',
+  },
+  {
+    title: '微光金属',
+    meta: 'Brushed Bronze',
+    desc: '采用航空级阳极氧化工艺，在铝合金表面形成独特的拉丝质感。光线掠过时，散发出低调而坚硬的工业光泽，常用于构建空间的边界与骨骼。',
+    image: 'https://images.unsplash.com/photo-1513694203232-719a280e022f?q=80&w=2070&auto=format&fit=crop',
+    alt: '金属肌理',
+  },
+];
+---
+
+<section id="texture-gallery" class="relative min-h-[300svh] w-full bg-stone-100">
+  <div id="texture-gallery-pin" class="sticky top-0 h-[100svh] w-full overflow-hidden">
+    <!-- 渐变背景取代单图 -->
+    <div class="absolute inset-0 bg-[linear-gradient(135deg,#f5f5f4_0%,#e7e5e4_100%)]"></div>
+
+    <!-- 顶部极简信息 -->
+    <div class="pointer-events-none absolute left-0 top-0 z-20 w-full px-8 pt-24 md:px-12 lg:px-16 lg:pt-32">
+      <div class="flex items-start justify-between">
+        <div class="mask-reveal-container">
+          <p class="texture-intro mask-reveal-element text-xs font-light tracking-[0.4em] text-stone-500/80">
+            02 / 肌理画廊
+          </p>
+        </div>
+        <div class="mask-reveal-container hidden max-w-sm text-right md:block">
+          <p class="texture-intro mask-reveal-element text-sm font-light leading-relaxed tracking-[0.1em] text-stone-600/80">
+            摒弃表面的浮华，回归材质的本质。<br />每一块材料都有自己的情绪与温度。
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 横向滚动轨道，使用框景而非全屏 -->
+    <div class="absolute inset-0 z-10 flex items-center justify-center">
+      <div id="texture-gallery-track" class="flex h-[65vh] w-[300vw] items-center gap-[10vw] px-[10vw]">
+        {slides.map((slide, index) => (
+          <article class="texture-slide relative h-full w-[80vw] shrink-0 md:w-[60vw] lg:w-[50vw]">
+            <!-- 实体展示框 -->
+            <div class="relative h-full w-full overflow-hidden rounded-2xl shadow-architectural">
+              <img src={slide.image} alt={slide.alt} class="absolute inset-0 h-full w-full object-cover" />
+              <!-- 磨砂渐变遮罩，为了文字可读性 -->
+              <div class="absolute inset-x-0 bottom-0 h-[60%] bg-gradient-to-t from-stone-950/80 to-transparent"></div>
+              
+              <!-- 底部富文本描述区 -->
+              <div class="absolute bottom-0 left-0 w-full p-8 md:p-12">
+                <div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+                  <div class="max-w-md">
+                    <span class="mb-3 block text-[10px] font-light tracking-[0.3em] text-stone-300/80 uppercase">
+                      {slide.meta}
+                    </span>
+                    <h3 class="font-display text-3xl font-light tracking-[0.1em] text-white md:text-4xl mb-4">
+                      {slide.title}
+                    </h3>
+                    <p class="text-sm font-light leading-relaxed tracking-[0.08em] text-stone-300">
+                      {slide.desc}
+                    </p>
+                  </div>
+                  
+                  <div class="hidden md:block shrink-0">
+                    <span class="text-[10px] font-light tracking-[0.3em] text-stone-400 uppercase">
+                      0{index + 1} / 0{slides.length}
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  if (typeof window !== 'undefined') {
+    const initTextureGallery = () => {
+      const engine = window.__Cinematic;
+      if (!engine) {
+        window.addEventListener('cinematic:ready', initTextureGallery, { once: true });
+        return;
+      }
+
+      try {
+        const { gsap, ScrollTrigger } = engine;
+        const section = document.getElementById('texture-gallery');
+        const track = document.getElementById('texture-gallery-track');
+        const intros = section?.querySelectorAll('.texture-intro');
+        
+        if (!section || !track || !intros?.length) return;
+
+        ScrollTrigger.create({
+          trigger: section,
+          start: 'top 60%',
+          once: true,
+          onEnter: () => {
+            gsap.to(intros, {
+              y: 0,
+              duration: 1.5,
+              ease: 'power4.out',
+              stagger: 0.1,
+            });
+          }
+        });
+
+        // 横向滚动时间轴
+        // 既然使用了 sticky top-0 就不需要 pin: true 了，直接通过 scrub 控制 track 横移
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: section,
+            start: 'top top',
+            end: 'bottom bottom',
+            scrub: 1,
+          },
+        });
+
+        // 轨道滑动：根据总宽计算位移
+        // (300vw 宽，显示 100vw，所以左移 -200vw 刚好到底，加上 gap 需要一点冗余)
+        tl.to(track, {
+          xPercent: -66.666,
+          ease: 'none',
+        });
+
+      } catch (error) {
+        console.error('Texture Gallery animation failed:', error);
+      }
+    };
+
+    initTextureGallery();
+  }
+</script>

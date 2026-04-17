@@ -1,0 +1,219 @@
+---
+const materials = [
+  {
+    id: 'series-marble',
+    number: '01',
+    title: 'MARBLE',
+    subtitle: 'Calacatta Reserve',
+    description:
+      'Expressive veining, high polish, and book-matched compositions for lobbies, hospitality halls, and statement staircases.',
+    image:
+      'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=2070&auto=format&fit=crop',
+    meta: 'Polished slab / Italy',
+  },
+  {
+    id: 'series-porcelain',
+    number: '02',
+    title: 'PORCELAIN',
+    subtitle: 'Sintered Surface',
+    description:
+      'Large-format porcelain with clean joints, UV stability, and hospitality-grade durability for facades and interiors.',
+    image:
+      'https://images.unsplash.com/photo-1511818966892-d7d671e672a2?q=80&w=1974&auto=format&fit=crop',
+    meta: '3200 x 1600 mm / Exterior ready',
+  },
+  {
+    id: 'series-wood',
+    number: '03',
+    title: 'WOOD',
+    subtitle: 'Thermo Ash Veneer',
+    description:
+      'Warm linear grain, controlled movement, and premium finishing for boardrooms, suites, and cultural spaces.',
+    image:
+      'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?q=80&w=2070&auto=format&fit=crop',
+    meta: 'Low-VOC finish / Interior craft',
+  },
+];
+---
+
+<section id="series" class="bg-white py-24 md:py-32">
+  <div class="mx-auto max-w-[1440px] px-4 md:px-8">
+    <div class="reveal mb-14 flex flex-col gap-5 border-b border-stone-200 pb-8 lg:flex-row lg:items-end lg:justify-between">
+      <div>
+        <p class="mb-4 text-xs uppercase tracking-[0.3em] text-stone-500">Pinned Series</p>
+        <h2 class="max-w-3xl font-display text-4xl font-light tracking-[-0.05em] text-stone-900 md:text-6xl">
+          Left-pinned storytelling for material systems that deserve architectural context.
+        </h2>
+      </div>
+      <p class="max-w-lg text-base leading-7 text-stone-600">
+        Each collection moves through image, texture, and use-case narrative while the left rail stays anchored like an exhibition label in a physical gallery.
+      </p>
+    </div>
+
+    <div id="series-shell" class="grid gap-12 lg:grid-cols-[0.4fr_0.6fr]">
+      <aside id="series-pin" class="relative">
+        <div class="surface-card rounded-[2rem] p-8 md:p-10 lg:min-h-[70vh]">
+          <p class="mb-5 text-xs uppercase tracking-[0.28em] text-stone-500">Current Series</p>
+          <div class="overflow-hidden">
+            <p id="series-number" class="text-sm uppercase tracking-[0.3em] text-amber-700">01</p>
+          </div>
+          <div class="mt-3 overflow-hidden">
+            <h3 id="series-title" class="font-display text-5xl font-light tracking-[-0.06em] text-stone-900 md:text-7xl">MARBLE</h3>
+          </div>
+          <div class="mt-6 overflow-hidden">
+            <p id="series-subtitle" class="text-xl text-stone-700">Calacatta Reserve</p>
+          </div>
+          <div class="mt-8 h-px w-full bg-stone-200"></div>
+          <p id="series-description" class="mt-8 max-w-md text-base leading-8 text-stone-600">
+            Expressive veining, high polish, and book-matched compositions for lobbies, hospitality halls, and statement staircases.
+          </p>
+          <div class="mt-10 flex flex-col gap-4" id="series-menu">
+            {materials.map((item, index) => (
+              <button
+                type="button"
+                class={`series-nav group flex items-center gap-4 text-left ${index === 0 ? 'is-active' : ''}`}
+                data-title={item.title}
+                data-number={item.number}
+                data-subtitle={item.subtitle}
+                data-description={item.description}
+                data-target={item.id}
+              >
+                <span class={`series-nav-line h-px transition-all duration-300 ${index === 0 ? 'w-12 bg-amber-700' : 'w-5 bg-stone-300 group-hover:w-10 group-hover:bg-stone-500'}`}></span>
+                <span class={`series-nav-label text-sm uppercase tracking-[0.24em] transition-colors duration-300 ${index === 0 ? 'text-stone-900' : 'text-stone-400 group-hover:text-stone-700'}`}>{item.number} {item.title}</span>
+              </button>
+            ))}
+          </div>
+        </div>
+      </aside>
+
+      <div class="flex flex-col gap-24 lg:gap-32">
+        {materials.map((item) => (
+          <article id={item.id} class="series-panel group reveal">
+            <div class="overflow-hidden rounded-[2rem] border border-stone-200 bg-stone-50 shadow-architectural">
+              <div class="relative aspect-[4/5] md:aspect-[5/4]">
+                <img src={item.image} alt={item.subtitle} class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-white via-white/45 to-transparent p-8 md:p-10">
+                  <div class="glass-soft rounded-[1.75rem] p-6">
+                    <p class="text-xs uppercase tracking-[0.24em] text-amber-700">{item.meta}</p>
+                    <h4 class="mt-3 font-display text-3xl font-light tracking-[-0.04em] text-stone-900 md:text-4xl">{item.subtitle}</h4>
+                    <p class="mt-3 max-w-xl text-base leading-7 text-stone-600">{item.description}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  if (typeof window !== 'undefined') {
+    window.addEventListener('load', async () => {
+      try {
+        const gsap = (await import('gsap')).default;
+        const ScrollTrigger = (await import('gsap/ScrollTrigger')).default;
+        gsap.registerPlugin(ScrollTrigger);
+
+        const pinTarget = document.getElementById('series-pin');
+        const shell = document.getElementById('series-shell');
+        const sections = document.querySelectorAll('.series-panel');
+        const navItems = document.querySelectorAll('.series-nav');
+        const number = document.getElementById('series-number');
+        const title = document.getElementById('series-title');
+        const subtitle = document.getElementById('series-subtitle');
+        const description = document.getElementById('series-description');
+
+        if (pinTarget && shell && window.innerWidth >= 1024) {
+          ScrollTrigger.create({
+            trigger: shell,
+            start: 'top top+=112',
+            end: 'bottom bottom-=112',
+            pin: pinTarget,
+            pinSpacing: false,
+          });
+        }
+
+        function setActive(item) {
+          navItems.forEach((nav) => {
+            const label = nav.querySelector('.series-nav-label');
+            const line = nav.querySelector('.series-nav-line');
+            nav.classList.remove('is-active');
+            label?.classList.remove('text-stone-900');
+            label?.classList.add('text-stone-400');
+            line?.classList.remove('w-12', 'bg-amber-700');
+            line?.classList.add('w-5', 'bg-stone-300');
+          });
+
+          const activeLabel = item.querySelector('.series-nav-label');
+          const activeLine = item.querySelector('.series-nav-line');
+          item.classList.add('is-active');
+          activeLabel?.classList.remove('text-stone-400');
+          activeLabel?.classList.add('text-stone-900');
+          activeLine?.classList.remove('w-5', 'bg-stone-300');
+          activeLine?.classList.add('w-12', 'bg-amber-700');
+
+          const nextNumber = item.getAttribute('data-number') || '';
+          const nextTitle = item.getAttribute('data-title') || '';
+          const nextSubtitle = item.getAttribute('data-subtitle') || '';
+          const nextDescription = item.getAttribute('data-description') || '';
+
+          gsap.to([number, title, subtitle, description], {
+            y: -12,
+            opacity: 0,
+            duration: 0.18,
+            stagger: 0.03,
+            onComplete: () => {
+              if (number) number.textContent = nextNumber;
+              if (title) title.textContent = nextTitle;
+              if (subtitle) subtitle.textContent = nextSubtitle;
+              if (description) description.textContent = nextDescription;
+
+              gsap.fromTo(
+                [number, title, subtitle, description],
+                { y: 16, opacity: 0 },
+                { y: 0, opacity: 1, duration: 0.45, stagger: 0.04, ease: 'power3.out' }
+              );
+            },
+          });
+        }
+
+        sections.forEach((section, index) => {
+          ScrollTrigger.create({
+            trigger: section,
+            start: 'top center',
+            end: 'bottom center',
+            onToggle: (self) => {
+              if (self.isActive) {
+                const currentNav = navItems[index];
+                if (currentNav) {
+                  setActive(currentNav);
+                }
+              }
+            },
+          });
+        });
+
+        navItems.forEach((item) => {
+          item.addEventListener('click', () => {
+            const targetId = item.getAttribute('data-target');
+            if (targetId) {
+              const targetEl = document.getElementById(targetId);
+              if (targetEl && window.lenis) {
+                window.lenis.scrollTo(targetEl, {
+                  offset: -120,
+                  duration: 1.2,
+                });
+              } else if (targetEl) {
+                targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              }
+            }
+          });
+        });
+      } catch (error) {
+        console.error('Pinned series initialization failed:', error);
+      }
+    });
+  }
+</script>

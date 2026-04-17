@@ -1,0 +1,81 @@
+---
+const backgroundImage =
+  'https://images.unsplash.com/photo-1600607686527-6fb886090705?q=80&w=2070&auto=format&fit=crop';
+
+const cards = [
+  {
+    title: 'Stone Systems',
+    copy: 'Curated marble, travertine, limestone, and sintered slabs for lobbies, columns, and signature interior planes.',
+  },
+  {
+    title: 'Facade Materials',
+    copy: 'Exterior porcelain, ventilated facade assemblies, and engineered surfaces for global commercial envelopes.',
+  },
+  {
+    title: 'Interior Craft',
+    copy: 'Wood veneer, metal trims, and custom wall finishes designed to complete high-value hospitality and workplace projects.',
+  },
+];
+---
+
+<section id="category-slide" class="group relative h-[100dvh] snap-start snap-always overflow-hidden">
+  <img src={backgroundImage} alt="Modern architectural interior" class="absolute inset-0 h-full w-full object-cover" />
+  <div class="absolute inset-0 bg-black/30 transition-colors duration-500 group-hover:bg-black/18"></div>
+  <div class="absolute inset-0 bg-transparent transition-all duration-500 group-hover:backdrop-blur-md group-hover:bg-black/20"></div>
+  <div class="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/40"></div>
+
+  <div class="relative z-10 flex h-full items-center px-6 py-24 md:px-12">
+    <div class="mx-auto w-full max-w-[1400px]">
+      <div class="mb-12 max-w-3xl">
+        <p class="category-intro text-xs uppercase tracking-[0.34em] text-white/70">Business Categories</p>
+        <h2 class="category-intro mt-5 font-display text-4xl font-light leading-[1] tracking-[-0.05em] text-white md:text-6xl lg:text-7xl">
+          A floating bento grid for the core product families we export worldwide.
+        </h2>
+      </div>
+
+      <div class="grid gap-6 md:grid-cols-3">
+        {cards.map((card, index) => (
+          <article class={`category-card group/card min-h-[280px] rounded-[2rem] border border-white/20 bg-white/10 p-8 text-white shadow-[0_30px_80px_rgba(0,0,0,0.18)] backdrop-blur-xl transition duration-500 hover:-translate-y-1 ${index === 1 ? 'md:translate-y-10' : ''}`}>
+            <div class="flex h-full flex-col justify-between">
+              <p class="text-xs uppercase tracking-[0.28em] text-white/60">0{index + 1}</p>
+              <div class="transition-transform duration-300 group-hover/card:translate-x-1 group-hover/card:-translate-y-1">
+                <h3 class="font-display text-3xl font-light tracking-[-0.04em]">{card.title}</h3>
+                <p class="mt-4 text-base leading-7 text-white/78">{card.copy}</p>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  if (typeof window !== 'undefined') {
+    window.addEventListener('load', async () => {
+      try {
+        const gsap = (await import('gsap')).default;
+
+        gsap.from('#category-slide .category-intro', {
+          y: 48,
+          opacity: 0,
+          duration: 0.9,
+          stagger: 0.12,
+          ease: 'power3.out',
+          delay: 0.15,
+        });
+
+        gsap.from('#category-slide .category-card', {
+          y: 60,
+          opacity: 0,
+          duration: 0.95,
+          stagger: 0.12,
+          ease: 'power3.out',
+          delay: 0.35,
+        });
+      } catch (error) {
+        console.error('Category section animation failed:', error);
+      }
+    });
+  }
+</script>

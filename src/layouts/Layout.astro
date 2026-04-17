@@ -1,0 +1,169 @@
+---
+import '../styles/global.css';
+
+export interface Props {
+  title?: string;
+  description?: string;
+  lang?: string;
+  dir?: string;
+}
+
+const {
+  title = '建筑材料叙事',
+  description = '以建筑叙事方式呈现高端材料与空间体验。',
+  lang = 'zh-CN',
+  dir = 'ltr',
+} = Astro.props;
+
+const textDirection = lang === 'ar' ? 'rtl' : dir;
+const pageTitle = title.includes('|') ? title : `${title} | Global Materials`;
+---
+
+<!DOCTYPE html>
+<html lang={lang} dir={textDirection} class="bg-neutral-950">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{pageTitle}</title>
+  <meta name="description" content={description} />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <style>
+    html, body {
+      width: 100%;
+      min-height: 100%;
+      background: #0a0a0a;
+    }
+
+    body {
+      font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", "Inter", system-ui, sans-serif;
+    }
+
+    .lenis.lenis-smooth {
+      scroll-behavior: auto !important;
+    }
+
+    .lenis.lenis-smooth [data-lenis-prevent] {
+      overscroll-behavior: contain;
+    }
+
+    .lenis.lenis-stopped {
+      overflow: hidden;
+    }
+  </style>
+</head>
+
+<body class="font-sans antialiased text-neutral-100 selection:bg-white/15 selection:text-white">
+  <main class="page-shell min-h-screen">
+    <slot />
+  </main>
+
+  <script>
+    if (typeof window !== 'undefined') {
+      window.addEventListener('load', async () => {
+        try {
+          const gsap = (await import('gsap')).default;
+          const ScrollTrigger = (await import('gsap/ScrollTrigger')).default;
+          const LenisModule = await import('lenis');
+          const Lenis = LenisModule.default;
+
+          gsap.registerPlugin(ScrollTrigger);
+
+          const lenis = new Lenis({
+            duration: 1.12,
+            wheelMultiplier: 0.95,
+            touchMultiplier: 1,
+            infinite: false,
+            smoothWheel: true,
+            syncTouch: false,
+          });
+
+          lenis.on('scroll', ScrollTrigger.update);
+
+          gsap.ticker.add((time) => {
+            lenis.raf(time * 1000);
+          });
+          gsap.ticker.lagSmoothing(0);
+
+          ScrollTrigger.defaults({
+            invalidateOnRefresh: true,
+          });
+
+          ScrollTrigger.addEventListener('refresh', () => lenis.resize());
+
+          const scrollTo = (target) => {
+            lenis.scrollTo(target, {
+              offset: -96,
+              duration: 1.1,
+              easing: (t) => 1 - Math.pow(1 - t, 4),
+            });
+          };
+
+          window.__Cinematic = {
+            gsap,
+            ScrollTrigger,
+            lenis,
+            scrollTo,
+          };
+
+          const revealNodes = gsap.utils.toArray('[data-animate]');
+          revealNodes.forEach((node) => {
+            gsap.from(node, {
+              y: 50,
+              opacity: 0,
+              duration: 1,
+              ease: 'power3.out',
+              scrollTrigger: {
+                trigger: node,
+                start: 'top 86%',
+                once: true,
+              },
+            });
+          });
+
+          const staggerGroups = gsap.utils.toArray('[data-animate-group]');
+          staggerGroups.forEach((group) => {
+            const items = group.querySelectorAll('[data-animate-item]');
+            if (!items.length) return;
+
+            gsap.from(items, {
+              y: 50,
+              opacity: 0,
+              duration: 0.95,
+              ease: 'power3.out',
+              stagger: 0.12,
+              scrollTrigger: {
+                trigger: group,
+                start: 'top 82%',
+                once: true,
+              },
+            });
+          });
+
+          window.dispatchEvent(new CustomEvent('cinematic:ready'));
+          ScrollTrigger.refresh();
+
+          document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+            anchor.addEventListener('click', (event) => {
+              const href = anchor.getAttribute('href');
+              if (!href || href === '#') return;
+
+              const target = document.querySelector(href);
+              if (!target) return;
+
+              event.preventDefault();
+              scrollTo(target);
+            });
+          });
+
+          window.addEventListener('resize', () => {
+            ScrollTrigger.refresh();
+          });
+
+        } catch (e) {
+          console.error('Global Engine Error:', e);
+        }
+      });
+    }
+  </script>
+</body>
+</html>

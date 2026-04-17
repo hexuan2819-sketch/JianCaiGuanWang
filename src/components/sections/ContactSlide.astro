@@ -1,0 +1,92 @@
+---
+---
+
+<section id="contact-slide" class="relative min-h-[100svh] bg-white">
+  <div class="mx-auto grid min-h-[100svh] max-w-[1440px] grid-cols-1 px-8 pb-16 pt-32 md:px-12 lg:grid-cols-[0.85fr_1.15fr] lg:px-16">
+    <div class="flex flex-col justify-center border-b border-stone-200/80 pb-16 lg:border-b-0 lg:pb-0">
+      <div class="w-full max-w-[32rem]">
+        <div class="mask-reveal-container">
+          <p class="contact-copy mask-reveal-element text-xs font-light tracking-[0.4em] text-stone-400 uppercase">
+            05 / 合作咨询
+          </p>
+        </div>
+        <div class="mask-reveal-container mt-8">
+          <h2 class="contact-copy mask-reveal-element font-display text-[clamp(2.5rem,4.5vw,4.5rem)] font-light leading-[1.1] tracking-[0.15em] text-stone-900">
+            商业对话
+          </h2>
+        </div>
+        <div class="mask-reveal-container mt-6">
+          <p class="contact-copy mask-reveal-element max-w-[20rem] text-sm font-light leading-relaxed tracking-[0.1em] text-stone-500">
+            无论是地标建筑的选材，还是特定肌理的深度研发，我们期待与最具远见的设计团队展开对话。
+          </p>
+        </div>
+
+        <form class="mt-16 grid gap-8">
+          <div class="mask-reveal-container">
+            <input class="contact-field mask-reveal-element h-12 w-full border-b border-stone-200 bg-transparent text-sm font-light tracking-[0.12em] text-stone-900 outline-none transition-colors focus:border-stone-900 placeholder:text-stone-400" type="text" placeholder="姓名 / 所属机构" />
+          </div>
+          <div class="mask-reveal-container">
+            <input class="contact-field mask-reveal-element h-12 w-full border-b border-stone-200 bg-transparent text-sm font-light tracking-[0.12em] text-stone-900 outline-none transition-colors focus:border-stone-900 placeholder:text-stone-400" type="email" placeholder="工作邮箱" />
+          </div>
+          <div class="mask-reveal-container">
+            <input class="contact-field mask-reveal-element h-12 w-full border-b border-stone-200 bg-transparent text-sm font-light tracking-[0.12em] text-stone-900 outline-none transition-colors focus:border-stone-900 placeholder:text-stone-400" type="text" placeholder="项目类型（如：商业空间、高端住宅）" />
+          </div>
+          <div class="mask-reveal-container">
+            <textarea class="contact-field mask-reveal-element min-h-24 w-full resize-none border-b border-stone-200 bg-transparent py-3 text-sm font-light leading-7 tracking-[0.12em] text-stone-900 outline-none transition-colors focus:border-stone-900 placeholder:text-stone-400" placeholder="简述项目规模、所需材料肌理及时间节点。"></textarea>
+          </div>
+          <div class="mask-reveal-container pt-6">
+            <button class="contact-field mask-reveal-element group flex w-fit items-center gap-4 text-xs font-light tracking-[0.3em] text-stone-900 transition-opacity hover:opacity-60" type="button">
+              <span class="border-b border-stone-900 pb-2">提交洽询</span>
+              <span class="text-lg transition-transform duration-500 group-hover:translate-x-1">+</span>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- 右侧极致留白 -->
+    <div class="hidden lg:block relative">
+      <div class="absolute right-0 bottom-16 opacity-40">
+        <p class="font-display text-[8rem] font-light leading-none tracking-tighter text-stone-100 select-none">
+          GLOBAL<br/>MATERIALS
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  if (typeof window !== 'undefined') {
+    const initContactSlide = () => {
+      const engine = window.__Cinematic;
+      if (!engine) {
+        window.addEventListener('cinematic:ready', initContactSlide, { once: true });
+        return;
+      }
+
+      const { gsap, ScrollTrigger } = engine;
+      const section = document.getElementById('contact-slide');
+      const items = section?.querySelectorAll('.contact-copy, .contact-field');
+      if (!section || !items?.length) return;
+
+      gsap.set(items, { opacity: 0 });
+
+      ScrollTrigger.create({
+        trigger: section,
+        start: 'top 72%',
+        once: true,
+        onEnter: () => {
+          gsap.to(items, {
+            y: 0,
+            opacity: 1,
+            duration: 1.5,
+            stagger: 0.1,
+            ease: 'power4.out',
+          });
+        },
+      });
+    };
+
+    initContactSlide();
+  }
+</script>

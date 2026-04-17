@@ -1,0 +1,103 @@
+---
+const baseImage =
+  'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=2070&auto=format&fit=crop';
+const revealImage =
+  'https://images.unsplash.com/photo-1565008447742-97f6f38c985c?q=80&w=2070&auto=format&fit=crop';
+---
+
+<section id="scrolly-mask" class="relative min-h-[250svh] w-full bg-stone-950">
+  <div id="production-story-pin" class="sticky top-0 h-[100svh] w-full overflow-hidden">
+    <!-- 底层：工厂环境底图（较暗） -->
+    <img src={baseImage} alt="工厂底景" class="absolute inset-0 h-full w-full object-cover opacity-60 mix-blend-luminosity" />
+    <div class="absolute inset-0 bg-stone-950/80"></div>
+
+    <!-- 顶层：被遮罩揭示的高精尖生产线明亮图片 -->
+    <div
+      id="production-story-reveal"
+      class="absolute inset-0"
+      style={`background-image:url(${revealImage}); background-size:cover; background-position:center; clip-path: inset(40% 40% 40% 40%);`}
+    >
+      <div class="absolute inset-0 bg-stone-900/20"></div>
+    </div>
+
+    <!-- 文本层 -->
+    <div class="pointer-events-none absolute left-0 top-0 z-20 w-full px-8 pt-24 md:px-12 lg:px-16 lg:pt-32">
+      <div class="mask-reveal-container">
+        <p class="production-copy mask-reveal-element text-xs font-light tracking-[0.4em] text-stone-300/80 uppercase">
+          04 / 生产匠心
+        </p>
+      </div>
+    </div>
+
+    <div class="pointer-events-none absolute bottom-12 left-8 z-20 max-w-[20rem] md:bottom-16 md:left-12 lg:left-16">
+      <div class="mask-reveal-container mb-4">
+        <h2 class="production-copy mask-reveal-element font-display text-4xl font-light tracking-[0.1em] text-white md:text-5xl">
+          工业精密
+        </h2>
+      </div>
+      <div class="mask-reveal-container">
+        <p class="production-copy mask-reveal-element text-sm font-light leading-relaxed tracking-[0.1em] text-stone-200/80">
+          微米级的切割精度与全自动化智造体系，将原始的自然肌理，转化为无可挑剔的建筑语言与几何秩序。
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  if (typeof window !== 'undefined') {
+    const initScrollyMask = () => {
+      const engine = window.__Cinematic;
+      if (!engine) {
+        window.addEventListener('cinematic:ready', initScrollyMask, { once: true });
+        return;
+      }
+
+      try {
+        const { gsap, ScrollTrigger } = engine;
+        const section = document.getElementById('scrolly-mask');
+        const pin = document.getElementById('production-story-pin');
+        const revealLayer = document.getElementById('production-story-reveal');
+        const texts = section?.querySelectorAll('.production-copy');
+
+        if (!section || !pin || !revealLayer || !texts?.length) return;
+
+        // 入场动画
+        gsap.set(texts, { opacity: 0 });
+
+        ScrollTrigger.create({
+          trigger: section,
+          start: 'top 65%',
+          once: true,
+          onEnter: () => {
+            gsap.to(texts, {
+              y: 0,
+              opacity: 1,
+              duration: 1.5,
+              ease: 'power4.out',
+              stagger: 0.15,
+            });
+          }
+        });
+
+        // 矩形遮罩拉开动画，直接使用 scrub
+        gsap.timeline({
+          scrollTrigger: {
+            trigger: section,
+            start: 'top top',
+            end: 'bottom bottom',
+            scrub: 1,
+          },
+        }).to(revealLayer, {
+          clipPath: 'inset(0% 0% 0% 0%)',
+          ease: 'none',
+        });
+
+      } catch (error) {
+        console.error('Production Mask animation failed:', error);
+      }
+    };
+
+    initScrollyMask();
+  }
+</script>

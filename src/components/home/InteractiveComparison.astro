@@ -1,0 +1,153 @@
+---
+const comparisonData = {
+  marble: {
+    label: 'Marble',
+    rows: [
+      ['Application', 'Feature walls / lobbies / reception areas'],
+      ['Visual Character', 'Natural veining with book-match continuity'],
+      ['Finish Options', 'Polished, honed, leathered'],
+      ['Lead Time', '4-6 weeks for project lots'],
+    ],
+  },
+  porcelain: {
+    label: 'Porcelain',
+    rows: [
+      ['Application', 'Facade cladding / wet zones / hospitality rooms'],
+      ['Visual Character', 'Minimal pattern repetition with tonal control'],
+      ['Finish Options', 'Matt, silk, anti-slip'],
+      ['Lead Time', '3-5 weeks for stock-backed programs'],
+    ],
+  },
+  wood: {
+    label: 'Wood Veneer',
+    rows: [
+      ['Application', 'Boardrooms / suites / millwork packages'],
+      ['Visual Character', 'Warm linear grain with soft natural movement'],
+      ['Finish Options', 'Open-pore matt, satin, smoke tone'],
+      ['Lead Time', '5-7 weeks with finishing and panelization'],
+    ],
+  },
+};
+---
+
+<section id="comparison" class="bg-stone-50 py-24 md:py-32">
+  <div class="mx-auto max-w-[1440px] px-4 md:px-8">
+    <div class="reveal mb-12 flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
+      <div class="max-w-3xl">
+        <p class="mb-4 text-xs uppercase tracking-[0.3em] text-stone-500">Interactive Comparison</p>
+        <h2 class="font-display text-4xl font-light tracking-[-0.05em] text-stone-900 md:text-6xl">
+          Compare material families the way a specification team narrows a scheme.
+        </h2>
+      </div>
+      <p class="max-w-md text-base leading-7 text-stone-600">
+        Switching tabs moves both the active control and the comparison body, creating a high-end transition closer to product UX than a static table.
+      </p>
+    </div>
+
+    <div class="surface-card rounded-[2.5rem] p-6 md:p-8">
+      <div id="comparison-tabs" class="reveal relative flex flex-wrap gap-3 border-b border-stone-200 pb-6">
+        <div id="comparison-indicator" class="absolute left-0 top-0 hidden rounded-full bg-amber-100"></div>
+        {Object.entries(comparisonData).map(([key, item], index) => (
+          <button
+            type="button"
+            class={`comparison-tab relative rounded-full px-5 py-3 text-sm uppercase tracking-[0.2em] transition-colors ${index === 0 ? 'is-active text-amber-700' : 'text-stone-500 hover:text-stone-900'}`}
+            data-target={key}
+          >
+            {item.label}
+          </button>
+        ))}
+      </div>
+
+      <div id="comparison-panels" class="relative mt-8">
+        {Object.entries(comparisonData).map(([key, item], index) => (
+          <div class={`comparison-panel ${index === 0 ? 'block' : 'hidden'}`} data-panel={key}>
+            <div class="grid gap-4">
+              {item.rows.map(([heading, value]) => (
+                <div class="comparison-row reveal grid gap-3 rounded-[1.75rem] border border-stone-200 bg-stone-50 px-6 py-5 md:grid-cols-[220px_1fr] md:items-center">
+                  <p class="text-xs uppercase tracking-[0.24em] text-stone-500">{heading}</p>
+                  <p class="text-base leading-7 text-stone-800">{value}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  if (typeof window !== 'undefined') {
+    window.addEventListener('load', async () => {
+      try {
+        const gsap = (await import('gsap')).default;
+        const Flip = (await import('gsap/Flip')).default;
+        gsap.registerPlugin(Flip);
+
+        const tabs = Array.from(document.querySelectorAll('.comparison-tab'));
+        const panels = Array.from(document.querySelectorAll('.comparison-panel'));
+        const indicator = document.getElementById('comparison-indicator');
+        const tabsWrap = document.getElementById('comparison-tabs');
+
+        if (!tabs.length || !indicator || !tabsWrap) return;
+
+        function moveIndicator(activeTab) {
+          indicator.classList.remove('hidden');
+          const state = Flip.getState(indicator);
+          indicator.style.width = `${activeTab.offsetWidth}px`;
+          indicator.style.height = `${activeTab.offsetHeight}px`;
+          indicator.style.transform = `translate(${activeTab.offsetLeft}px, ${activeTab.offsetTop}px)`;
+          Flip.from(state, {
+            duration: 0.45,
+            ease: 'power2.out',
+          });
+        }
+
+        function activate(targetKey) {
+          const nextTab = tabs.find((tab) => tab.getAttribute('data-target') === targetKey);
+          const nextPanel = panels.find((panel) => panel.getAttribute('data-panel') === targetKey);
+          if (!nextTab || !nextPanel) return;
+
+          tabs.forEach((tab) => {
+            tab.classList.remove('is-active', 'text-amber-700');
+            tab.classList.add('text-stone-500');
+          });
+
+          nextTab.classList.add('is-active', 'text-amber-700');
+          nextTab.classList.remove('text-stone-500');
+          moveIndicator(nextTab);
+
+          const currentPanel = panels.find((panel) => !panel.classList.contains('hidden'));
+          if (currentPanel === nextPanel) return;
+
+          if (currentPanel) {
+            gsap.to(currentPanel, {
+              x: -24,
+              opacity: 0,
+              duration: 0.22,
+              onComplete: () => {
+                currentPanel.classList.add('hidden');
+                nextPanel.classList.remove('hidden');
+                gsap.fromTo(nextPanel, { x: 24, opacity: 0 }, { x: 0, opacity: 1, duration: 0.35, ease: 'power2.out' });
+              },
+            });
+          } else {
+            nextPanel.classList.remove('hidden');
+          }
+        }
+
+        activate('marble');
+        tabs.forEach((tab) => {
+          tab.addEventListener('click', () => activate(tab.getAttribute('data-target') || 'marble'));
+        });
+
+        window.addEventListener('resize', () => {
+          const activeTab = tabs.find((tab) => tab.classList.contains('is-active'));
+          if (activeTab) moveIndicator(activeTab);
+        });
+      } catch (error) {
+        console.error('Interactive comparison initialization failed:', error);
+      }
+    });
+  }
+</script>

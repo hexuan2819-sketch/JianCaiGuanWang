@@ -1,0 +1,63 @@
+---
+---
+
+<section id="philosophy-section" class="relative min-h-[200svh] w-full bg-stone-50">
+  <div class="sticky-stage bg-[linear-gradient(to_bottom,#fafaf9,#f5f5f4)]">
+    <div class="flex h-full w-full items-center justify-center px-8 md:px-16">
+      <div class="max-w-4xl text-center">
+        <p class="philosophy-text font-display text-[clamp(2rem,4vw,4rem)] font-light leading-[1.3] tracking-[0.05em] text-stone-900 opacity-0">
+          好的材料不仅是覆盖表面的装饰，
+        </p>
+        <p class="philosophy-text mt-4 font-display text-[clamp(2rem,4vw,4rem)] font-light leading-[1.3] tracking-[0.05em] text-stone-900 opacity-0">
+          更是空间情绪的容器。
+        </p>
+        <p class="philosophy-text mt-12 text-sm font-light leading-relaxed tracking-[0.15em] text-stone-500 opacity-0 md:text-base">
+          我们拒绝简单的堆砌，用克制的工业语言还原自然的纯粹，让每一寸空间都经得起时间的凝视。
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  if (typeof window !== 'undefined') {
+    const initPhilosophy = () => {
+      const engine = window.__Cinematic;
+      if (!engine) return;
+
+      try {
+        const { gsap } = engine;
+        const section = document.getElementById('philosophy-section');
+        const texts = section?.querySelectorAll('.philosophy-text');
+        
+        if (!section || !texts?.length) return;
+
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: section,
+            start: 'top 50%',
+            end: 'bottom 80%',
+            scrub: 1,
+          }
+        });
+
+        texts.forEach((text, index) => {
+          tl.fromTo(text, 
+            { y: 40, opacity: 0 },
+            { y: 0, opacity: 1, duration: 1, ease: 'power2.out' },
+            index * 0.5
+          );
+        });
+
+      } catch (error) {
+        console.error('Philosophy animation failed:', error);
+      }
+    };
+
+    if (window.__Cinematic) {
+      initPhilosophy();
+    } else {
+      window.addEventListener('cinematic:ready', initPhilosophy, { once: true });
+    }
+  }
+</script>

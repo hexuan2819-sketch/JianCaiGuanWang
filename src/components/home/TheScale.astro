@@ -1,0 +1,86 @@
+---
+const stats = [
+  { value: '200+', label: 'Projects delivered', note: 'Large hospitality, civic and mixed-use programs' },
+  { value: '32', label: 'Export markets', note: 'From GCC and CIS to Europe and North Africa' },
+  { value: '96h', label: 'Sample response', note: 'Technical packs, finish boards and quoting workflow' },
+];
+---
+
+<section id="scale" class="overflow-hidden bg-stone-50 py-24 md:py-32">
+  <div class="mx-auto max-w-[1440px] px-4 md:px-8">
+    <div class="reveal mb-12 max-w-3xl">
+      <p class="mb-4 text-xs uppercase tracking-[0.3em] text-stone-500">The Scale</p>
+      <h2 class="font-display text-4xl font-light tracking-[-0.05em] text-stone-900 md:text-6xl">
+        Numbers arrive like an elevation drawing: faint at first, then fully resolved under scroll.
+      </h2>
+    </div>
+
+    <div id="scale-stage" class="relative overflow-hidden rounded-[2.5rem] border border-stone-200 bg-white px-6 py-10 shadow-architectural md:px-10 md:py-14">
+      <div class="blueprint-grid absolute inset-0 animate-blueprint-drift opacity-60"></div>
+      <div class="absolute -right-20 top-16 h-64 w-64 rounded-full bg-amber-100/50 blur-3xl"></div>
+      <div class="absolute -left-12 bottom-6 h-40 w-40 rounded-full bg-stone-100 blur-3xl"></div>
+
+      <div class="relative z-10 grid gap-6 md:grid-cols-3">
+        {stats.map((stat) => (
+          <article class="scale-card reveal rounded-[2rem] border border-stone-200/80 bg-white/80 p-8 backdrop-blur">
+            <p class="scale-number font-display text-5xl font-light tracking-[-0.06em] text-stone-900 md:text-7xl">{stat.value}</p>
+            <p class="mt-4 text-sm uppercase tracking-[0.22em] text-stone-500">{stat.label}</p>
+            <p class="mt-6 text-base leading-7 text-stone-600">{stat.note}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  if (typeof window !== 'undefined') {
+    window.addEventListener('load', async () => {
+      try {
+        const gsap = (await import('gsap')).default;
+        const ScrollTrigger = (await import('gsap/ScrollTrigger')).default;
+        gsap.registerPlugin(ScrollTrigger);
+
+        gsap.utils.toArray('.scale-card').forEach((card) => {
+          const number = card.querySelector('.scale-number');
+          gsap.fromTo(
+            card,
+            { scale: 0.82, opacity: 0.35, filter: 'blur(12px)' },
+            {
+              scale: 1,
+              opacity: 1,
+              filter: 'blur(0px)',
+              ease: 'none',
+              scrollTrigger: {
+                trigger: card,
+                start: 'top 88%',
+                end: 'top 45%',
+                scrub: true,
+              },
+            }
+          );
+
+          if (number) {
+            gsap.fromTo(
+              number,
+              { y: 30, opacity: 0.2 },
+              {
+                y: 0,
+                opacity: 1,
+                ease: 'none',
+                scrollTrigger: {
+                  trigger: card,
+                  start: 'top 85%',
+                  end: 'top 45%',
+                  scrub: true,
+                },
+              }
+            );
+          }
+        });
+      } catch (error) {
+        console.error('The Scale initialization failed:', error);
+      }
+    });
+  }
+</script>

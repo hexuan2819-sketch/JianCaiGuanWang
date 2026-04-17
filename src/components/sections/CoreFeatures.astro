@@ -1,0 +1,244 @@
+---
+const features = [
+  {
+    title: '全球物流',
+    copy: '覆盖海运、陆运与跨境清关环节，确保多地并行项目在时间轴上保持稳定推进。',
+    detail: '多港口并行订舱、落地清关与末端转运协同，让海外项目在高压工期中仍有确定性。',
+    image: 'https://images.unsplash.com/photo-1494412574643-ff11b0a5c1c3?q=80&w=2070&auto=format&fit=crop',
+  },
+  {
+    title: '国际认证',
+    copy: '支持项目所需的环保、防火、耐磨与结构性能资料，为国际招采流程提供充分依据。',
+    detail: '围绕项目审图、招采与合规节点，建立清晰材料资料包，减少跨境沟通成本。',
+    image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=2070&auto=format&fit=crop',
+  },
+  {
+    title: '定制工艺',
+    copy: '从分缝逻辑到异形节点深化，支持样板确认、批量制造与现场安装的连续协同。',
+    detail: '深化图、样板段、批量加工与安装节点彼此联动，让复杂设计真正转化为可施工成果。',
+    image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=2070&auto=format&fit=crop',
+  },
+  {
+    title: '极速交付',
+    copy: '设立专项项目经理与多节点追踪机制，让复杂供应链在高压工期下依旧可控。',
+    detail: '从下单、加工、出运到入场安装建立看板式追踪，关键节点提前预警，降低延期风险。',
+    image: 'https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?q=80&w=2070&auto=format&fit=crop',
+  },
+];
+---
+
+<section id="core-features" class="h-[100svh] w-full flex flex-col justify-center bg-transparent py-6 relative overflow-hidden">
+<div class="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+      <img id="feature-bg-blur" src={features[0].image} loading="lazy" decoding="async" class="w-full h-full object-cover opacity-10 blur-[100px] scale-110 transition-all duration-1000 will-change-transform transform-gpu" />
+      <div class="absolute inset-0 bg-neutral-950/60"></div>
+    </div>
+  <div class="mx-auto w-full max-w-[1800px] px-6 md:px-12 h-full flex flex-col relative z-10">
+    <div class="flex items-center justify-between mb-10">
+      <div>
+        <span class="text-[10px] font-light tracking-[0.34em] text-neutral-400">05 / 核心优势</span>
+        <h2 class="mt-2 font-display text-3xl font-light text-white tracking-widest">以系统能力支撑高标准落地</h2>
+      </div>
+    </div>
+
+    <div class="flex-1 flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-20 h-full pb-10">
+      <!-- Left: Titles List (Aceternity Spotlight Style) -->
+      <div class="w-full lg:w-[40%] flex flex-col justify-center gap-6 md:gap-8" id="feature-list">
+        {features.map((feature, index) => (
+          <button
+            class={`feature-item group relative overflow-hidden rounded-[2rem] border transition-all duration-500 p-8 text-left ${index === 0 ? 'border-white/30 bg-white/10 shadow-[0_0_40px_rgba(255,255,255,0.1)] scale-100' : 'border-white/5 bg-transparent hover:border-white/20 hover:bg-white/5 scale-95 opacity-60 hover:opacity-100'}`}
+            data-index={index}
+            data-image={feature.image}
+            data-copy={feature.copy}
+            data-detail={feature.detail}
+          >
+            <!-- Spotlight effect -->
+            <div class="absolute -inset-px opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-[2rem] bg-gradient-to-r from-white/0 via-white/10 to-white/0" style="mask-image: linear-gradient(black, black); mask-composite: exclude;"></div>
+            
+            <div class="relative z-10 flex items-start gap-6">
+              <span class={`font-display text-2xl font-light transition-colors duration-500 ${index === 0 ? 'text-white' : 'text-neutral-500 group-hover:text-white/80'}`}>0{index + 1}</span>
+              <div>
+                <h3 class={`font-display text-3xl md:text-4xl font-light tracking-wider transition-colors duration-500 ${index === 0 ? 'text-white' : 'text-neutral-400 group-hover:text-white'}`}>{feature.title}</h3>
+                <p class={`mt-4 text-sm font-light leading-7 tracking-wide transition-all duration-500 ${index === 0 ? 'text-neutral-300 max-h-[200px] opacity-100' : 'text-neutral-500 max-h-0 opacity-0 group-hover:max-h-[200px] group-hover:opacity-100'}`}>
+                  {feature.copy}
+                </p>
+              </div>
+            </div>
+          </button>
+        ))}
+      </div>
+
+      <!-- Right: Dynamic Polygon Stage with 3D Depth -->
+      <div class="w-full lg:w-[60%] h-[50vh] lg:h-[80vh] relative flex items-center justify-end perspective-[2000px]">
+        <div id="feature-3d-stage" class="relative w-full max-w-[1000px] h-full overflow-hidden transition-transform duration-700 ease-out border border-white/10 shadow-[0_40px_100px_rgba(0,0,0,0.5)] bg-neutral-900/50 will-change-transform transform-gpu" style="clip-path: polygon(10% 0%, 100% 0, 100% 90%, 90% 100%, 0 100%, 0% 10%); transform-style: preserve-3d;">
+          <img id="feature-stage-image" src={features[0].image} alt="Feature Image" loading="lazy" decoding="async" class="absolute inset-0 w-full h-full object-cover transition-opacity duration-700 will-change-opacity" />
+          
+          <div class="absolute inset-0 bg-gradient-to-tr from-black/90 via-black/30 to-transparent"></div>
+          <div class="absolute inset-0 blend-noise opacity-40"></div>
+          
+          <!-- 3D Glare -->
+          <div id="feature-glare" class="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.2),transparent_60%)] opacity-0 transition-opacity duration-300 pointer-events-none mix-blend-overlay"></div>
+
+          <div class="absolute inset-0 flex flex-col justify-end p-10 md:p-16" style="transform: translateZ(50px);">
+            <div class="glass-cinematic inline-flex rounded-full px-6 py-3 mb-8 border border-white/20 bg-white/10 backdrop-blur-xl w-max">
+              <span class="text-xs tracking-[0.3em] text-white">SYSTEM CAPABILITY</span>
+            </div>
+            <p id="feature-stage-detail" class="text-base md:text-lg font-light leading-relaxed tracking-wider text-neutral-200 max-w-2xl transition-opacity duration-500">
+              {features[0].detail}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  if (typeof window !== 'undefined') {
+    const items = document.querySelectorAll('.feature-item');
+    const stage = document.getElementById('feature-3d-stage');
+    const stageImage = document.getElementById('feature-stage-image');
+    const stageDetail = document.getElementById('feature-stage-detail');
+    const bgBlur = document.getElementById('feature-bg-blur');
+    const glare = document.getElementById('feature-glare');
+
+    // 3D Hover Effect for Stage
+    const stageContainer = stage?.parentElement;
+    if (stageContainer && stage && glare) {
+      let ticking = false;
+      let isVisible = false;
+
+      const observer = new IntersectionObserver((entries) => {
+        isVisible = entries[0].isIntersecting;
+      }, { threshold: 0 });
+      observer.observe(stageContainer);
+
+      stageContainer.addEventListener('mousemove', (e) => {
+        if (!isVisible || ticking) return;
+
+        window.requestAnimationFrame(() => {
+          const rect = stageContainer.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+          
+          const centerX = rect.width / 2;
+          const centerY = rect.height / 2;
+          
+          const rotateX = ((y - centerY) / centerY) * -5;
+          const rotateY = ((x - centerX) / centerX) * 5;
+          
+          stage.style.transform = `translateZ(0) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+          
+          glare.style.opacity = '1';
+          glare.style.background = `radial-gradient(circle at ${x}px ${y}px, rgba(255,255,255,0.15), transparent 60%)`;
+          
+          ticking = false;
+        });
+        
+        ticking = true;
+      }, { passive: true });
+
+      stageContainer.addEventListener('mouseleave', () => {
+        if (!isVisible) return;
+        window.requestAnimationFrame(() => {
+          stage.style.transform = 'translateZ(0) rotateX(0) rotateY(0)';
+          glare.style.opacity = '0';
+        });
+      });
+    }
+
+    // Spotlight Effect for Items
+    items.forEach((item, index) => {
+      let itemTicking = false;
+      
+      item.addEventListener('mousemove', (e) => {
+        if (itemTicking) return;
+        window.requestAnimationFrame(() => {
+          const rect = item.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+          item.style.setProperty('--mouse-x', `${x}px`);
+          item.style.setProperty('--mouse-y', `${y}px`);
+          itemTicking = false;
+        });
+        itemTicking = true;
+      }, { passive: true });
+
+      item.addEventListener('mouseenter', () => {
+        // Reset all
+        items.forEach((el) => {
+          el.classList.remove('border-white/30', 'bg-white/10', 'shadow-[0_0_40px_rgba(255,255,255,0.1)]', 'scale-100');
+          el.classList.add('border-white/5', 'bg-transparent', 'scale-95', 'opacity-60');
+          
+          const num = el.querySelector('span');
+          const title = el.querySelector('h3');
+          const p = el.querySelector('p');
+          
+          num?.classList.remove('text-white');
+          num?.classList.add('text-neutral-500');
+          
+          title?.classList.remove('text-white');
+          title?.classList.add('text-neutral-400');
+          
+          p?.classList.remove('text-neutral-300', 'max-h-[200px]', 'opacity-100');
+          p?.classList.add('text-neutral-500', 'max-h-0', 'opacity-0');
+        });
+        
+        // Activate current
+        item.classList.remove('border-white/5', 'bg-transparent', 'scale-95', 'opacity-60');
+        item.classList.add('border-white/30', 'bg-white/10', 'shadow-[0_0_40px_rgba(255,255,255,0.1)]', 'scale-100');
+
+        const num = item.querySelector('span');
+        const title = item.querySelector('h3');
+        const p = item.querySelector('p');
+        
+        num?.classList.remove('text-neutral-500');
+        num?.classList.add('text-white');
+        
+        title?.classList.remove('text-neutral-400');
+        title?.classList.add('text-white');
+        
+        p?.classList.remove('text-neutral-500', 'max-h-0', 'opacity-0');
+        p?.classList.add('text-neutral-300', 'max-h-[200px]', 'opacity-100');
+
+        // Update content with fade effect
+        if (stageDetail && stageImage && bgBlur) {
+          stageDetail.style.opacity = '0';
+          stageImage.style.opacity = '0.5';
+          
+          setTimeout(() => {
+            const imgSrc = item.getAttribute('data-image') || '';
+            stageImage.setAttribute('src', imgSrc);
+            bgBlur.setAttribute('src', imgSrc);
+            stageDetail.textContent = item.getAttribute('data-detail') || '';
+            
+            stageDetail.style.opacity = '1';
+            stageImage.style.opacity = '1';
+          }, 300);
+        }
+      });
+    });
+  }
+</script>
+
+<style>
+  .feature-item::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 2rem;
+    padding: 1px;
+    background: radial-gradient(
+      800px circle at var(--mouse-x, 0) var(--mouse-y, 0),
+      rgba(255, 255, 255, 0.15),
+      transparent 40%
+    );
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.5s;
+  }
+  .feature-item:hover::before {
+    opacity: 1;
+  }
+</style>

@@ -1,0 +1,226 @@
+---
+const backgroundImage =
+  'https://images.unsplash.com/photo-1494526585095-c41746248156?q=80&w=1974&auto=format&fit=crop';
+
+const cards = [
+  {
+    title: '大理石工坊',
+    meta: 'MARBLE ATELIER',
+    copy: '精选卡拉卡塔白与洞石，专为大堂与到达空间定制的对纹拼花，每一条脉络皆为自然原迹。',
+    image: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=2070&auto=format&fit=crop',
+    colSpan: 'md:col-span-2',
+    rowSpan: 'md:row-span-2',
+  },
+  {
+    title: '烧结岩板',
+    meta: 'SINTERED SLABS',
+    copy: '户外级抗紫外面板，突破传统石材物理极限的工业美学。',
+    image: 'https://images.unsplash.com/photo-1511818966892-d7d671e672a2?q=80&w=1974&auto=format&fit=crop',
+    colSpan: 'md:col-span-1',
+    rowSpan: 'md:row-span-1',
+  },
+  {
+    title: '原生木皮',
+    meta: 'WOOD VENEER',
+    copy: '热处理白蜡木与温润直纹，赋予空间恒久的生命力。',
+    image: 'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?q=80&w=2070&auto=format&fit=crop',
+    colSpan: 'md:col-span-1',
+    rowSpan: 'md:row-span-1',
+  },
+  {
+    title: '建筑金属',
+    meta: 'ARCHITECTURAL METAL',
+    copy: '拉丝青铜与阳极氧化铝，在光影中勾勒空间的骨骼与质感。',
+    image: 'https://images.unsplash.com/photo-1604014237800-1c9102c219da?q=80&w=1974&auto=format&fit=crop',
+    colSpan: 'md:col-span-2',
+    rowSpan: 'md:row-span-1',
+  },
+];
+---
+
+<section id="bento-categories" class="relative min-h-[100svh] w-full overflow-hidden bg-stone-100 py-24">
+  <div class="cinematic-bg-container">
+    <img
+      src={backgroundImage}
+      alt="品类美学背景"
+      class="cinematic-bg-image object-cover"
+    />
+    <div class="absolute inset-0 bg-stone-100/60 cinematic-bg-overlay backdrop-blur-sm"></div>
+  </div>
+
+  <div class="relative z-10 mx-auto flex h-full w-full max-w-[1440px] flex-col justify-center px-8 md:px-12 lg:px-16">
+    <header class="mb-16 flex flex-col justify-between gap-8 md:flex-row md:items-end">
+      <div class="max-w-2xl">
+        <div class="mask-reveal-container mb-6">
+          <p class="bento-reveal mask-reveal-element text-xs font-light tracking-[0.4em] text-stone-500 uppercase">
+            02 / 品类美学
+          </p>
+        </div>
+        <div class="mask-reveal-container">
+          <h2 class="bento-reveal mask-reveal-element font-display text-[clamp(2.5rem,5vw,5rem)] font-light tracking-[0.1em] text-stone-900 leading-[1.1]">
+            物之分类
+          </h2>
+        </div>
+      </div>
+      
+      <div class="max-w-md">
+        <div class="mask-reveal-container">
+          <p class="bento-reveal mask-reveal-element text-sm font-light leading-relaxed tracking-[0.1em] text-stone-600">
+            不局限于表面的呈现，而是深入材料的基因。我们建立了一套涵盖石材、岩板、木皮与金属的建筑级选材系统。点击图片查看大图。
+          </p>
+        </div>
+      </div>
+    </header>
+
+    <div class="grid grid-cols-1 gap-4 md:grid-cols-3 md:grid-rows-2 md:gap-6 lg:h-[65vh]">
+      {cards.map((card) => (
+        <article 
+          class={`bento-card group/card relative overflow-hidden rounded-3xl bg-stone-200 transition-all duration-cinematic cursor-pointer ${card.colSpan} ${card.rowSpan}`}
+          data-intent
+        >
+          <img 
+            src={card.image} 
+            alt={card.title} 
+            class="absolute inset-0 h-full w-full object-cover transition-transform duration-[1.2s] ease-[cubic-bezier(0.19,1,0.22,1)] group-hover/card:scale-105"
+          />
+          <div class="absolute inset-0 bg-[linear-gradient(180deg,transparent_0%,rgba(28,25,23,0.4)_60%,rgba(28,25,23,0.85)_100%)] transition-opacity duration-cinematic group-hover/card:opacity-95"></div>
+          
+          <div class="absolute inset-x-0 bottom-0 flex flex-col justify-end p-6 md:p-8 transform transition-transform duration-[1.2s] ease-[cubic-bezier(0.19,1,0.22,1)] group-hover/card:-translate-y-2">
+            <span class="mb-3 block text-[10px] font-light tracking-[0.3em] text-stone-300/80 uppercase">
+              {card.meta}
+            </span>
+            <h3 class="font-display text-2xl font-light tracking-[0.1em] text-stone-50 md:text-3xl">
+              {card.title}
+            </h3>
+            <div class="grid grid-rows-[0fr] transition-all duration-[1.2s] ease-[cubic-bezier(0.19,1,0.22,1)] group-hover/card:grid-rows-[1fr]">
+              <p class="overflow-hidden pt-0 text-xs font-light leading-relaxed tracking-[0.05em] text-stone-300 opacity-0 transition-all duration-[1s] delay-100 group-hover/card:pt-4 group-hover/card:opacity-100">
+                {card.copy}
+              </p>
+            </div>
+          </div>
+
+          <!-- 聚焦滤镜 -->
+          <div class="bento-dimmer absolute inset-0 bg-stone-950/0 backdrop-blur-0 transition-all duration-cinematic pointer-events-none"></div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  if (typeof window !== 'undefined') {
+    const initBentoCategories = () => {
+      const engine = window.__Cinematic;
+      if (!engine) {
+        window.addEventListener('cinematic:ready', initBentoCategories, { once: true });
+        return;
+      }
+
+      try {
+        const { gsap, ScrollTrigger } = engine;
+        const section = document.getElementById('bento-categories');
+        const cards = section?.querySelectorAll('.bento-card');
+        const reveals = section?.querySelectorAll('.bento-reveal');
+        
+        if (!section || !cards?.length || !reveals?.length) return;
+
+        // 初始入场动画
+        ScrollTrigger.create({
+          trigger: section,
+          start: 'top 65%',
+          once: true,
+          onEnter: () => {
+            gsap.to(reveals, {
+              y: 0,
+              duration: 1.5,
+              ease: 'power4.out',
+              stagger: 0.15,
+            });
+
+            gsap.fromTo(cards, 
+              { y: 60, opacity: 0 },
+              { y: 0, opacity: 1, duration: 1.6, ease: 'power4.out', stagger: 0.1, delay: 0.2 }
+            );
+          },
+        });
+
+        // 局部交互意图：Hover 一张卡片，其余卡片变暗模糊
+        cards.forEach(card => {
+          card.addEventListener('mouseenter', () => {
+            cards.forEach(otherCard => {
+              if (otherCard !== card) {
+                const dimmer = otherCard.querySelector('.bento-dimmer') as HTMLElement;
+                if (dimmer) {
+                  dimmer.style.backgroundColor = 'rgba(28, 25, 23, 0.5)'; // stone-900/50
+                  dimmer.style.backdropFilter = 'blur(4px)';
+                }
+              }
+            });
+          });
+
+          card.addEventListener('mouseleave', () => {
+            cards.forEach(otherCard => {
+              const dimmer = otherCard.querySelector('.bento-dimmer') as HTMLElement;
+              if (dimmer) {
+                dimmer.style.backgroundColor = 'rgba(28, 25, 23, 0)';
+                dimmer.style.backdropFilter = 'blur(0px)';
+              }
+            });
+          });
+        });
+
+        // 点击卡片全屏展示
+        cards.forEach((card) => {
+          card.addEventListener('click', () => {
+            const img = card.querySelector('img');
+            if(!img) return;
+
+            const tl = gsap.timeline();
+
+            // Create a full-screen overlay for the clicked image
+            const overlay = document.createElement('div');
+            overlay.className = 'fixed inset-0 z-[100] flex items-center justify-center bg-stone-950/90 backdrop-blur-md opacity-0 cursor-pointer';
+            
+            const overlayImg = document.createElement('img');
+            overlayImg.src = img.src;
+            overlayImg.className = 'max-h-[85vh] max-w-[85vw] object-contain rounded-lg shadow-2xl scale-95';
+            
+            // Add description
+            const textContainer = document.createElement('div');
+            textContainer.className = 'absolute bottom-8 left-8 md:bottom-12 md:left-12 max-w-lg bg-stone-950/40 p-6 backdrop-blur-md rounded-xl border border-white/10';
+            textContainer.innerHTML = `
+              <span class="block text-[10px] font-light tracking-[0.3em] text-stone-300/80 uppercase mb-2">
+                ${card.querySelector('span')?.textContent || ''}
+              </span>
+              <h3 class="font-display text-3xl font-light tracking-[0.1em] text-white mb-4">
+                ${card.querySelector('h3')?.textContent || ''}
+              </h3>
+              <p class="text-sm font-light leading-relaxed tracking-[0.05em] text-stone-300">
+                ${card.querySelector('p')?.textContent || ''}
+              </p>
+            `;
+
+            overlay.appendChild(overlayImg);
+            overlay.appendChild(textContainer);
+            document.body.appendChild(overlay);
+
+            // Animate in
+            tl.to(overlay, { opacity: 1, duration: 0.4, ease: 'power2.out' })
+              .to(overlayImg, { scale: 1, duration: 0.5, ease: 'power4.out' }, '-=0.2')
+              .fromTo(textContainer, { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.4, ease: 'power2.out' }, '-=0.3');
+
+            // Close on click
+            overlay.addEventListener('click', () => {
+              tl.reverse().then(() => overlay.remove());
+            });
+          });
+        });
+
+      } catch (error) {
+        console.error('Bento Categories animation failed:', error);
+      }
+    };
+
+    initBentoCategories();
+  }
+</script>

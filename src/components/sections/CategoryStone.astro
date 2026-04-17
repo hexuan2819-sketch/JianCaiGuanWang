@@ -1,0 +1,235 @@
+---
+const slides = [
+  {
+    image: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=2070&auto=format&fit=crop',
+    title: '原石肌理',
+    copy: '涵盖大理石、石英岩、洞石与花岗岩系统。我们关注的不只是纹理本身，更是它在大面积铺陈、转角收口与立面展开后的秩序感。',
+    detail: '适用于大堂主背景、立面挂板、吧台、卫浴墙面与艺术楼梯。支持对纹排版、样板确认与跨区域批次稳定控制。',
+    tags: ['BOOK MATCHING', 'CUT-TO-SIZE', 'VEIN CONTROL'],
+  },
+  {
+    image: 'https://images.unsplash.com/photo-1533090161767-e6ffed986c88?q=80&w=1974&auto=format&fit=crop',
+    title: '石英岩语汇',
+    copy: '以更克制的纹理密度和更高的表面强度，建立兼具审美判断与工程耐久性的当代石材系统。',
+    detail: '适用于大面积墙地面、岛台、吧台与高频触达区域。强调大规格展开后的连续性与维护成本控制。',
+    tags: ['LOW POROSITY', 'LARGE FORMAT', 'DURABLE SURFACE'],
+  },
+  {
+    image: 'https://images.unsplash.com/photo-1600607686527-6fb886090705?q=80&w=2070&auto=format&fit=crop',
+    title: '洞石层理',
+    copy: '通过横切、竖切与填孔工艺，重新定义洞石在现代空间中的秩序、留白与呼吸感。',
+    detail: '适合静区背景、会所动线、私宅卫浴与轻度商业空间，以细腻层理建立低调而持久的空间气氛。',
+    tags: ['CROSS CUT', 'FILLED FINISH', 'QUIET TEXTURE'],
+  },
+];
+---
+
+<section id="category-stone" class="h-[100svh] w-full flex flex-col justify-center bg-transparent py-6 relative overflow-hidden">
+  <!-- Dynamic Background Glow -->
+  <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+    <div class="absolute top-1/4 left-1/4 w-[40vw] h-[40vh] bg-white/5 rounded-full blur-[100px] mix-blend-screen animate-pulse"></div>
+    <div class="absolute bottom-1/4 right-1/4 w-[50vw] h-[50vh] bg-stone-500/10 rounded-full blur-[120px] mix-blend-screen animate-pulse" style="animation-delay: 2s;"></div>
+  </div>
+
+  <div class="mx-auto w-full max-w-[1800px] px-4 md:px-8 h-full flex flex-col relative z-10">
+    <div class="flex items-center justify-between mb-8 px-4">
+      <div>
+        <span class="text-[10px] font-light tracking-[0.34em] text-neutral-400">02 / 王牌品类 01</span>
+        <h2 class="mt-2 font-display text-3xl font-light text-white tracking-widest">原石肌理</h2>
+      </div>
+    </div>
+
+    <div class="flex-1 flex flex-col lg:flex-row items-center gap-12 px-4 h-full pb-8">
+      <!-- Left: 3D Hover Card (Aceternity Style) -->
+      <div class="w-full lg:w-[55%] h-full min-h-[50vh] perspective-[2000px] flex items-center justify-center group" id="stone-3d-container">
+        <div id="stone-3d-card" class="relative w-full max-w-[800px] h-full rounded-[2.5rem] border border-white/10 overflow-hidden shadow-2xl transition-all duration-300 ease-out cursor-pointer bg-neutral-900/50 will-change-transform transform-gpu" style="transform-style: preserve-3d;">
+          <img id="stone-image" src={slides[0].image} alt="Stone Background" loading="lazy" decoding="async" class="absolute inset-0 w-full h-full object-cover transition-opacity duration-500 will-change-opacity" />
+          
+          <!-- Glare Overlay -->
+          <div id="stone-glare" class="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.2),transparent_60%)] opacity-0 transition-opacity duration-300 pointer-events-none mix-blend-overlay"></div>
+          
+          <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
+
+          <!-- Content overlay with Z-translation for 3D depth -->
+          <div class="absolute inset-0 flex flex-col justify-end p-10 md:p-14" style="transform: translateZ(60px);">
+            <div class="glass-cinematic inline-flex h-12 w-12 items-center justify-center rounded-full mb-6 border border-white/20 bg-white/5 backdrop-blur-md">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="text-white"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+            </div>
+            <h3 id="stone-title" class="font-display text-4xl md:text-5xl font-light text-white mb-4 tracking-wide">{slides[0].title}</h3>
+            <p id="stone-copy" class="text-sm md:text-base font-light text-neutral-300 max-w-xl leading-relaxed tracking-wide mb-6">{slides[0].copy}</p>
+            <div id="stone-tags" class="flex flex-wrap gap-3">
+              {slides[0].tags.map(tag => (
+                <span class="px-4 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-md text-[10px] tracking-[0.2em] text-white/90">{tag}</span>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Sleek Selector List (Magic UI Style) -->
+      <div class="w-full lg:w-[45%] flex flex-col h-full justify-center" id="stone-selectors">
+        <!-- Floating Header above the list -->
+        <div class="mb-10 pl-6 border-l border-white/20">
+          <p class="text-sm font-light text-neutral-400 tracking-widest leading-relaxed">
+            以极致的选材标准，<br/>
+            重新定义自然纹理在现代建筑中的表现力。
+          </p>
+        </div>
+
+        <div class="flex flex-col gap-5">
+          {slides.map((slide, index) => (
+            <button
+              class={`stone-selector group relative p-8 md:p-10 rounded-[2.5rem] border transition-all duration-700 text-left overflow-hidden backdrop-blur-xl ${index === 0 ? 'border-white/30 bg-white/10 scale-100 shadow-[0_20px_60px_rgba(0,0,0,0.4)]' : 'border-white/5 bg-white/[0.03] hover:bg-white/5 scale-95 opacity-50 hover:opacity-100'}`}
+              data-index={index}
+              data-image={slide.image}
+              data-title={slide.title}
+              data-copy={slide.copy}
+              data-detail={slide.detail}
+              data-tags={slide.tags.join('|')}
+            >
+              <div class="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-full group-hover:animate-[shimmer_2s_infinite]"></div>
+              <div class="relative z-10 flex items-start gap-8">
+                <span class={`font-display text-3xl font-light transition-colors duration-700 ${index === 0 ? 'text-white' : 'text-neutral-600 group-hover:text-white/60'}`}>0{index + 1}</span>
+                <div class="flex-1">
+                  <h4 class={`font-display text-3xl tracking-widest transition-colors duration-700 mb-4 ${index === 0 ? 'text-white' : 'text-neutral-500 group-hover:text-white'}`}>{slide.title}</h4>
+                  <div class={`transition-all duration-700 overflow-hidden ${index === 0 ? 'max-h-[150px] opacity-100' : 'max-h-0 opacity-0 group-hover:max-h-[150px] group-hover:opacity-100'}`}>
+                    <p class="text-base tracking-wide leading-loose text-neutral-300 border-t border-white/10 pt-4 mt-2">
+                      {slide.detail}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </button>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  @keyframes shimmer {
+    100% {
+      transform: translateX(100%);
+    }
+  }
+</style>
+
+<script>
+  if (typeof window !== 'undefined') {
+    // 3D Hover Card Logic
+    const container = document.getElementById('stone-3d-container');
+    const card = document.getElementById('stone-3d-card');
+    const glare = document.getElementById('stone-glare');
+
+    if (container && card && glare) {
+      let ticking = false;
+      let isVisible = false;
+
+      const observer = new IntersectionObserver((entries) => {
+        isVisible = entries[0].isIntersecting;
+      }, { threshold: 0 });
+      observer.observe(container);
+
+      container.addEventListener('mousemove', (e) => {
+        if (!isVisible || ticking) return;
+
+        window.requestAnimationFrame(() => {
+          const rect = container.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+          
+          const centerX = rect.width / 2;
+          const centerY = rect.height / 2;
+          
+          const rotateX = ((y - centerY) / centerY) * -10; // Max rotation 10deg
+          const rotateY = ((x - centerX) / centerX) * 10;
+          
+          card.style.transform = `translateZ(0) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+          
+          glare.style.opacity = '1';
+          glare.style.background = `radial-gradient(circle at ${x}px ${y}px, rgba(255,255,255,0.15), transparent 60%)`;
+          
+          ticking = false;
+        });
+        
+        ticking = true;
+      }, { passive: true });
+
+      container.addEventListener('mouseleave', () => {
+        if (!isVisible) return;
+        window.requestAnimationFrame(() => {
+          card.style.transform = 'translateZ(0) rotateX(0) rotateY(0)';
+          glare.style.opacity = '0';
+        });
+      });
+    }
+
+    // Selector Logic
+    const selectors = document.querySelectorAll('.stone-selector');
+    const img = document.getElementById('stone-image');
+    const title = document.getElementById('stone-title');
+    const copy = document.getElementById('stone-copy');
+    const tagsContainer = document.getElementById('stone-tags');
+
+    selectors.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        // Reset all buttons
+        selectors.forEach(b => {
+          b.classList.remove('border-white/30', 'bg-white/10', 'scale-100', 'shadow-[0_20px_60px_rgba(0,0,0,0.4)]');
+          b.classList.add('border-white/5', 'bg-white/[0.03]', 'scale-95', 'opacity-50');
+          
+          const div = b.querySelector('.overflow-hidden.transition-all');
+          const num = b.querySelector('span');
+          const h4 = b.querySelector('h4');
+          
+          div?.classList.remove('max-h-[150px]', 'opacity-100');
+          div?.classList.add('max-h-0', 'opacity-0');
+          
+          num?.classList.remove('text-white');
+          num?.classList.add('text-neutral-600');
+          
+          h4?.classList.remove('text-white');
+          h4?.classList.add('text-neutral-500');
+        });
+
+        // Activate current button
+        btn.classList.remove('border-white/5', 'bg-white/[0.03]', 'scale-95', 'opacity-50');
+        btn.classList.add('border-white/30', 'bg-white/10', 'scale-100', 'shadow-[0_20px_60px_rgba(0,0,0,0.4)]');
+        
+        const div = btn.querySelector('.overflow-hidden.transition-all');
+        const num = btn.querySelector('span');
+        const h4 = btn.querySelector('h4');
+        
+        div?.classList.remove('max-h-0', 'opacity-0');
+        div?.classList.add('max-h-[150px]', 'opacity-100');
+        
+        num?.classList.remove('text-neutral-600');
+        num?.classList.add('text-white');
+        
+        h4?.classList.remove('text-neutral-500');
+        h4?.classList.add('text-white');
+
+        // Update 3D Card Content with fade effect
+        if (img && title && copy && tagsContainer && card) {
+          card.style.opacity = '0.5';
+          setTimeout(() => {
+            img.setAttribute('src', btn.getAttribute('data-image') || '');
+            title.textContent = btn.getAttribute('data-title') || '';
+            copy.textContent = btn.getAttribute('data-copy') || '';
+            
+            tagsContainer.innerHTML = '';
+            (btn.getAttribute('data-tags') || '').split('|').filter(Boolean).forEach(tag => {
+              const span = document.createElement('span');
+              span.className = 'px-4 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-md text-[10px] tracking-[0.2em] text-white/90';
+              span.textContent = tag;
+              tagsContainer.appendChild(span);
+            });
+            
+            card.style.opacity = '1';
+          }, 200);
+        }
+      });
+    });
+  }
+</script>

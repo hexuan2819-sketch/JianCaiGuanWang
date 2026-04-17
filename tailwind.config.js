@@ -1,0 +1,115 @@
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
+  theme: {
+    extend: {
+      colors: {
+        primary: {
+          50: '#fffbf5',
+          100: '#fef3df',
+          200: '#fbe3bb',
+          300: '#f7cf92',
+          400: '#efb96a',
+          500: '#df9b43',
+          600: '#c9842f',
+          700: '#b45309',
+          800: '#8d4210',
+          900: '#733810',
+        },
+        stone: {
+          50: '#fafaf9',
+          100: '#f5f5f4',
+          200: '#e7e5e4',
+          300: '#d6d3d1',
+          400: '#a8a29e',
+          500: '#78716c',
+          600: '#57534e',
+          700: '#44403c',
+          800: '#292524',
+          900: '#1c1917',
+          950: '#0c0a09',
+        },
+      },
+      fontFamily: {
+        sans: [
+          'PingFang SC',
+          'Hiragino Sans GB',
+          'Microsoft YaHei',
+          'Noto Sans SC',
+          'Inter',
+          'system-ui',
+          '-apple-system',
+          'BlinkMacSystemFont',
+          'Segoe UI',
+          'Roboto',
+          'sans-serif',
+        ],
+        display: [
+          'PingFang SC',
+          'Hiragino Sans GB',
+          'Microsoft YaHei',
+          'Noto Sans SC',
+          'Montserrat',
+          'Inter',
+          'system-ui',
+          '-apple-system',
+          'BlinkMacSystemFont',
+          'Segoe UI',
+          'Roboto',
+          'sans-serif',
+        ],
+        mono: [
+          'JetBrains Mono',
+          'ui-monospace',
+          'SFMono-Regular',
+          'Menlo',
+          'monospace',
+        ],
+      },
+      fontSize: {
+        // 流体字号系统 (Fluid Typography)
+        'fluid-xs': 'clamp(0.75rem, 0.7vw + 0.5rem, 0.875rem)',
+        'fluid-sm': 'clamp(0.875rem, 0.8vw + 0.5rem, 1rem)',
+        'fluid-base': 'clamp(1rem, 1vw + 0.5rem, 1.125rem)',
+        'fluid-lg': 'clamp(1.125rem, 1.2vw + 0.5rem, 1.25rem)',
+        'fluid-xl': 'clamp(1.5rem, 2vw + 1rem, 2.5rem)',
+        'fluid-2xl': 'clamp(2rem, 3vw + 1rem, 3.5rem)',
+        'fluid-3xl': 'clamp(3rem, 5vw + 1rem, 5.5rem)',
+        'fluid-4xl': 'clamp(4rem, 7vw + 1rem, 8rem)',
+        'fluid-display': 'clamp(5rem, 10vw + 1rem, 14rem)', // Awwwards 级巨大标题
+      },
+      spacing: {
+        // 严格 8px 网格
+        '8': '2rem',
+        '16': '4rem',
+        '24': '6rem',
+        '32': '8rem',
+        '40': '10rem',
+        '48': '12rem',
+        '56': '14rem',
+        '64': '16rem',
+        '72': '18rem',
+        '80': '20rem',
+      },
+      borderRadius: {
+        '4xl': '2rem',
+        '5xl': '2.5rem',
+        '6xl': '3rem',
+      },
+      boxShadow: {
+        'architectural': '0 20px 80px -20px rgba(0,0,0,0.08)',
+        'architectural-hover': '0 30px 100px -20px rgba(0,0,0,0.12)',
+        'line-soft': 'inset 0 0 0 1px rgba(68, 64, 60, 0.08)',
+        'line-strong': 'inset 0 0 0 1px rgba(68, 64, 60, 0.2)',
+      },
+      transitionTimingFunction: {
+        'cinematic': 'cubic-bezier(0.19, 1, 0.22, 1)', // GSAP Power4.easeOut
+      },
+      transitionDuration: {
+        '800': '800ms',
+        '1200': '1200ms',
+      },
+    },
+  },
+  plugins: [],
+};

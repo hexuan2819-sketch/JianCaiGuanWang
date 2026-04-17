@@ -1,0 +1,209 @@
+---
+const slides = [
+  {
+    title: '深耕中东与中亚，服务全球地标',
+    copy: '以迪拜、利雅得、塔什干与阿拉木图为关键节点，构建覆盖原材采购、工厂制造、国际物流与项目交付的连续服务链路。让地标建筑在复杂供应条件下依然保持稳定推进。',
+    metricA: '26+',
+    metricALabel: '核心供应节点',
+    metricB: '72h',
+    metricBLabel: '快速响应机制',
+    image: 'https://images.unsplash.com/photo-1511818966892-d7d671e672a2?q=80&w=1974&auto=format&fit=crop',
+  },
+  {
+    title: '从城市天际线到项目落地，建立跨区域协同',
+    copy: '针对酒店、商业综合体与总部办公项目，我们将样板确认、批次控制与节点交付整合为同一套执行语言，减少跨国协作中的信息损耗。',
+    metricA: '14',
+    metricALabel: '跨境协作项目组',
+    metricB: '100%',
+    metricBLabel: '关键节点追踪',
+    image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1974&auto=format&fit=crop',
+  },
+  {
+    title: '让材料能力与建筑叙事在同一画面里发生',
+    copy: '无论是高端私宅还是公共空间，我们更关注材料如何参与空间叙事，而非只承担装饰角色。每一次供货，最终都指向更完整的项目气质与体验。',
+    metricA: '200+',
+    metricALabel: '项目交付经验',
+    metricB: 'A+',
+    metricBLabel: '客户复购口碑',
+    image: 'https://images.unsplash.com/photo-1518005020951-eccb494ad742?q=80&w=2070&auto=format&fit=crop',
+  },
+];
+---
+
+<section id="global-vision" class="h-[100svh] w-full flex flex-col justify-center bg-transparent py-6 relative overflow-hidden">
+  <!-- Dynamic Background Glow -->
+  <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60vw] h-[60vh] bg-stone-500/5 rounded-full blur-[120px] mix-blend-screen animate-pulse"></div>
+  </div>
+
+  <div class="mx-auto w-full max-w-[1800px] px-4 md:px-8 h-full flex flex-col relative z-10">
+    <div class="relative flex-1 overflow-hidden rounded-[2.5rem] border border-white/10 shadow-[0_24px_80px_rgba(0,0,0,0.3)] perspective-[2000px]" data-animate id="vision-container">
+      <div id="vision-carousel" class="relative h-full w-full" style="transform-style: preserve-3d;">
+        {slides.map((slide, index) => (
+          <div
+            class={`vision-slide absolute inset-0 h-full w-full transition-all duration-1000 ease-[cubic-bezier(0.25,1,0.5,1)] ${index === 0 ? 'opacity-100 scale-100 translate-z-0' : 'opacity-0 scale-95 -translate-z-20'}`}
+          >
+            <img
+              src={slide.image}
+              alt={slide.title}
+              loading="lazy"
+              decoding="async"
+              class="absolute inset-0 h-full w-full object-cover transition-transform duration-10000 ease-linear scale-110 will-change-transform transform-gpu"
+            />
+            <div class="absolute inset-0 bg-[linear-gradient(180deg,rgba(16,16,18,0.2),rgba(16,16,18,0.85))]"></div>
+            <div class="absolute inset-0 blend-noise opacity-45"></div>
+          </div>
+        ))}
+
+        <div class="absolute inset-0 flex h-full flex-col justify-end px-8 py-10 md:px-16 md:py-16 pointer-events-none">
+          <div class="grid w-full items-end gap-6 xl:grid-cols-[1fr_auto]">
+            <div
+              class="max-w-[800px] rounded-[2rem] border border-white/10 bg-black/30 p-8 backdrop-blur-2xl md:p-12 pointer-events-auto transform transition-all duration-700 hover:bg-black/40 hover:-translate-y-2 hover:shadow-[0_20px_60px_rgba(0,0,0,0.4)]"
+              data-animate-group
+            >
+              <span data-animate-item class="text-[10px] font-light tracking-[0.34em] text-neutral-300">01 / 全球版图</span>
+              <h2 id="vision-title" data-animate-item class="mt-4 max-w-[12ch] font-display text-[clamp(2.4rem,4.6vw,5.2rem)] font-light leading-[1.05] text-white tracking-wide">
+                {slides[0].title}
+              </h2>
+              <p id="vision-copy" data-animate-item class="mt-5 max-w-[38rem] text-sm font-light leading-8 tracking-[0.08em] text-neutral-200 md:text-base">
+                {slides[0].copy}
+              </p>
+
+              <div class="mt-7 grid gap-4 md:grid-cols-2" data-animate-item>
+                <div class="rounded-2xl border border-white/10 bg-black/25 p-5">
+                  <p id="vision-metric-a" class="text-3xl font-light text-white">{slides[0].metricA}</p>
+                  <p id="vision-metric-a-label" class="mt-2 text-xs tracking-[0.2em] text-neutral-400">{slides[0].metricALabel}</p>
+                </div>
+                <div class="rounded-2xl border border-white/10 bg-black/25 p-5">
+                  <p id="vision-metric-b" class="text-3xl font-light text-white">{slides[0].metricB}</p>
+                  <p id="vision-metric-b-label" class="mt-2 text-xs tracking-[0.2em] text-neutral-400">{slides[0].metricBLabel}</p>
+                </div>
+              </div>
+
+              <div class="mt-4 grid gap-4 md:grid-cols-[0.92fr_1.08fr]" data-animate-item>
+                <div class="rounded-2xl border border-white/10 bg-black/25 p-5">
+                  <p class="text-[10px] tracking-[0.28em] text-neutral-500">KEY NOTE</p>
+                  <p id="vision-note" class="mt-4 text-sm leading-7 tracking-[0.08em] text-neutral-300">
+                    从关键城市节点出发，建立更稳定的跨境材料履约系统。
+                  </p>
+                </div>
+                <div class="rounded-2xl border border-white/10 bg-black/25 p-5">
+                  <p class="text-[10px] tracking-[0.28em] text-neutral-500">DELIVERY MODE</p>
+                  <p id="vision-mode" class="mt-4 text-sm leading-7 tracking-[0.08em] text-neutral-300">
+                    供应、深化、清关与交付在同一时间轴下协同。
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="flex items-center justify-between gap-4 xl:flex-col xl:items-end pointer-events-auto">
+              <div class="glass-cinematic !rounded-full !px-6 !py-4 border border-white/20 bg-white/5 backdrop-blur-xl">
+                <span id="vision-index" class="text-xs tracking-[0.3em] text-white/90">01 / 03</span>
+              </div>
+              <div class="flex gap-4">
+                <button id="vision-prev" class="glass-cinematic !rounded-full !h-14 !w-14 flex items-center justify-center border border-white/20 bg-white/5 backdrop-blur-xl hover:bg-white/20 hover:scale-105 transition-all duration-300">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="text-white"><path d="M15 18l-6-6 6-6"/></svg>
+                </button>
+                <button id="vision-next" class="glass-cinematic !rounded-full !h-14 !w-14 flex items-center justify-center border border-white/20 bg-white/5 backdrop-blur-xl hover:bg-white/20 hover:scale-105 transition-all duration-300">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="text-white"><path d="M9 18l6-6-6-6"/></svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+      </div>
+    </div>
+
+<script>
+  if (typeof window !== 'undefined') {
+    const slideData = [
+      {
+        title: '深耕中东与中亚，服务全球地标',
+        copy: '以迪拜、利雅得、塔什干与阿拉木图为关键节点，构建覆盖原材采购、工厂制造、国际物流与项目交付的连续服务链路。让地标建筑在复杂供应条件下依然保持稳定推进。',
+        metricA: '26+',
+        metricALabel: '核心供应节点',
+        metricB: '72h',
+        metricBLabel: '快速响应机制',
+        note: '从关键城市节点出发，建立更稳定的跨境材料履约系统。',
+        mode: '供应、深化、清关与交付在同一时间轴下协同。',
+      },
+      {
+        title: '从城市天际线到项目落地，建立跨区域协同',
+        copy: '针对酒店、商业综合体与总部办公项目，我们将样板确认、批次控制与节点交付整合为同一套执行语言，减少跨国协作中的信息损耗。',
+        metricA: '14',
+        metricALabel: '跨境协作项目组',
+        metricB: '100%',
+        metricBLabel: '关键节点追踪',
+        note: '跨国协同不只靠响应速度，更依赖标准化的项目界面与节点判断。',
+        mode: '样板先行、批次复核、节点交付三位一体推进。',
+      },
+      {
+        title: '让材料能力与建筑叙事在同一画面里发生',
+        copy: '无论是高端私宅还是公共空间，我们更关注材料如何参与空间叙事，而非只承担装饰角色。每一次供货，最终都指向更完整的项目气质与体验。',
+        metricA: '200+',
+        metricALabel: '项目交付经验',
+        metricB: 'A+',
+        metricBLabel: '客户复购口碑',
+        note: '材料不只是被选择，更应该主动参与空间叙事的建立。',
+        mode: '从选材到现场表现，以审美与工程双线同步推进。',
+      },
+    ];
+    const slides = Array.from(document.querySelectorAll('#vision-carousel .vision-slide'));
+    const indexLabel = document.getElementById('vision-index');
+    const prev = document.getElementById('vision-prev');
+    const next = document.getElementById('vision-next');
+    const title = document.getElementById('vision-title');
+    const copy = document.getElementById('vision-copy');
+    const metricA = document.getElementById('vision-metric-a');
+    const metricALabel = document.getElementById('vision-metric-a-label');
+    const metricB = document.getElementById('vision-metric-b');
+    const metricBLabel = document.getElementById('vision-metric-b-label');
+    const note = document.getElementById('vision-note');
+    const mode = document.getElementById('vision-mode');
+
+    if (slides.length && indexLabel && prev && next && title && copy && metricA && metricALabel && metricB && metricBLabel && note && mode) {
+      let active = 0;
+      let timer;
+
+      const render = (index) => {
+        active = (index + slides.length) % slides.length;
+        slides.forEach((slide, i) => {
+          if (i === active) {
+            slide.classList.remove('opacity-0', 'scale-95', '-translate-z-20');
+            slide.classList.add('opacity-100', 'scale-100', 'translate-z-0');
+          } else {
+            slide.classList.remove('opacity-100', 'scale-100', 'translate-z-0');
+            slide.classList.add('opacity-0', 'scale-95', '-translate-z-20');
+          }
+        });
+        indexLabel.textContent = `0${active + 1} / 0${slides.length}`;
+        title.textContent = slideData[active].title;
+        copy.textContent = slideData[active].copy;
+        metricA.textContent = slideData[active].metricA;
+        metricALabel.textContent = slideData[active].metricALabel;
+        metricB.textContent = slideData[active].metricB;
+        metricBLabel.textContent = slideData[active].metricBLabel;
+        note.textContent = slideData[active].note;
+        mode.textContent = slideData[active].mode;
+      };
+
+      const autoplay = () => {
+        clearInterval(timer);
+        timer = setInterval(() => render(active + 1), 4200);
+      };
+
+      prev.addEventListener('click', () => {
+        render(active - 1);
+        autoplay();
+      });
+      next.addEventListener('click', () => {
+        render(active + 1);
+        autoplay();
+      });
+
+      autoplay();
+    }
+  }
+</script>

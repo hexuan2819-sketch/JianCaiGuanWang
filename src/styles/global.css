@@ -1,0 +1,160 @@
+@import "tailwindcss";
+@config "../../tailwind.config.js";
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+
+  html {
+    @apply bg-neutral-900 text-neutral-100;
+    scroll-behavior: auto;
+  }
+
+  body {
+    @apply bg-neutral-900 text-neutral-100 antialiased;
+    overflow-x: clip;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  section {
+    @apply relative w-full overflow-hidden;
+  }
+
+  img {
+    display: block;
+  }
+
+  input,
+  textarea,
+  button {
+    font: inherit;
+  }
+
+  input::placeholder,
+  textarea::placeholder {
+    @apply text-stone-400;
+  }
+}
+
+@layer utilities {
+  .glass-cinematic {
+    @apply bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-8;
+  }
+
+  .surface-cinematic {
+    @apply border border-white/10 bg-white/5 shadow-[0_24px_80px_rgba(0,0,0,0.28)];
+  }
+
+  .text-fluid-display {
+    @apply font-display font-light tracking-[-0.06em] leading-[0.9] text-white;
+  }
+
+  .mask-reveal-container {
+    @apply block overflow-hidden;
+  }
+
+  .mask-reveal-element {
+    @apply block translate-y-full will-change-transform;
+  }
+
+  .cinematic-bg-container {
+    @apply absolute inset-0 z-0 h-full w-full overflow-hidden bg-neutral-900;
+  }
+
+  .cinematic-bg-image {
+    @apply absolute inset-0 h-full w-full object-cover transition-all duration-1200 ease-cinematic;
+    transform: scale(var(--bg-scale, 1.05));
+    filter: blur(var(--bg-blur, 0px));
+    will-change: transform, filter;
+  }
+
+  .cinematic-bg-overlay {
+    @apply absolute inset-0 h-full w-full bg-black/40 transition-opacity duration-800 ease-cinematic;
+    opacity: var(--bg-overlay-opacity, 0.45);
+  }
+
+  .editorial-label {
+    @apply text-fluid-xs font-light tracking-[0.32em] text-neutral-400;
+  }
+
+  .editorial-copy {
+    @apply text-fluid-sm font-light leading-[1.9] text-neutral-300;
+  }
+
+  .page-shell {
+    @apply relative text-neutral-100;
+    background:
+      radial-gradient(circle at 10% 10%, rgba(148, 163, 184, 0.12), transparent 22%),
+      radial-gradient(circle at 88% 8%, rgba(120, 113, 108, 0.12), transparent 20%),
+      radial-gradient(circle at 80% 48%, rgba(82, 82, 91, 0.1), transparent 26%),
+      linear-gradient(180deg, #18181b 0%, #111215 22%, #171717 52%, #121212 78%, #0f1012 100%);
+  }
+
+  .interactive-panel {
+    @apply transition-all duration-700 ease-[cubic-bezier(0.19,1,0.22,1)];
+  }
+
+  .interactive-panel:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 28px 90px rgba(0, 0, 0, 0.34);
+    border-color: rgba(255, 255, 255, 0.16);
+  }
+
+  .blend-noise {
+    background:
+      linear-gradient(135deg, rgba(255,255,255,0.06), rgba(255,255,255,0.01)),
+      radial-gradient(circle at 20% 20%, rgba(255,255,255,0.06), transparent 28%);
+    mix-blend-mode: screen;
+  }
+
+  .floating-soft {
+    animation: floating-soft 7s ease-in-out infinite;
+  }
+
+  .floating-soft-delayed {
+    animation: floating-soft 9s ease-in-out infinite;
+    animation-delay: -2s;
+  }
+
+  .tilt-surface {
+    transform-style: preserve-3d;
+    transition: transform 500ms cubic-bezier(0.19, 1, 0.22, 1), box-shadow 500ms cubic-bezier(0.19, 1, 0.22, 1);
+  }
+
+  .tilt-surface:hover {
+    transform: perspective(1200px) rotateX(2deg) rotateY(-3deg) translateY(-4px);
+    box-shadow: 0 30px 90px rgba(0, 0, 0, 0.34);
+  }
+
+  .pin-stage {
+    @apply relative h-[100svh] w-full overflow-hidden;
+  }
+
+  .pin-layer {
+    @apply absolute inset-0 h-full w-full;
+  }
+
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  @keyframes floating-soft {
+    0%, 100% {
+      transform: translate3d(0, 0, 0);
+    }
+    50% {
+      transform: translate3d(0, -10px, 0);
+    }
+  }
+}

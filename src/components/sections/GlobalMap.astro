@@ -1,0 +1,178 @@
+---
+const backgroundImage =
+  'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop';
+
+const regions = [
+  {
+    id: 'middle-east',
+    name: 'MIDDLE EAST',
+    cities: 'DUBAI / RIYADH / DOHA',
+    description: '在沙漠中筑起奢华地标。我们为中东顶级酒店与皇家官邸提供抗高温、抗风沙的建筑外立面与内装肌理方案。',
+    position: 'top-[15%] right-[10%] md:top-[20%] md:right-[15%]',
+    image: 'https://images.unsplash.com/photo-1582653211939-90414b56d35c?q=80&w=2070&auto=format&fit=crop'
+  },
+  {
+    id: 'central-asia',
+    name: 'CENTRAL ASIA',
+    cities: 'TASHKENT / ALMATY / ASTANA',
+    description: '响应丝路新城的崛起。以高效的供应链与现代工艺，为中亚商业综合体提供极具张力的空间材料。',
+    position: 'bottom-[25%] left-[5%] md:bottom-[30%] md:left-[10%]',
+    image: 'https://images.unsplash.com/photo-1554469384-e58fac16e23a?q=80&w=1974&auto=format&fit=crop'
+  }
+];
+---
+
+<section id="global-map" class="relative min-h-[150svh] w-full overflow-hidden bg-stone-950">
+  <div class="pin-layer pointer-events-none">
+    <!-- 后景：建筑大图 -->
+    <div class="absolute inset-0 z-0" id="global-bg-layer">
+      <img
+        src={backgroundImage}
+        alt="全球业务覆盖"
+        class="absolute inset-0 h-[120%] w-full object-cover object-center opacity-40 mix-blend-luminosity"
+      />
+      <div class="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(12,10,9,0.5),rgba(12,10,9,0.9))]"></div>
+    </div>
+    
+    <!-- 中景：动态浮动的区域卡片 (改为可交互实体框) -->
+    <div class="absolute inset-0 z-10" id="global-mid-layer">
+      <div class="relative h-full w-full max-w-[1440px] mx-auto pointer-events-auto">
+        {regions.map((region) => (
+          <div class={`region-card absolute ${region.position} group cursor-pointer w-[280px] md:w-[360px]`}>
+            <div class="relative overflow-hidden rounded-2xl border border-white/10 bg-stone-900/40 p-6 backdrop-blur-md transition-all duration-700 hover:bg-stone-900/70 hover:border-white/30">
+              <!-- 悬停时显示的背景图 -->
+              <img src={region.image} alt={region.name} class="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-700 group-hover:opacity-20 mix-blend-overlay" />
+              
+              <div class="relative z-10">
+                <span class="block font-display text-3xl font-light tracking-[0.15em] text-white transition-transform duration-500 group-hover:-translate-y-1">
+                  {region.name}
+                </span>
+                <span class="mt-2 block text-[10px] tracking-[0.3em] text-amber-500/80 transition-transform duration-500 group-hover:-translate-y-1">
+                  {region.cities}
+                </span>
+                
+                <div class="grid grid-rows-[0fr] transition-all duration-700 group-hover:grid-rows-[1fr]">
+                  <div class="overflow-hidden">
+                    <p class="mt-4 text-xs font-light leading-relaxed tracking-[0.05em] text-stone-300 opacity-0 transition-opacity duration-500 delay-100 group-hover:opacity-100">
+                      {region.description}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+
+  <!-- 前景：核心文案 -->
+  <div class="relative z-20 mx-auto flex h-full min-h-[100svh] w-full max-w-[1440px] flex-col justify-center px-8 md:px-12 lg:px-16 pointer-events-none">
+    <div class="max-w-3xl" id="global-front-layer">
+      <div class="mask-reveal-container mb-8">
+        <p class="global-reveal mask-reveal-element text-xs font-light tracking-[0.4em] text-stone-400 uppercase">
+          03 / 全球版图
+        </p>
+      </div>
+      
+      <div class="mask-reveal-container mb-4">
+        <h2 class="global-reveal mask-reveal-element font-display text-[clamp(3rem,6vw,6rem)] font-light tracking-[0.15em] text-white leading-[1.1]">
+          跨越边界
+        </h2>
+      </div>
+      <div class="mask-reveal-container">
+        <h2 class="global-reveal mask-reveal-element font-display text-[clamp(3rem,6vw,6rem)] font-light tracking-[0.15em] text-stone-300 leading-[1.1]">
+          空间共鸣
+        </h2>
+      </div>
+
+      <div class="mt-16 max-w-lg md:mt-24 md:pl-24">
+        <div class="mask-reveal-container">
+          <p class="global-reveal mask-reveal-element text-sm font-light leading-relaxed tracking-[0.1em] text-stone-400 bg-stone-950/40 p-4 backdrop-blur-sm rounded-lg border border-white/5">
+            从迪拜的奢华酒店到塔什干的现代地标，我们将顶尖的制造工艺与地域文化深度融合。在全球核心市场，以一致的高级质感，构筑跨越地域的建筑美学。（悬停探索区域中心）
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  if (typeof window !== 'undefined') {
+    const initGlobalMap = () => {
+      const engine = window.__Cinematic;
+      if (!engine) {
+        window.addEventListener('cinematic:ready', initGlobalMap, { once: true });
+        return;
+      }
+
+      try {
+        const { gsap, ScrollTrigger } = engine;
+        const section = document.getElementById('global-map');
+        const bgLayer = document.getElementById('global-bg-layer');
+        const midLayer = document.getElementById('global-mid-layer');
+        const frontLayer = document.getElementById('global-front-layer');
+        const reveals = section?.querySelectorAll('.global-reveal');
+        const cards = section?.querySelectorAll('.region-card');
+        
+        if (!section || !bgLayer || !midLayer || !frontLayer || !reveals?.length) return;
+
+        // 入场动画
+        ScrollTrigger.create({
+          trigger: section,
+          start: 'top 65%',
+          once: true,
+          onEnter: () => {
+            gsap.to(reveals, {
+              y: 0,
+              duration: 1.5,
+              ease: 'power4.out',
+              stagger: 0.15,
+            });
+            
+            if (cards?.length) {
+              gsap.fromTo(cards, 
+                { opacity: 0, scale: 0.9 },
+                { opacity: 1, scale: 1, duration: 1.5, ease: 'power3.out', stagger: 0.2, delay: 0.5 }
+              );
+            }
+          }
+        });
+
+        // 层级视差动画 (3D Depth)
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: section,
+            start: 'top top',
+            end: '+=150%',
+            pin: true,
+            scrub: 1, // 平滑跟随
+          },
+        });
+
+        // 后景：缓慢向上移动
+        tl.fromTo(bgLayer, 
+          { yPercent: -10 }, 
+          { yPercent: 10, ease: 'none' }, 
+        0);
+
+        // 中景（卡片层）：中速向上移动
+        tl.fromTo(midLayer, 
+          { yPercent: 15 }, 
+          { yPercent: -15, ease: 'none' }, 
+        0);
+
+        // 前景（标题）：较快向上移动
+        tl.fromTo(frontLayer, 
+          { y: 40 }, 
+          { y: -40, ease: 'none' }, 
+        0);
+
+      } catch (error) {
+        console.error('Global Map animation failed:', error);
+      }
+    };
+
+    initGlobalMap();
+  }
+</script>

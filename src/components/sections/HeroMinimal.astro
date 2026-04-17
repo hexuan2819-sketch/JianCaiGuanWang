@@ -1,0 +1,95 @@
+---
+const backgroundImage =
+  'https://images.unsplash.com/photo-1511818966892-d7d671e672a2?q=80&w=2069&auto=format&fit=crop';
+---
+
+<section id="hero-minimal" class="relative h-[100svh] w-full overflow-hidden bg-stone-50">
+  <!-- Subtle gradient background instead of full image -->
+  <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(245,245,244,1)_0%,rgba(231,229,228,1)_100%)]"></div>
+
+  <!-- Main Hero Content -->
+  <div class="relative z-10 flex h-[100svh] w-full flex-col items-center justify-center px-8 text-center pt-24">
+    <div class="mask-reveal-container mb-6">
+      <p class="hero-opening-copy mask-reveal-element rounded-full border border-stone-300/60 bg-white/40 px-5 py-2 text-[10px] font-light tracking-[0.4em] text-stone-500 uppercase shadow-sm backdrop-blur-md">
+        GLOBAL MATERIALS 2026
+      </p>
+    </div>
+    
+    <div class="mask-reveal-container">
+      <h1 class="hero-opening-copy mask-reveal-element font-display text-[clamp(4rem,10vw,10rem)] font-light tracking-[0.1em] text-stone-900 mix-blend-multiply">
+        筑物为诗
+      </h1>
+    </div>
+
+    <div class="mask-reveal-container mt-6 max-w-2xl">
+      <p class="hero-opening-copy mask-reveal-element text-base font-light leading-relaxed tracking-[0.08em] text-stone-600">
+        以领先的工业标准，打磨每一寸建筑肌理。我们不仅提供高端表面材料，更为地标空间构筑跨越时间的几何秩序。
+      </p>
+    </div>
+  </div>
+
+  <!-- A framed floating image that Parallax up on scroll -->
+  <div class="absolute bottom-[-20vh] left-1/2 z-20 h-[50vh] w-[85vw] -translate-x-1/2 overflow-hidden rounded-[2rem] border border-white/40 shadow-[0_40px_100px_rgba(28,25,23,0.15)] md:w-[60vw]" id="hero-framed-image">
+    <img
+      src={backgroundImage}
+      alt="建筑全景"
+      class="absolute inset-0 h-[120%] w-full object-cover"
+      id="hero-img-inner"
+    />
+  </div>
+</section>
+
+<script>
+  if (typeof window !== 'undefined') {
+    const initHeroMinimal = () => {
+      const engine = window.__Cinematic;
+      if (!engine) {
+        window.addEventListener('cinematic:ready', initHeroMinimal, { once: true });
+        return;
+      }
+
+      try {
+        const { gsap, ScrollTrigger } = engine;
+        const section = document.getElementById('hero-minimal');
+        const frame = document.getElementById('hero-framed-image');
+        const imgInner = document.getElementById('hero-img-inner');
+        const texts = section?.querySelectorAll('.hero-opening-copy');
+        
+        if (!section || !frame || !imgInner || !texts?.length) return;
+
+        // 初始入场动画
+        gsap.to(texts, {
+          y: 0,
+          duration: 1.5,
+          ease: 'power4.out',
+          stagger: 0.15,
+        });
+
+        // 浮动框在滚动时向上进入视口，内部图片视差
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: section,
+            start: 'top top',
+            end: 'bottom top', 
+            scrub: 1, // 平滑跟随
+          },
+        });
+
+        tl.to(frame, {
+          yPercent: -40,
+          ease: 'none',
+        }, 0);
+
+        tl.to(imgInner, {
+          yPercent: -20,
+          ease: 'none',
+        }, 0);
+
+      } catch (error) {
+        console.error('Hero Minimal animation failed:', error);
+      }
+    };
+
+    initHeroMinimal();
+  }
+</script>

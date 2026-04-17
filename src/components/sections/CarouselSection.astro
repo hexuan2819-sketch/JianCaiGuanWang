@@ -1,0 +1,86 @@
+---
+const backgroundImage =
+  'https://images.unsplash.com/photo-1494526585095-c41746248156?q=80&w=1974&auto=format&fit=crop';
+
+const slides = [
+  {
+    title: 'Calm Marble',
+    image: 'https://images.unsplash.com/photo-1616046229478-9901c5536a45?q=80&w=1974&auto=format&fit=crop',
+  },
+  {
+    title: 'Linear Wood',
+    image: 'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?q=80&w=2070&auto=format&fit=crop',
+  },
+  {
+    title: 'Monolithic Facade',
+    image: 'https://images.unsplash.com/photo-1511818966892-d7d671e672a2?q=80&w=2069&auto=format&fit=crop',
+  },
+];
+---
+
+<section id="carousel-slide" class="group relative h-[100dvh] snap-start snap-always overflow-hidden">
+  <img src={backgroundImage} alt="Luxury interior texture background" class="absolute inset-0 h-full w-full object-cover" />
+  <div class="absolute inset-0 bg-black/30 transition-colors duration-500 group-hover:bg-black/18"></div>
+  <div class="absolute inset-0 bg-transparent transition-all duration-500 group-hover:backdrop-blur-md group-hover:bg-black/20"></div>
+  <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/20"></div>
+
+  <div class="relative z-10 flex h-full items-center justify-center px-6 py-24 md:px-12">
+    <div class="w-full max-w-[1360px]">
+      <div class="mb-10 text-center">
+        <p class="carousel-intro text-xs uppercase tracking-[0.34em] text-white/70">Horizontal Carousel</p>
+        <h2 class="carousel-intro mt-5 font-display text-4xl font-light tracking-[-0.05em] text-white md:text-6xl">
+          Swipe through surfaces that feel framed, tactile, and cinematic.
+        </h2>
+      </div>
+
+      <div class="mx-auto max-w-6xl overflow-x-auto hide-scrollbar pb-4">
+        <div class="flex gap-6 px-[10vw] md:px-[6vw]">
+          {slides.map((slide) => (
+            <article class="carousel-card min-w-[72vw] max-w-[72vw] snap-center overflow-hidden rounded-[2.2rem] border border-white/20 bg-white/10 shadow-[0_30px_80px_rgba(0,0,0,0.18)] backdrop-blur-xl md:min-w-[42vw] md:max-w-[42vw]">
+              <div class="aspect-[4/5] overflow-hidden md:aspect-[4/3]">
+                <img src={slide.image} alt={slide.title} class="h-full w-full object-cover transition-transform duration-700 hover:scale-105" />
+              </div>
+              <div class="flex items-center justify-between px-6 py-5 text-white">
+                <div>
+                  <p class="text-[11px] uppercase tracking-[0.28em] text-white/55">Material Study</p>
+                  <h3 class="mt-2 font-display text-2xl font-light tracking-[-0.03em]">{slide.title}</h3>
+                </div>
+                <span class="text-sm uppercase tracking-[0.2em] text-white/55">Drag</span>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  if (typeof window !== 'undefined') {
+    window.addEventListener('load', async () => {
+      try {
+        const gsap = (await import('gsap')).default;
+
+        gsap.from('#carousel-slide .carousel-intro', {
+          y: 40,
+          opacity: 0,
+          duration: 0.9,
+          stagger: 0.12,
+          ease: 'power3.out',
+          delay: 0.15,
+        });
+
+        gsap.from('#carousel-slide .carousel-card', {
+          y: 56,
+          opacity: 0,
+          duration: 0.95,
+          stagger: 0.12,
+          ease: 'power3.out',
+          delay: 0.35,
+        });
+      } catch (error) {
+        console.error('Carousel section animation failed:', error);
+      }
+    });
+  }
+</script>
