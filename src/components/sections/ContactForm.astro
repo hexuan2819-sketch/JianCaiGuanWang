@@ -1,13 +1,16 @@
 ---
 ---
 
-<section id="contact-form" class="relative flex min-h-[100svh] w-full flex-col justify-center overflow-hidden bg-transparent py-4 perspective-[2000px] md:py-6 lg:h-[100svh]">
+<section id="contact-form" class="relative flex min-h-[100svh] w-full flex-col justify-center overflow-hidden bg-black py-4 perspective-[2000px] md:py-6 lg:h-[100svh]">
   <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none">
     <div class="absolute top-1/2 left-0 w-[40vw] h-[40vh] bg-stone-500/10 rounded-full blur-[120px] mix-blend-screen -translate-y-1/2"></div>
     <div class="absolute top-1/2 right-0 w-[30vw] h-[50vh] bg-white/5 rounded-full blur-[100px] mix-blend-screen -translate-y-1/2"></div>
   </div>
 
-  <div class="mx-auto flex min-h-[calc(100svh-2rem)] w-full max-w-[1800px] items-center justify-center px-4 md:min-h-[calc(100svh-3rem)] md:px-8 lg:h-full lg:min-h-0">
+  <!-- Seamless Edge Masks for vertical blending -->
+  <div class="seamless-edge-mask-top"></div>
+
+  <div class="mx-auto flex min-h-[calc(100svh-2rem)] w-full max-w-[1800px] items-center justify-center px-4 md:min-h-[calc(100svh-3rem)] md:px-8 lg:h-full lg:min-h-0 relative z-10">
     <div class="relative w-full max-w-[1400px] overflow-hidden rounded-[2rem] border border-white/10 bg-black/40 p-5 shadow-[0_40px_100px_rgba(0,0,0,0.6)] backdrop-blur-3xl transition-transform duration-700 ease-out sm:p-6 md:rounded-[2.5rem] md:p-10 lg:rounded-[3rem] lg:p-16" id="contact-card" style="transform-style: preserve-3d;">
       
       <!-- 3D Glare -->
