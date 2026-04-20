@@ -51,35 +51,36 @@ const sideImages = [
   <div class="relative z-20 mx-auto w-full max-w-[1800px] px-4 md:px-8 h-full flex flex-col justify-center" id="hero-3d-container">
     <div class="relative flex flex-col items-center justify-center text-center px-4 py-16 md:px-16">
       <!-- Text Content -->
-      <div id="hero-copy" class="max-w-[900px] pointer-events-none flex flex-col items-center" data-animate-group>
+      <div id="hero-copy" class="max-w-[1080px] pointer-events-none flex flex-col items-center" data-animate-group>
         <span data-animate-item class="inline-block px-6 py-2 rounded-full border border-[#cfa878]/30 bg-[#cfa878]/10 text-[10px] md:text-xs font-light tracking-[0.34em] text-[#cfa878] mb-8 md:mb-12 shadow-[0_0_20px_rgba(207,168,120,0.2)]">
-          GLOBAL MATERIALS SUPPLY NETWORK
+          全球高端建材供应体系
         </span>
         
         <!-- Layered Typography Effect -->
         <div class="relative w-full" data-animate-item>
           <!-- Hollow Stroke Text (Background) -->
           <h1 class="absolute -top-10 md:-top-16 left-1/2 -translate-x-1/2 font-serif text-[clamp(4rem,10vw,12rem)] leading-none tracking-tight text-transparent opacity-20 whitespace-nowrap" style="-webkit-text-stroke: 1px #cfa878;">
-            SPATIAL
+            筑物
           </h1>
           <h1 class="absolute top-10 md:top-12 left-1/2 -translate-x-1/2 font-serif text-[clamp(4rem,10vw,12rem)] leading-none tracking-tight text-transparent opacity-20 whitespace-nowrap" style="-webkit-text-stroke: 1px #cfa878;">
-            POETICS
+            为诗
           </h1>
           
           <!-- Solid Text (Foreground) -->
           <h1 class="relative font-serif text-[clamp(3.5rem,8vw,8rem)] font-normal leading-[1.1] tracking-tight text-white mb-2 shadow-2xl">
-            SPATIAL
+            筑物
           </h1>
           <h1 class="relative font-serif text-[clamp(3.5rem,8vw,8rem)] font-normal leading-[1.1] tracking-tight text-white mb-8 shadow-2xl">
-            POETICS
+            为诗
           </h1>
         </div>
-        
-        <p data-animate-item class="mt-8 md:mt-12 max-w-[36rem] text-sm md:text-base font-light leading-loose tracking-[0.08em] text-neutral-300 drop-shadow-lg">
-          Anchored by a global supply network, we connect origins, factories, and sites. From the Middle East to Central Asia, we deliver iconic spatial masterpieces through stable execution, precision craftsmanship, and supreme aesthetic judgment.
-        </p>
-        
-        <div data-animate-item class="mt-12 flex flex-col md:flex-row items-center gap-8 md:gap-12 pointer-events-auto">
+        <div data-animate-item class="glass-cinematic mt-8 md:mt-12 w-full max-w-[44rem] border border-white/10 bg-black/30 px-6 py-7 md:px-10 md:py-9">
+          <p class="text-sm md:text-base font-light leading-loose tracking-[0.08em] text-neutral-200 drop-shadow-lg">
+            以中东、中亚与国内制造体系为支点，我们把选材、深化、打样、生产、跨境运输与现场交付收束为同一条执行链路。客户无需面对零散供应商，只需在一套纯静态、可直接改文案的品牌站点里，清晰看到我们如何让材料真正服务建筑气质。
+          </p>
+        </div>
+
+        <div data-animate-item class="glass-cinematic mt-10 md:mt-12 flex flex-col md:flex-row items-center gap-8 md:gap-12 pointer-events-auto border border-white/10 bg-black/25 px-6 py-6 md:px-8">
           <a
             href="#global-vision"
             class="group relative inline-flex items-center justify-center gap-3 overflow-hidden rounded-full border border-[#cfa878]/30 bg-[#cfa878]/10 px-8 py-4 text-xs font-light tracking-[0.24em] text-[#cfa878] transition-all duration-500 hover:bg-[#cfa878]/20 hover:scale-105 backdrop-blur-md"
@@ -87,29 +88,29 @@ const sideImages = [
             <div class="absolute inset-0 flex h-full w-full justify-center [transform:skew(-12deg)_translateX(-150%)] group-hover:duration-1000 group-hover:[transform:skew(-12deg)_translateX(150%)]">
               <div class="relative h-full w-8 bg-white/20"></div>
             </div>
-            <span class="relative">EXPLORE COLLECTION</span>
+            <span class="relative">浏览九屏叙事</span>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="relative transition-transform duration-300 group-hover:translate-x-1"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </a>
           
           <div class="flex items-center gap-8 md:gap-12">
             <div class="text-center md:text-left transition-transform duration-300 hover:-translate-y-1">
               <p class="font-serif text-3xl md:text-4xl font-normal text-white">17</p>
-              <p class="mt-2 text-[10px] tracking-[0.24em] text-[#cfa878]">REGIONS</p>
+              <p class="mt-2 text-[10px] tracking-[0.24em] text-[#cfa878]">覆盖地区</p>
             </div>
             <div class="h-12 w-px bg-white/10 hidden md:block"></div>
             <div class="text-center md:text-left transition-transform duration-300 hover:-translate-y-1">
               <p class="font-serif text-3xl md:text-4xl font-normal text-white">200+</p>
-              <p class="mt-2 text-[10px] tracking-[0.24em] text-[#cfa878]">PROJECTS</p>
+              <p class="mt-2 text-[10px] tracking-[0.24em] text-[#cfa878]">交付项目</p>
             </div>
           </div>
         </div>
       </div>
+    </div>
 
-      <!-- Scroll Indicator -->
-      <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 opacity-50 pointer-events-none">
-        <span class="text-[10px] tracking-[0.3em] text-white [writing-mode:vertical-rl] rotate-180">SCROLL</span>
-        <div class="h-12 w-px bg-gradient-to-b from-[#cfa878] to-transparent"></div>
-      </div>
+    <!-- Scroll Indicator -->
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 opacity-50 pointer-events-none [@media(max-height:768px)]:hidden">
+      <span class="text-[10px] tracking-[0.3em] text-white [writing-mode:vertical-rl] rotate-180">继续浏览</span>
+      <div class="h-12 w-px bg-gradient-to-b from-[#cfa878] to-transparent"></div>
     </div>
   </div>
 </section>
