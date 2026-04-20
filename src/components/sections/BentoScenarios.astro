@@ -38,34 +38,34 @@ const cards = [
 ];
 ---
 
-<section id="bento-scenarios" class="h-[100svh] w-full flex flex-col justify-center bg-transparent py-6 relative">
-  <div class="mx-auto w-full max-w-[1800px] px-4 md:px-8 h-full flex flex-col relative z-10">
-    <div class="flex items-center justify-between mb-10 px-4">
+<section id="bento-scenarios" class="relative flex min-h-[100svh] w-full flex-col justify-center bg-transparent py-4 md:py-6 lg:h-[100svh]">
+  <div class="relative z-10 mx-auto flex min-h-[calc(100svh-2rem)] w-full max-w-[1800px] flex-col px-4 md:min-h-[calc(100svh-3rem)] md:px-8 lg:h-full lg:min-h-0">
+    <div class="mb-8 flex flex-col gap-4 px-2 sm:px-4 md:mb-10 md:flex-row md:items-end md:justify-between">
       <div>
-        <span class="text-[10px] font-light tracking-[0.34em] text-neutral-400">04 / 应用场景</span>
-        <h2 class="mt-2 font-display text-3xl font-light text-white tracking-widest">在复杂项目中，保持统一叙事</h2>
+        <span class="text-xs font-light tracking-[0.4em] text-[#cfa878]">04 / 应用场景</span>
+        <h2 class="mt-4 font-serif text-3xl font-normal text-white tracking-[0.15em] sm:text-4xl sm:tracking-widest">在复杂项目中，保持统一叙事</h2>
       </div>
-      <p class="max-w-[400px] text-xs font-light leading-6 tracking-wider text-neutral-300 text-right">
+      <p class="max-w-[400px] text-sm font-light leading-8 tracking-wider text-neutral-300 md:text-right">
         不同场景拥有不同尺度、预算与耐久要求。我们用同一套供应与深化方法，让空间拥有独立表情。
       </p>
     </div>
 
-    <div class="flex-1 w-full h-full grid grid-cols-1 md:grid-cols-3 grid-rows-2 gap-4 md:gap-6 px-4" id="bento-grid">
+    <div class="grid h-full w-full flex-1 auto-rows-[minmax(15rem,1fr)] grid-cols-1 gap-4 px-2 sm:px-4 md:grid-cols-4 md:grid-rows-2 md:gap-6" id="bento-grid">
       {cards.map((card, index) => (
         <button
-          class={`bento-card group relative overflow-hidden rounded-[2rem] border border-white/10 transition-all duration-500 hover:border-white/30 hover:shadow-[0_0_40px_rgba(255,255,255,0.1)] ${index === 0 ? 'md:col-span-2' : ''} ${index === 3 ? 'md:col-span-1' : ''} will-change-transform transform-gpu`}
+          class={`bento-card group relative overflow-hidden rounded-[1.75rem] border border-[#cfa878]/20 bg-black/40 transition-all duration-500 hover:border-[#cfa878]/50 hover:shadow-[0_0_40px_rgba(207,168,120,0.15)] md:rounded-[2.5rem] ${index === 0 ? 'md:col-span-2' : ''} ${index === 1 ? 'md:col-span-1' : ''} ${index === 2 ? 'md:col-span-1' : ''} ${index === 3 ? 'md:col-span-1' : ''} ${index === 4 ? 'md:col-span-3' : ''} will-change-transform transform-gpu`}
           data-index={index}
           aria-label={card.title}
         >
           <img src={card.image} alt={card.title} loading="lazy" decoding="async" class="absolute inset-0 h-full w-full object-cover transition-transform duration-1000 group-hover:scale-110 will-change-transform transform-gpu" />
-          <div class="absolute inset-0 bg-black/40 transition-all duration-500 group-hover:bg-black/20"></div>
+          <div class="absolute inset-0 bg-black/60 transition-all duration-500 group-hover:bg-black/30"></div>
           
-          <div class="absolute bottom-0 left-0 p-8 text-left w-full bg-gradient-to-t from-black/80 to-transparent">
-            <span class="inline-block px-3 py-1 mb-3 rounded-full border border-white/20 bg-white/10 backdrop-blur-md text-[10px] tracking-widest text-white/90">
+          <div class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black/90 via-black/40 to-transparent p-6 text-left sm:p-8 md:p-10">
+            <span class="inline-block px-4 py-1.5 mb-4 rounded-full border border-[#cfa878]/30 bg-black/40 backdrop-blur-md text-[10px] tracking-[0.2em] text-[#cfa878]">
               {card.tag}
             </span>
-            <h3 class="font-display text-2xl md:text-3xl font-light text-white mb-2 transform transition-transform duration-500 group-hover:-translate-y-1">{card.title}</h3>
-            <p class="text-sm font-light text-neutral-300 opacity-0 transform translate-y-4 transition-all duration-500 group-hover:opacity-100 group-hover:translate-y-0 line-clamp-2">
+            <h3 class="font-serif text-3xl md:text-4xl font-normal text-white mb-3 transform transition-transform duration-500 group-hover:-translate-y-2">{card.title}</h3>
+            <p class="text-sm font-light leading-relaxed text-neutral-300 opacity-0 transform translate-y-4 transition-all duration-500 group-hover:opacity-100 group-hover:translate-y-0 line-clamp-2 md:text-base">
               {card.copy}
             </p>
           </div>
@@ -75,20 +75,21 @@ const cards = [
   </div>
 
   <!-- Expanded Overlay -->
-  <div id="scenario-overlay" class="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-2xl opacity-0 pointer-events-none transition-opacity duration-700">
-    <button id="scenario-close" class="absolute top-8 right-8 z-50 h-12 w-12 rounded-full border border-white/20 bg-white/5 flex items-center justify-center text-white hover:bg-white/20 transition-colors">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 6L6 18M6 6l12 12"/></svg>
+  <div id="scenario-overlay" class="fixed inset-0 z-50 flex items-center justify-center bg-black/95 p-4 backdrop-blur-3xl opacity-0 pointer-events-none transition-opacity duration-700">
+    <button id="scenario-close" class="absolute top-4 right-4 z-50 flex h-12 w-12 items-center justify-center rounded-full border border-[#cfa878]/30 bg-black/40 text-[#cfa878] transition-colors hover:bg-[#cfa878]/20 md:top-8 md:right-8 md:h-14 md:w-14">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 6L6 18M6 6l12 12"/></svg>
     </button>
     
-    <div class="relative w-full max-w-[1400px] h-[80vh] mx-4 rounded-[2rem] overflow-hidden border border-white/10 shadow-2xl flex flex-col md:flex-row transform scale-95 transition-transform duration-700" id="scenario-overlay-content">
-      <div class="w-full md:w-1/2 h-1/2 md:h-full relative">
+    <div class="relative flex max-h-[90vh] w-full max-w-[1400px] scale-95 flex-col overflow-y-auto rounded-[2rem] border border-[#cfa878]/20 shadow-[0_40px_100px_rgba(207,168,120,0.1)] transition-transform duration-700 md:h-[80vh] md:max-h-none md:flex-row md:overflow-hidden md:rounded-[2.5rem]" id="scenario-overlay-content">
+      <div class="relative h-[38vh] w-full md:h-full md:w-1/2">
         <img id="scenario-expanded-img" src="" alt="" class="absolute inset-0 h-full w-full object-cover" />
+        <div class="absolute inset-0 bg-black/20"></div>
       </div>
-      <div class="w-full md:w-1/2 h-1/2 md:h-full bg-neutral-900 flex flex-col justify-center p-10 md:p-20 relative overflow-hidden">
-        <div class="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3"></div>
-        <span id="scenario-expanded-tag" class="text-xs tracking-[0.3em] text-neutral-400 mb-6"></span>
-        <h3 id="scenario-expanded-title" class="font-display text-4xl md:text-5xl font-light text-white mb-8"></h3>
-        <p id="scenario-expanded-copy" class="text-base font-light leading-9 tracking-[0.08em] text-neutral-300 max-w-md"></p>
+      <div class="relative flex w-full flex-1 flex-col justify-center overflow-hidden bg-black p-8 sm:p-10 md:h-full md:w-1/2 md:p-24">
+        <div class="absolute top-0 right-0 h-64 w-64 rounded-full bg-[#cfa878]/10 blur-[100px] -translate-y-1/2 translate-x-1/3 md:h-96 md:w-96"></div>
+        <span id="scenario-expanded-tag" class="text-xs tracking-[0.4em] text-[#cfa878] mb-8"></span>
+        <h3 id="scenario-expanded-title" class="mb-8 font-serif text-4xl font-normal text-white md:mb-10 md:text-6xl"></h3>
+        <p id="scenario-expanded-copy" class="max-w-lg text-sm font-light leading-relaxed tracking-[0.1em] text-neutral-300 md:text-base md:leading-[2.5]"></p>
       </div>
     </div>
   </div>
@@ -129,7 +130,7 @@ const cards = [
       }
     ];
 
-    const btns = document.querySelectorAll('.bento-card');
+    const btns = Array.from(document.querySelectorAll<HTMLButtonElement>('.bento-card'));
     const overlay = document.getElementById('scenario-overlay');
     const closeBtn = document.getElementById('scenario-close');
     const content = document.getElementById('scenario-overlay-content');
@@ -139,25 +140,35 @@ const cards = [
     const expTitle = document.getElementById('scenario-expanded-title');
     const expCopy = document.getElementById('scenario-expanded-copy');
 
-    // Focus Cards Hover Effect
-    btns.forEach(card => {
-      card.addEventListener('mouseenter', () => {
-        btns.forEach(c => {
-          if (c !== card) {
-            c.style.filter = 'blur(4px)';
-            c.style.opacity = '0.6';
-            c.style.transform = 'scale(0.98)';
-          }
+    const prefersHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+    if (prefersHover) {
+      btns.forEach(card => {
+        card.addEventListener('mouseenter', () => {
+          btns.forEach(c => {
+            if (c !== card) {
+              c.style.filter = 'blur(4px)';
+              c.style.opacity = '0.6';
+              c.style.transform = 'scale(0.98)';
+            }
+          });
+        });
+        card.addEventListener('mouseleave', () => {
+          btns.forEach(c => {
+            c.style.filter = 'none';
+            c.style.opacity = '1';
+            c.style.transform = 'scale(1)';
+          });
         });
       });
-      card.addEventListener('mouseleave', () => {
-        btns.forEach(c => {
-          c.style.filter = 'none';
-          c.style.opacity = '1';
-          c.style.transform = 'scale(1)';
-        });
-      });
-    });
+    }
+
+    const closeOverlay = () => {
+      overlay?.classList.add('opacity-0', 'pointer-events-none');
+      content?.classList.remove('scale-100');
+      content?.classList.add('scale-95');
+      document.body.style.removeProperty('overflow');
+    };
 
     // Expansion Overlay Logic
     btns.forEach((btn) => {
@@ -175,15 +186,16 @@ const cards = [
         content?.classList.add('scale-100');
         
         // Prevent body scroll
-        document.body.style.overflow = 'hidden';
+        document.body.style.setProperty('overflow', 'hidden');
       });
     });
 
-    closeBtn?.addEventListener('click', () => {
-      overlay?.classList.add('opacity-0', 'pointer-events-none');
-      content?.classList.remove('scale-100');
-      content?.classList.add('scale-95');
-      document.body.style.overflow = '';
+    closeBtn?.addEventListener('click', closeOverlay);
+    overlay?.addEventListener('click', (event) => {
+      if (event.target === overlay) closeOverlay();
+    });
+    window.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') closeOverlay();
     });
   }
 </script>

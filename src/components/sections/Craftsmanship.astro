@@ -3,56 +3,68 @@ const image =
   'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=2070&auto=format&fit=crop';
 ---
 
-<section id="craftsmanship" class="h-[100svh] w-full flex flex-col justify-center bg-transparent py-6 perspective-[2000px]">
-  <div class="mx-auto w-full max-w-[1800px] px-4 md:px-8 h-full flex flex-col">
-    <div id="craft-stage" class="relative flex-1 overflow-hidden rounded-[2.5rem] border border-white/10 shadow-2xl transition-transform duration-700 ease-out will-change-transform transform-gpu" style="transform-style: preserve-3d;">
-      <!-- Parallax Background -->
-      <img src={image} alt="精密制造产线" loading="lazy" decoding="async" class="absolute inset-0 h-[110%] w-[110%] object-cover -top-[5%] -left-[5%] transition-transform duration-500 will-change-transform transform-gpu" id="craft-image" />
-      <div class="absolute inset-0 bg-black/60"></div>
-      
-      <!-- 3D Grid Lines -->
-      <div class="absolute inset-0 pointer-events-none" style="transform: translateZ(30px);">
-        <div class="absolute inset-x-0 top-[20%] h-px bg-gradient-to-r from-transparent via-white/20 to-transparent mix-blend-screen"></div>
-        <div class="absolute inset-x-0 bottom-[24%] h-px bg-gradient-to-r from-transparent via-white/20 to-transparent mix-blend-screen"></div>
-        <div class="absolute inset-y-0 left-[20%] w-px bg-gradient-to-b from-transparent via-white/10 to-transparent mix-blend-screen"></div>
-        <div class="absolute inset-y-0 right-[20%] w-px bg-gradient-to-b from-transparent via-white/10 to-transparent mix-blend-screen"></div>
+<section id="craftsmanship" class="relative flex min-h-[100svh] w-full flex-col justify-center overflow-hidden bg-black lg:h-[100svh]">
+  <!-- Full-bleed Background with Parallax -->
+  <div id="craft-stage" class="absolute inset-0 z-0 h-full w-full overflow-hidden">
+    <img src={image} alt="精密制造产线" loading="lazy" decoding="async" class="absolute inset-0 h-[110%] w-[110%] object-cover -top-[5%] -left-[5%] transition-transform duration-700 ease-out will-change-transform transform-gpu" id="craft-image" />
+    
+    <!-- Cinematic Dark Gradients -->
+    <div class="absolute inset-0 bg-gradient-to-b from-[#050505] via-transparent to-[#050505] opacity-90"></div>
+    <div class="absolute inset-0 bg-gradient-to-r from-[#050505] via-transparent to-[#050505] opacity-80"></div>
+    <div class="absolute inset-0 bg-black/50 backdrop-blur-[2px]"></div>
+    <div class="absolute inset-0 blend-noise opacity-40"></div>
+  </div>
+  
+  <!-- Seamless Edge Masks for all directions blending -->
+  <div class="seamless-edge-mask-top"></div>
+  <div class="seamless-edge-mask-bottom"></div>
+  <div class="seamless-edge-mask-left"></div>
+  <div class="seamless-edge-mask-right"></div>
+
+  <!-- Content Container -->
+  <div class="relative z-10 mx-auto flex w-full max-w-[1800px] flex-col items-center justify-center px-4 text-center md:px-8">
+    <div data-animate-group class="flex flex-col items-center justify-center">
+      <!-- Section Label -->
+      <div data-animate-item class="flex items-center justify-center gap-4 mb-8">
+        <div class="h-px w-8 bg-[#cfa878]/40"></div>
+        <span class="text-[10px] font-light tracking-[0.4em] text-[#cfa878] uppercase">PRECISION MANUFACTURING</span>
+        <div class="h-px w-8 bg-[#cfa878]/40"></div>
       </div>
-      
-      <div class="absolute inset-0 blend-noise opacity-50"></div>
-      
-      <!-- Glare Effect -->
-      <div id="craft-glare" class="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.1),transparent_60%)] opacity-0 transition-opacity duration-300 pointer-events-none mix-blend-overlay" style="transform: translateZ(60px);"></div>
 
-      <div class="relative flex h-full items-center justify-center px-6 py-16" style="transform: translateZ(100px);">
-        <div
-          class="bg-black/30 backdrop-blur-2xl border border-white/20 rounded-[2rem] p-10 shadow-[0_40px_100px_rgba(0,0,0,0.5)] w-full max-w-[1000px] md:px-16 md:py-14 transition-transform duration-500 hover:-translate-y-2 hover:bg-black/40 relative overflow-hidden group"
-          data-animate-group
-        >
-          <!-- Internal Glow -->
-          <div class="absolute inset-0 bg-gradient-to-tr from-white/0 via-white/5 to-white/0 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+      <!-- Headlines -->
+      <h2 data-animate-item class="font-serif text-[clamp(2.5rem,6vw,5rem)] font-normal leading-[1.1] text-white mb-2 tracking-wide drop-shadow-2xl">
+        实现极具质感的纹理表现
+      </h2>
+      <h3 data-animate-item class="font-serif text-[clamp(2rem,4.5vw,4rem)] font-normal italic leading-[1.1] text-neutral-400 mb-10 tracking-wide drop-shadow-xl">
+        源于绝对精密的制造工序
+      </h3>
 
-          <span data-animate-item class="inline-block px-4 py-2 rounded-full border border-white/20 bg-white/5 text-[10px] font-light tracking-[0.34em] text-white/90 mb-6">06 / 生产工艺</span>
-          <h2 data-animate-item class="font-display text-[clamp(2.4rem,4.8vw,5.2rem)] font-light text-white tracking-wide leading-tight">
-            在精密制造中，让材料拥有可被兑现的高级感
-          </h2>
-          <p data-animate-item class="mt-6 text-base font-light leading-9 tracking-wide text-neutral-300">
-            从荒料甄别、板面排版、异形切割到表面处理，我们建立了贯穿工厂与现场的质量闭环。
-            每一个节点都被量化，每一次打样都对应明确的结果标准，让设计意图不在落地中失真。
-          </p>
-          <div data-animate-item class="mt-10 grid gap-6 md:grid-cols-3 relative z-10">
-            <div class="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md p-6 transition-all duration-300 hover:border-white/30 hover:bg-white/10 hover:-translate-y-1">
-              <p class="text-3xl font-display font-light text-white">5 Axis</p>
-              <p class="mt-3 text-xs tracking-[0.2em] text-neutral-400">数控异形加工</p>
-            </div>
-            <div class="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md p-6 transition-all duration-300 hover:border-white/30 hover:bg-white/10 hover:-translate-y-1">
-              <p class="text-3xl font-display font-light text-white">16 Steps</p>
-              <p class="mt-3 text-xs tracking-[0.2em] text-neutral-400">表面处理工序</p>
-            </div>
-            <div class="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md p-6 transition-all duration-300 hover:border-white/30 hover:bg-white/10 hover:-translate-y-1">
-              <p class="text-3xl font-display font-light text-white">Full QC</p>
-              <p class="mt-3 text-xs tracking-[0.2em] text-neutral-400">全流程质量追踪</p>
-            </div>
-          </div>
+      <!-- Body Copy -->
+      <p data-animate-item class="max-w-[800px] text-sm font-light leading-8 tracking-[0.08em] text-neutral-300 md:text-base md:leading-9 mb-16 md:mb-24">
+        从荒料甄别、板面排版、异形切割到表面处理，我们建立了贯穿工厂与现场的质量闭环。每一个节点都被量化，每一次打样都对应明确的结果标准，让设计意图不在落地中失真。
+      </p>
+
+      <!-- Metrics Row -->
+      <div data-animate-item class="flex flex-col items-center justify-center gap-12 md:flex-row md:gap-16 lg:gap-24">
+        <div class="flex flex-col items-center group">
+          <span class="font-serif text-4xl md:text-5xl font-normal text-white mb-3 transition-transform duration-500 group-hover:-translate-y-1">5-Axis</span>
+          <span class="text-[10px] tracking-[0.25em] text-neutral-500 uppercase">CNC PROFILING</span>
+        </div>
+        
+        <div class="hidden h-16 w-px bg-white/10 md:block"></div>
+        <div class="block h-px w-16 bg-white/10 md:hidden"></div>
+        
+        <div class="flex flex-col items-center group">
+          <span class="font-serif text-4xl md:text-5xl font-normal text-[#cfa878] mb-3 transition-transform duration-500 group-hover:-translate-y-1 drop-shadow-[0_0_15px_rgba(207,168,120,0.4)]">16 Steps</span>
+          <span class="text-[10px] tracking-[0.25em] text-neutral-500 uppercase">SURFACE TREATMENT</span>
+        </div>
+        
+        <div class="hidden h-16 w-px bg-white/10 md:block"></div>
+        <div class="block h-px w-16 bg-white/10 md:hidden"></div>
+        
+        <div class="flex flex-col items-center group">
+          <span class="font-serif text-4xl md:text-5xl font-normal text-white mb-3 transition-transform duration-500 group-hover:-translate-y-1">100%</span>
+          <span class="text-[10px] tracking-[0.25em] text-neutral-500 uppercase">FULL QC INSPECTION</span>
         </div>
       </div>
     </div>
@@ -61,11 +73,12 @@ const image =
 
 <script>
   if (typeof window !== 'undefined') {
-    const stage = document.getElementById('craft-stage');
+    const stage = document.getElementById('craftsmanship');
     const image = document.getElementById('craft-image');
-    const glare = document.getElementById('craft-glare');
 
-    if (stage && image && glare) {
+    const prefersHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+    if (stage && image && prefersHover) {
       let ticking = false;
       let isVisible = false;
 
@@ -85,18 +98,11 @@ const image =
           const centerX = rect.width / 2;
           const centerY = rect.height / 2;
           
-          // 3D Rotation
-          const rotateX = ((y - centerY) / centerY) * -6; // Max 6deg
-          const rotateY = ((x - centerX) / centerX) * 6;
+          const moveX = ((x - centerX) / centerX) * -15; // Max 15px movement
+          const moveY = ((y - centerY) / centerY) * -15;
           
-          stage.style.transform = `translateZ(0) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-          
-          // Inverse Parallax for Background Image
-          image.style.transform = `translate3d(${rotateY * -1.5}px, ${rotateX * 1.5}px, 0) scale(1.05)`;
-          
-          // Dynamic Glare
-          glare.style.opacity = '1';
-          glare.style.background = `radial-gradient(circle at ${x}px ${y}px, rgba(255,255,255,0.1), transparent 60%)`;
+          // Subtle Parallax for Background Image
+          image.style.transform = `translate3d(${moveX}px, ${moveY}px, 0) scale(1.05)`;
           
           ticking = false;
         });
@@ -107,9 +113,7 @@ const image =
       stage.addEventListener('mouseleave', () => {
         if (!isVisible) return;
         window.requestAnimationFrame(() => {
-          stage.style.transform = 'translateZ(0) rotateX(0) rotateY(0)';
-          image.style.transform = 'translate3d(0, 0, 0) scale(1)';
-          glare.style.opacity = '0';
+          image.style.transform = 'translate3d(0, 0, 0) scale(1.05)';
         });
       });
     }

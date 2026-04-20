@@ -8,75 +8,107 @@ const sideImages = [
 ];
 ---
 
-<section id="hero" class="h-[100svh] w-full flex flex-col justify-center bg-transparent pt-24 pb-6 perspective-[2000px]">
-  <div class="mx-auto w-full max-w-[1800px] px-4 md:px-8 h-full flex flex-col relative z-10" id="hero-3d-container">
-    <!-- Hero 3D Card -->
-    <div id="hero-stage" class="relative flex-1 overflow-hidden rounded-[2.5rem] border border-white/10 shadow-2xl transition-all duration-300 ease-out will-change-transform transform-gpu" style="transform-style: preserve-3d;">
-      <img
-        src={backgroundImage}
-        alt="深色建筑立面"
-        loading="eager"
-        decoding="async"
-        class="absolute inset-0 h-[110%] w-[110%] object-cover -top-[5%] -left-[5%] transition-transform duration-500 will-change-transform transform-gpu"
-        id="hero-image"
-      />
-      <!-- Dynamic Glare -->
-      <div id="hero-glare" class="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.15),transparent_60%)] opacity-0 transition-opacity duration-300 pointer-events-none mix-blend-overlay"></div>
-      
-      <div class="absolute inset-0 bg-[linear-gradient(180deg,rgba(18,18,20,0.1),rgba(18,18,20,0.85))]"></div>
-      
-      <!-- Glowing Orbs with 3D Depth -->
-      <div id="hero-orb-a" class="absolute left-[8%] top-[12%] h-[30vh] w-[30vh] rounded-full bg-white/10 blur-[100px] mix-blend-screen pointer-events-none" style="transform: translateZ(40px);"></div>
-      <div id="hero-orb-b" class="absolute bottom-[10%] right-[8%] h-[40vh] w-[40vh] rounded-full bg-stone-300/10 blur-[120px] mix-blend-screen pointer-events-none" style="transform: translateZ(80px);"></div>
-      
-      <div class="absolute inset-0 blend-noise opacity-40"></div>
+<section id="hero" class="relative min-h-[100svh] w-full flex flex-col justify-center bg-black overflow-hidden">
+  <!-- Full-bleed Background with Parallax -->
+  <div id="hero-stage" class="absolute inset-0 z-0 h-full w-full overflow-hidden">
+    <img
+      src={backgroundImage}
+      alt="深色建筑立面"
+      loading="eager"
+      decoding="async"
+      class="absolute inset-0 h-[110%] w-[110%] object-cover -top-[5%] -left-[5%] transition-transform duration-700 ease-out will-change-transform transform-gpu"
+      id="hero-image"
+    />
+    
+    <!-- Cinematic Dark Gradients -->
+    <div class="absolute inset-0 bg-gradient-to-b from-[#050505] via-transparent to-[#050505] opacity-90"></div>
+    <div class="absolute inset-0 bg-gradient-to-r from-[#050505] via-transparent to-[#050505] opacity-80"></div>
+    <div class="absolute inset-0 bg-black/40 backdrop-blur-[2px]"></div>
+    
+    <!-- Glowing Orbs with Depth -->
+    <div id="hero-orb-a" class="absolute left-[20%] top-[20%] h-[30vh] w-[30vh] rounded-full bg-[#cfa878]/10 blur-[100px] mix-blend-screen pointer-events-none transition-transform duration-700"></div>
+    <div id="hero-orb-b" class="absolute bottom-[20%] right-[20%] h-[40vh] w-[40vh] rounded-full bg-[#cfa878]/10 blur-[120px] mix-blend-screen pointer-events-none transition-transform duration-700"></div>
+    
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_36%,rgba(255,255,255,0.035),transparent_18%)]"></div>
+    <div class="absolute inset-0 blend-noise opacity-30"></div>
+  </div>
+  
+  <!-- Seamless Edge Masks for all directions blending -->
+  <div class="seamless-edge-mask-top"></div>
+  <div class="seamless-edge-mask-bottom"></div>
+  <div class="seamless-edge-mask-left"></div>
+  <div class="seamless-edge-mask-right"></div>
 
-      <div class="relative grid h-full items-end gap-10 px-8 py-16 md:px-16 lg:grid-cols-[1fr_1fr] lg:items-center">
-        <!-- Text Content floating in 3D space -->
-        <div id="hero-copy" class="max-w-[760px] pointer-events-none" data-animate-group style="transform: translateZ(100px);">
-          <span data-animate-item class="mb-5 inline-flex rounded-full border border-white/10 bg-black/20 px-4 py-2 text-[10px] font-light tracking-[0.34em] text-neutral-300">
-            GLOBAL MATERIALS SUPPLY NETWORK
-          </span>
-          <h1 data-animate-item class="font-display text-[clamp(2.8rem,6vw,6.2rem)] font-light leading-[0.96] tracking-[-0.04em] text-white">
-            筑物为诗，匠心无界
+  <!-- Decorative Background Lines -->
+  <div class="absolute inset-0 pointer-events-none z-10 flex justify-evenly px-4 md:px-8 max-w-[1800px] mx-auto opacity-10">
+    <div class="w-px h-full bg-gradient-to-b from-transparent via-[#cfa878] to-transparent"></div>
+    <div class="w-px h-full bg-gradient-to-b from-transparent via-[#cfa878] to-transparent"></div>
+    <div class="w-px h-full bg-gradient-to-b from-transparent via-[#cfa878] to-transparent"></div>
+    <div class="w-px h-full bg-gradient-to-b from-transparent via-[#cfa878] to-transparent hidden md:block"></div>
+  </div>
+
+  <!-- Content Container -->
+  <div class="relative z-20 mx-auto w-full max-w-[1800px] px-4 md:px-8 h-full flex flex-col justify-center" id="hero-3d-container">
+    <div class="relative flex flex-col items-center justify-center text-center px-4 py-16 md:px-16">
+      <!-- Text Content -->
+      <div id="hero-copy" class="max-w-[900px] pointer-events-none flex flex-col items-center" data-animate-group>
+        <span data-animate-item class="inline-block px-6 py-2 rounded-full border border-[#cfa878]/30 bg-[#cfa878]/10 text-[10px] md:text-xs font-light tracking-[0.34em] text-[#cfa878] mb-8 md:mb-12 shadow-[0_0_20px_rgba(207,168,120,0.2)]">
+          GLOBAL MATERIALS SUPPLY NETWORK
+        </span>
+        
+        <!-- Layered Typography Effect -->
+        <div class="relative w-full" data-animate-item>
+          <!-- Hollow Stroke Text (Background) -->
+          <h1 class="absolute -top-10 md:-top-16 left-1/2 -translate-x-1/2 font-serif text-[clamp(4rem,10vw,12rem)] leading-none tracking-tight text-transparent opacity-20 whitespace-nowrap" style="-webkit-text-stroke: 1px #cfa878;">
+            SPATIAL
           </h1>
-          <p data-animate-item class="mt-6 max-w-[42rem] text-sm font-light leading-8 tracking-[0.08em] text-neutral-200 md:text-base">
-            以全球建材供应链为底座，连接原产地、工厂与项目现场。
-            从中东到中亚，我们以稳定交付、精密工艺与审美判断，服务真正具有标志性的空间作品。
-          </p>
-          <div data-animate-item class="mt-8 flex flex-wrap items-center gap-4">
-            <a
-              href="#global-vision"
-              class="inline-flex items-center gap-3 rounded-full border border-white/20 bg-white/10 px-8 py-4 text-xs font-light tracking-[0.24em] text-white transition-all duration-500 hover:bg-white/20 hover:scale-105 backdrop-blur-md pointer-events-auto"
-            >
-              探索更多
-              <span class="text-sm">+</span>
-            </a>
-            <div class="flex items-center gap-6 pointer-events-auto">
-              <div class="bg-black/20 backdrop-blur-md border border-white/5 rounded-2xl p-4 transition-transform duration-300 hover:-translate-y-1">
-                <p class="text-3xl font-light text-white">17</p>
-                <p class="mt-1 text-[10px] tracking-[0.24em] text-neutral-400">国家地区覆盖</p>
-              </div>
-              <div class="bg-black/20 backdrop-blur-md border border-white/5 rounded-2xl p-4 transition-transform duration-300 hover:-translate-y-1">
-                <p class="text-3xl font-light text-white">200+</p>
-                <p class="mt-1 text-[10px] tracking-[0.24em] text-neutral-400">项目交付经验</p>
-              </div>
+          <h1 class="absolute top-10 md:top-12 left-1/2 -translate-x-1/2 font-serif text-[clamp(4rem,10vw,12rem)] leading-none tracking-tight text-transparent opacity-20 whitespace-nowrap" style="-webkit-text-stroke: 1px #cfa878;">
+            POETICS
+          </h1>
+          
+          <!-- Solid Text (Foreground) -->
+          <h1 class="relative font-serif text-[clamp(3.5rem,8vw,8rem)] font-normal leading-[1.1] tracking-tight text-white mb-2 shadow-2xl">
+            SPATIAL
+          </h1>
+          <h1 class="relative font-serif text-[clamp(3.5rem,8vw,8rem)] font-normal leading-[1.1] tracking-tight text-white mb-8 shadow-2xl">
+            POETICS
+          </h1>
+        </div>
+        
+        <p data-animate-item class="mt-8 md:mt-12 max-w-[36rem] text-sm md:text-base font-light leading-loose tracking-[0.08em] text-neutral-300 drop-shadow-lg">
+          Anchored by a global supply network, we connect origins, factories, and sites. From the Middle East to Central Asia, we deliver iconic spatial masterpieces through stable execution, precision craftsmanship, and supreme aesthetic judgment.
+        </p>
+        
+        <div data-animate-item class="mt-12 flex flex-col md:flex-row items-center gap-8 md:gap-12 pointer-events-auto">
+          <a
+            href="#global-vision"
+            class="group relative inline-flex items-center justify-center gap-3 overflow-hidden rounded-full border border-[#cfa878]/30 bg-[#cfa878]/10 px-8 py-4 text-xs font-light tracking-[0.24em] text-[#cfa878] transition-all duration-500 hover:bg-[#cfa878]/20 hover:scale-105 backdrop-blur-md"
+          >
+            <div class="absolute inset-0 flex h-full w-full justify-center [transform:skew(-12deg)_translateX(-150%)] group-hover:duration-1000 group-hover:[transform:skew(-12deg)_translateX(150%)]">
+              <div class="relative h-full w-8 bg-white/20"></div>
+            </div>
+            <span class="relative">EXPLORE COLLECTION</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="relative transition-transform duration-300 group-hover:translate-x-1"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+          
+          <div class="flex items-center gap-8 md:gap-12">
+            <div class="text-center md:text-left transition-transform duration-300 hover:-translate-y-1">
+              <p class="font-serif text-3xl md:text-4xl font-normal text-white">17</p>
+              <p class="mt-2 text-[10px] tracking-[0.24em] text-[#cfa878]">REGIONS</p>
+            </div>
+            <div class="h-12 w-px bg-white/10 hidden md:block"></div>
+            <div class="text-center md:text-left transition-transform duration-300 hover:-translate-y-1">
+              <p class="font-serif text-3xl md:text-4xl font-normal text-white">200+</p>
+              <p class="mt-2 text-[10px] tracking-[0.24em] text-[#cfa878]">PROJECTS</p>
             </div>
           </div>
         </div>
+      </div>
 
-        <!-- 3D Floating Images -->
-        <div class="relative hidden h-full lg:flex items-center justify-center pointer-events-none" id="hero-floating-images" style="transform: translateZ(120px);">
-          <div class="absolute -left-12 top-1/4 h-[300px] w-[240px] overflow-hidden rounded-[2rem] border border-white/10 shadow-[0_30px_100px_rgba(0,0,0,0.5)] transition-transform duration-700 hover:scale-105 pointer-events-auto" style="transform: translateZ(60px) rotateY(15deg);">
-            <img src={sideImages[0]} alt="建筑细节" class="h-full w-full object-cover opacity-80 hover:opacity-100 transition-opacity duration-500" data-animate-item />
-          </div>
-          <div class="absolute right-0 top-1/3 h-[380px] w-[300px] overflow-hidden rounded-[2rem] border border-white/20 shadow-[0_40px_120px_rgba(0,0,0,0.6)] z-10 transition-transform duration-700 hover:scale-105 pointer-events-auto" style="transform: translateZ(100px);">
-            <img src={sideImages[1]} alt="项目现场" class="h-full w-full object-cover" data-animate-item />
-          </div>
-          <div class="absolute left-1/4 bottom-1/4 h-[260px] w-[200px] overflow-hidden rounded-[2rem] border border-white/10 shadow-[0_20px_80px_rgba(0,0,0,0.4)] transition-transform duration-700 hover:scale-105 pointer-events-auto" style="transform: translateZ(40px) rotateY(-15deg);">
-            <img src={sideImages[2]} alt="材料空间" class="h-full w-full object-cover opacity-70 hover:opacity-100 transition-opacity duration-500" data-animate-item />
-          </div>
-        </div>
+      <!-- Scroll Indicator -->
+      <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 opacity-50 pointer-events-none">
+        <span class="text-[10px] tracking-[0.3em] text-white [writing-mode:vertical-rl] rotate-180">SCROLL</span>
+        <div class="h-12 w-px bg-gradient-to-b from-[#cfa878] to-transparent"></div>
       </div>
     </div>
   </div>
@@ -85,11 +117,13 @@ const sideImages = [
 <script>
   if (typeof window !== 'undefined') {
     const container = document.getElementById('hero-3d-container');
-    const stage = document.getElementById('hero-stage');
-    const glare = document.getElementById('hero-glare');
     const image = document.getElementById('hero-image');
+    const orbA = document.getElementById('hero-orb-a');
+    const orbB = document.getElementById('hero-orb-b');
 
-    if (container && stage && glare && image) {
+    const prefersHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+    if (container && image && prefersHover) {
       let ticking = false;
       let isVisible = true;
 
@@ -110,18 +144,15 @@ const sideImages = [
           const centerX = rect.width / 2;
           const centerY = rect.height / 2;
           
-          // Aceternity style 3D rotation
-          const rotateX = ((y - centerY) / centerY) * -4; // Subtle 4deg max rotation
-          const rotateY = ((x - centerX) / centerX) * 4;
+          const moveX = ((x - centerX) / centerX) * -15; // Max 15px movement
+          const moveY = ((y - centerY) / centerY) * -15;
           
-          stage.style.transform = `translateZ(0) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+          // Parallax background
+          image.style.transform = `translate3d(${moveX}px, ${moveY}px, 0) scale(1.05)`;
           
-          // Parallax background (opposite direction)
-          image.style.transform = `translate3d(${rotateY * -2}px, ${rotateX * 2}px, 0) scale(1.05)`;
-          
-          // Glare effect following mouse
-          glare.style.opacity = '1';
-          glare.style.background = `radial-gradient(circle at ${x}px ${y}px, rgba(255,255,255,0.15), transparent 60%)`;
+          // Parallax orbs
+          if (orbA) orbA.style.transform = `translate3d(${moveX * -1.5}px, ${moveY * -1.5}px, 0)`;
+          if (orbB) orbB.style.transform = `translate3d(${moveX * -2}px, ${moveY * -2}px, 0)`;
           
           ticking = false;
         });
@@ -132,9 +163,9 @@ const sideImages = [
       container.addEventListener('mouseleave', () => {
         if (!isVisible) return;
         window.requestAnimationFrame(() => {
-          stage.style.transform = 'translateZ(0) rotateX(0) rotateY(0)';
-          image.style.transform = 'translate3d(0, 0, 0) scale(1)';
-          glare.style.opacity = '0';
+          image.style.transform = 'translate3d(0, 0, 0) scale(1.05)';
+          if (orbA) orbA.style.transform = 'translate3d(0, 0, 0)';
+          if (orbB) orbB.style.transform = 'translate3d(0, 0, 0)';
         });
       });
     }
