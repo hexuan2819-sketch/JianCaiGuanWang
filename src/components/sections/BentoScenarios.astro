@@ -39,9 +39,12 @@ const cards = [
 ---
 
 <section id="bento-scenarios" class="relative flex min-h-[100svh] w-full flex-col justify-center bg-black py-4 md:py-6 lg:h-[100svh] overflow-hidden">
-  <!-- Seamless Edge Masks for vertical blending -->
-  <div class="seamless-edge-mask-top"></div>
-  <div class="seamless-edge-mask-bottom"></div>
+  <!-- Background Layer for Edge Masks -->
+  <div class="absolute inset-0 z-0 pointer-events-none">
+    <!-- Seamless Edge Masks for vertical blending -->
+    <div class="seamless-edge-mask-top"></div>
+    <div class="seamless-edge-mask-bottom"></div>
+  </div>
 
   <div class="relative z-10 mx-auto flex min-h-[calc(100svh-2rem)] w-full max-w-[1800px] flex-col px-4 md:min-h-[calc(100svh-3rem)] md:px-8 lg:h-full lg:min-h-0">
     <div class="mb-8 flex flex-col gap-4 px-2 sm:px-4 md:mb-10 md:flex-row md:items-end md:justify-between">
