@@ -1,0 +1,23 @@
+---
+import EditorialContentPage from '../../../components/pages/EditorialContentPage.astro';
+import { secondaryLocales, type SupportedLocale } from '../../../i18n/config';
+
+export function getStaticPaths() {
+  return secondaryLocales.map((locale) => ({ params: { locale }, props: { locale } }));
+}
+
+const { locale } = Astro.props as { locale: SupportedLocale };
+---
+
+<EditorialContentPage
+  locale={locale}
+  title="Glass Wool Felt"
+  description="Detail page for glass wool felt."
+  eyebrow="GLASS WOOL FELT"
+  summary="This route is prepared for thickness, density, thermal conductivity and application guidance for glass wool felt systems."
+  anchorItems={[
+    { id: 'specification', label: 'Specification' },
+    { id: 'applications', label: 'Applications' },
+    { id: 'technical-data', label: 'Technical Data' },
+  ]}
+/>

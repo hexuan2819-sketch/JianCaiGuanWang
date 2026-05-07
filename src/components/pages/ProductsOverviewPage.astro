@@ -1,0 +1,430 @@
+---
+import Header from '../common/Header.astro';
+import Layout from '../../layouts/Layout.astro';
+import { defaultLocale, normalizeLocale, type SupportedLocale } from '../../i18n/config';
+import { getLocalizedPathname } from '../../i18n/ui';
+
+export interface Props {
+  locale?: SupportedLocale;
+}
+
+const locale = normalizeLocale(Astro.props.locale ?? Astro.currentLocale ?? defaultLocale);
+const isZh = locale === 'zh';
+
+const page = isZh
+  ? {
+      title: '产品总览',
+      description: '玻璃棉毡与橡塑保温管的工程规格书入口页。',
+      eyebrow: 'ENGINEERING PRODUCT PORTFOLIO',
+      summary:
+        '围绕防火、导热、吸声、耐久与安装效率等工程指标，建立面向设计院、总包、顾问与采购团队的参数化选型入口。',
+      sideTitle: '技术导航',
+      sideItems: ['玻璃棉毡系统', '橡塑保温管系统', '技术资料与规格书'],
+      selector: {
+        title: '材料配置器',
+        description: '选择应用场景与优先性能，快速定位更适合的材料体系。',
+        application: '应用场景',
+        priority: '优先性能',
+        result: '推荐结果',
+        options: {
+          applications: ['建筑围护', '暖通风管', '机电管线'],
+          priorities: ['防火优先', '保温优先', '安装效率'],
+        },
+      },
+      sections: [
+        {
+          id: 'glass-wool-felt',
+          title: '玻璃棉毡',
+          subtitle: '适用于建筑围护、暖通风管、工业设备与声学控制场景。',
+          href: '/products/glass-wool-felt',
+          facts: [
+            ['防火性能', 'A1 / 不燃体系'],
+            ['导热系数', '0.032-0.040 W/m.K'],
+            ['应用方向', '围护 / 风管 / 机房'],
+          ],
+          features: ['适用于大面积保温与吸声系统', '支持卷毡规格与覆面定制', '便于运输、切割与现场连续安装'],
+          docs: ['规格书入口', '检测数据', '节点建议'],
+          metrics: [
+            ['防火体系', '96%'],
+            ['保温效率', '88%'],
+            ['声学支持', '84%'],
+          ],
+        },
+        {
+          id: 'rubber-plastic-pipe',
+          title: '橡塑保温管',
+          subtitle: '适用于冷热水管线、机电设备及复杂管路系统保温。',
+          href: '/products/rubber-plastic-pipe',
+          facts: [
+            ['闭孔结构', '稳定抑制冷凝'],
+            ['导热控制', '低导热损失'],
+            ['安装效率', '适合现场快速包覆'],
+          ],
+          features: ['适用于机电管线和设备绝热', '兼顾柔韧性、耐久性与施工效率', '可配套胶水、胶带与节点材料'],
+          docs: ['规格书入口', '施工指引', '技术咨询'],
+          metrics: [
+            ['防凝露控制', '92%'],
+            ['导热管理', '86%'],
+            ['施工效率', '90%'],
+          ],
+        },
+      ],
+      actions: {
+        details: '查看详情',
+        specs: '查看规格书',
+      },
+    }
+  : {
+      title: 'Products',
+      description: 'Specification-driven overview for glass wool felt and rubber plastic insulation pipe.',
+      eyebrow: 'ENGINEERING PRODUCT PORTFOLIO',
+      summary:
+        'Built around fire, thermal, acoustic, durability and installation performance, this page serves as a specification-ready selection entry for consultants, contractors and procurement teams.',
+      sideTitle: 'Technical Navigation',
+      sideItems: ['Glass Wool Felt System', 'Rubber Plastic Pipe System', 'Documents & Spec Sheets'],
+      selector: {
+        title: 'Material Configurator',
+        description: 'Select application and performance priority to identify the more suitable system.',
+        application: 'Application',
+        priority: 'Priority',
+        result: 'Suggested System',
+        options: {
+          applications: ['Building Envelope', 'HVAC Duct', 'MEP Piping'],
+          priorities: ['Fire Safety', 'Thermal Efficiency', 'Installation Speed'],
+        },
+      },
+      sections: [
+        {
+          id: 'glass-wool-felt',
+          title: 'Glass Wool Felt',
+          subtitle: 'For building envelope, HVAC duct, industrial equipment and acoustic control applications.',
+          href: '/products/glass-wool-felt',
+          facts: [
+            ['Fire Performance', 'A1 / Non-combustible'],
+            ['Thermal Conductivity', '0.032-0.040 W/m.K'],
+            ['Application', 'Envelope / Duct / Plant Room'],
+          ],
+          features: ['Supports large-area thermal and acoustic systems', 'Available with facing and roll-based customization', 'Efficient for transport, cutting and on-site continuity'],
+          docs: ['Spec Sheet Entry', 'Test Data', 'Detail Guidance'],
+          metrics: [
+            ['Fire System', '96%'],
+            ['Thermal Efficiency', '88%'],
+            ['Acoustic Support', '84%'],
+          ],
+        },
+        {
+          id: 'rubber-plastic-pipe',
+          title: 'Rubber Plastic Pipe',
+          subtitle: 'For chilled water, hot water, HVAC and complex piping insulation systems.',
+          href: '/products/rubber-plastic-pipe',
+          facts: [
+            ['Closed Cell Structure', 'Stable condensation control'],
+            ['Thermal Control', 'Low heat loss'],
+            ['Installation', 'Fast on-site wrapping'],
+          ],
+          features: ['Supports MEP pipelines and mechanical equipment', 'Balances flexibility, durability and installation speed', 'Coordinates with adhesive, tape and node materials'],
+          docs: ['Spec Sheet Entry', 'Installation Guide', 'Technical Support'],
+          metrics: [
+            ['Condensation Control', '92%'],
+            ['Thermal Control', '86%'],
+            ['Installation Speed', '90%'],
+          ],
+        },
+      ],
+      actions: {
+        details: 'View Details',
+        specs: 'View Spec Sheet',
+      },
+    };
+---
+
+<Layout title={page.title} description={page.description} locale={locale}>
+  <Header />
+
+  <section class="page-band-clear px-4 pb-10 pt-32 md:px-8 md:pb-12 md:pt-36">
+    <div class="mx-auto grid max-w-editorial gap-8 lg:grid-cols-[minmax(0,1.1fr)_24rem]">
+      <div class="industrial-frame bg-white p-8 md:p-12" data-animate-group>
+        <p data-animate-item class="industrial-kicker">{page.eyebrow}</p>
+        <h1 data-animate-item class="mt-5 max-w-[10ch] text-fluid-3xl font-display font-semibold leading-[0.94] text-ink">
+          {page.title}
+        </h1>
+        <p data-animate-item class="mt-7 max-w-reading text-fluid-base leading-[1.8] text-stone-700">
+          {page.summary}
+        </p>
+      </div>
+
+      <aside class="industrial-frame bg-white p-6 md:sticky md:top-28 md:p-8" data-animate-group>
+        <div data-animate-item class="flex items-center justify-between border-b border-black/10 pb-4">
+          <p class="industrial-kicker">{page.sideTitle}</p>
+          <span class="text-[10px] font-semibold uppercase tracking-[0.22em] text-stone-400">01</span>
+        </div>
+        <div class="mt-5 grid gap-3">
+          {page.sideItems.map((item) => (
+            <div data-animate-item class="border border-black/8 bg-stone-50 px-4 py-4 text-sm font-semibold text-stone-700">
+              {item}
+            </div>
+          ))}
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="page-band px-4 pb-10 pt-12 md:px-8 md:pb-14 md:pt-16">
+    <div class="mx-auto grid max-w-editorial gap-6 lg:grid-cols-[0.88fr_1.12fr]">
+      <div class="industrial-frame bg-white p-6 md:p-8" data-animate>
+        <div class="flex items-center justify-between border-b border-black/10 pb-4">
+          <p class="industrial-kicker">{page.selector.title}</p>
+          <span class="text-[10px] font-semibold uppercase tracking-[0.22em] text-stone-400">CFG</span>
+        </div>
+        <p class="text-pretty mt-6 max-w-[28rem] text-sm leading-7 text-stone-700">{page.selector.description}</p>
+
+        <div class="mt-8 grid gap-6">
+          <div class="grid gap-3">
+            <p class="text-[11px] font-semibold uppercase tracking-[0.18em] text-stone-500">{page.selector.application}</p>
+            <div class="flex flex-wrap gap-3">
+              {page.selector.options.applications.map((item, index) => (
+                <button
+                  type="button"
+                  class="config-trigger border border-black/10 bg-stone-50 px-4 py-3 text-sm font-semibold text-stone-700 transition-all duration-300 hover:bg-white"
+                  data-config-group="application"
+                  data-config-value={index}
+                >
+                  {item}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div class="grid gap-3">
+            <p class="text-[11px] font-semibold uppercase tracking-[0.18em] text-stone-500">{page.selector.priority}</p>
+            <div class="flex flex-wrap gap-3">
+              {page.selector.options.priorities.map((item, index) => (
+                <button
+                  type="button"
+                  class="config-trigger border border-black/10 bg-stone-50 px-4 py-3 text-sm font-semibold text-stone-700 transition-all duration-300 hover:bg-white"
+                  data-config-group="priority"
+                  data-config-value={index}
+                >
+                  {item}
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="story-preview-card orbital-viewer min-h-[28rem] p-0" data-animate>
+        <div class="orbital-grid"></div>
+        <div id="config-orbital-core" class="orbital-core tilt-surface"></div>
+        <div class="orbital-ring h-[16rem] w-[16rem]"></div>
+        <div class="orbital-ring h-[22rem] w-[22rem] opacity-70"></div>
+        <div class="orbital-dot" style="left: 25%; top: 32%;"></div>
+        <div class="orbital-dot" style="right: 23%; top: 54%;"></div>
+        <div class="orbital-dot" style="left: 48%; bottom: 18%;"></div>
+        <div class="relative z-[1] flex min-h-[28rem] flex-col justify-between p-6 md:p-8">
+          <div class="max-w-[26rem]">
+            <p class="industrial-kicker">{page.selector.result}</p>
+            <h2 id="config-result-title" class="title-balance mt-5 text-fluid-2xl font-display font-semibold text-ink">
+              {page.sections[0].title}
+            </h2>
+            <p id="config-result-subtitle" class="text-pretty mt-4 text-fluid-base leading-[1.8] text-stone-700">
+              {page.sections[0].subtitle}
+            </p>
+          </div>
+          <div class="grid gap-3">
+            <div class="industrial-rule"></div>
+            <div id="config-result-facts" class="grid gap-3 md:grid-cols-3">
+              {page.sections[0].facts.map(([label, value]) => (
+                <div class="border border-black/8 bg-white/70 px-4 py-4 backdrop-blur-md">
+                  <p class="text-[10px] font-semibold uppercase tracking-[0.18em] text-stone-500">{label}</p>
+                  <p class="mt-3 text-sm font-semibold text-ink">{value}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="page-band-soft px-4 pb-14 pt-12 md:px-8 md:pb-20 md:pt-16">
+    <div class="mx-auto grid max-w-editorial gap-6">
+      {page.sections.map((section) => (
+        <article id={section.id} class="group industrial-frame industrial-hover-card bg-white p-6 md:p-8 lg:p-10" data-animate>
+          <div class="grid gap-8 lg:grid-cols-[minmax(0,1.15fr)_minmax(22rem,0.85fr)]">
+            <div class="grid gap-5">
+              <div class="relative flex aspect-[16/10] items-center justify-center overflow-hidden border border-black/8 bg-neutral-100">
+                <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(22,24,29,0.08),transparent_48%),linear-gradient(180deg,rgba(255,255,255,0.8),rgba(226,223,215,0.76))]"></div>
+                <div class="relative grid gap-3 text-center transition-transform duration-500 group-hover:scale-[1.03]">
+                  <div class="mx-auto h-10 w-10 border border-black/12 bg-white shadow-sm"></div>
+                  <p class="text-[11px] font-semibold uppercase tracking-[0.18em] text-stone-500">{section.title}</p>
+                  <span class="text-[10px] uppercase tracking-[0.2em] text-stone-400">{section.id.toUpperCase()}</span>
+                </div>
+              </div>
+
+              <div class="grid gap-3 md:grid-cols-3">
+                {section.facts.map(([label, value]) => (
+                  <div class="border border-black/8 bg-stone-50 px-4 py-4">
+                    <p class="text-[10px] font-semibold uppercase tracking-[0.18em] text-stone-500">{label}</p>
+                    <p class="mt-3 text-lg font-semibold text-ink">{value}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div class="grid gap-6">
+              <div class="border-b border-black/10 pb-5">
+                <p class="industrial-kicker">{section.id.toUpperCase()}</p>
+                  <h2 class="title-balance mt-3 text-fluid-xl font-display font-semibold text-ink">{section.title}</h2>
+                  <p class="text-pretty mt-4 text-fluid-base leading-[1.75] text-stone-700">{section.subtitle}</p>
+              </div>
+
+              <div class="grid gap-4 border-b border-black/10 pb-5">
+                {section.metrics.map(([label, score]) => (
+                  <div class="grid gap-2">
+                    <div class="flex items-center justify-between text-[11px] font-semibold uppercase tracking-[0.16em] text-stone-500">
+                      <span>{label}</span>
+                      <span>{score}</span>
+                    </div>
+                    <div class="spec-bar" style={`--bar-width:${score};`}>
+                      <span></span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <div class="grid gap-3">
+                {section.features.map((feature) => (
+                  <div class="flex items-start gap-3 border-l-2 border-black/10 pl-4 text-sm leading-6 text-stone-700">
+                    <span class="mt-[0.42rem] h-1.5 w-1.5 shrink-0 bg-ink"></span>
+                    <span>{feature}</span>
+                  </div>
+                ))}
+              </div>
+
+              <div class="grid gap-3 border-t border-black/10 pt-5">
+                {section.docs.map((doc) => (
+                  <a
+                    href={`${getLocalizedPathname(locale, section.href)}#technical-data`}
+                    class="flex items-center justify-between border border-black/8 bg-stone-50 px-4 py-4 text-sm font-semibold text-stone-700 transition-colors duration-300 hover:bg-white"
+                  >
+                    <span>{doc}</span>
+                    <span class="text-[10px] font-semibold uppercase tracking-[0.2em] text-stone-400">DOC</span>
+                  </a>
+                ))}
+              </div>
+
+              <div class="flex flex-col gap-3 pt-2 sm:flex-row">
+                <a
+                  href={getLocalizedPathname(locale, section.href)}
+                  class="inline-flex items-center justify-center bg-steel px-6 py-4 text-[11px] font-semibold uppercase tracking-[0.18em] text-white transition-all duration-300 hover:bg-graphite"
+                >
+                  {page.actions.details}
+                </a>
+                <a
+                  href={`${getLocalizedPathname(locale, section.href)}#technical-data`}
+                  class="inline-flex items-center justify-center border border-black/10 bg-white px-6 py-4 text-[11px] font-semibold uppercase tracking-[0.18em] text-ink transition-all duration-300 hover:bg-stone-50"
+                >
+                  {page.actions.specs}
+                </a>
+              </div>
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+</Layout>
+
+<script define:vars={{ sections: page.sections }}>
+  if (typeof window !== 'undefined') {
+    const bars = document.querySelectorAll('.spec-bar');
+    const buttons = document.querySelectorAll('.config-trigger');
+    const title = document.getElementById('config-result-title');
+    const subtitle = document.getElementById('config-result-subtitle');
+    const facts = document.getElementById('config-result-facts');
+    const core = document.getElementById('config-orbital-core');
+    let applicationIndex = 0;
+    let priorityIndex = 0;
+
+    if (bars.length) {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+            }
+          });
+        },
+        { threshold: 0.3 }
+      );
+
+      bars.forEach((bar) => observer.observe(bar));
+    }
+
+    const renderConfigurator = () => {
+      const usePipe = applicationIndex === 2 || priorityIndex === 2;
+      const active = usePipe ? sections[1] : sections[0];
+      if (!active || !title || !subtitle || !facts) return;
+
+      title.textContent = active.title;
+      subtitle.textContent = active.subtitle;
+      facts.innerHTML = active.facts
+        .map(
+          ([label, value]) => `
+            <div class="border border-black/8 bg-white/70 px-4 py-4 backdrop-blur-md">
+              <p class="text-[10px] font-semibold uppercase tracking-[0.18em] text-stone-500">${label}</p>
+              <p class="mt-3 text-sm font-semibold text-ink">${value}</p>
+            </div>
+          `
+        )
+        .join('');
+
+      if (core) {
+        core.style.transform =
+          usePipe ? 'translate(-50%, -50%) scale(0.92) rotate(12deg)' : 'translate(-50%, -50%) scale(1) rotate(0deg)';
+      }
+    };
+
+    buttons.forEach((button) => {
+      button.addEventListener('click', () => {
+        const group = button.dataset.configGroup;
+        const value = Number(button.dataset.configValue ?? 0);
+        if (group === 'application') applicationIndex = value;
+        if (group === 'priority') priorityIndex = value;
+
+        buttons.forEach((item) => {
+          const isActive = item.dataset.configGroup === group ? item === button : item.classList.contains('is-active');
+          if (item.dataset.configGroup === group) {
+            item.classList.toggle('is-active', item === button);
+            item.classList.toggle('bg-steel', item === button);
+            item.classList.toggle('text-white', item === button);
+            item.classList.toggle('border-steel', item === button);
+            item.classList.toggle('bg-stone-50', item !== button);
+            item.classList.toggle('text-stone-700', item !== button);
+            item.classList.toggle('border-black/10', item !== button);
+          }
+        });
+
+        renderConfigurator();
+      });
+    });
+
+    document.querySelectorAll('[data-config-group="application"]')[0]?.dispatchEvent(new Event('click'));
+    document.querySelectorAll('[data-config-group="priority"]')[0]?.dispatchEvent(new Event('click'));
+
+    if (core && window.matchMedia('(pointer: fine)').matches) {
+      const viewer = core.closest('.orbital-viewer');
+      viewer?.addEventListener('mousemove', (event) => {
+        const rect = viewer.getBoundingClientRect();
+        const offsetX = (event.clientX - rect.left) / rect.width - 0.5;
+        const offsetY = (event.clientY - rect.top) / rect.height - 0.5;
+        core.style.transform = `translate(-50%, -50%) rotateY(${offsetX * 18}deg) rotateX(${offsetY * -16}deg)`;
+      });
+      viewer?.addEventListener('mouseleave', () => {
+        core.style.transform = 'translate(-50%, -50%) rotateY(0deg) rotateX(0deg)';
+        renderConfigurator();
+      });
+    }
+  }
+</script>

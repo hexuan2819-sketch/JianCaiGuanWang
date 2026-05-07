@@ -1,37 +1,48 @@
 ---
+import { defaultLocale, normalizeLocale } from '../../i18n/config';
+import { useTranslations } from '../../i18n/ui';
+
+const locale = normalizeLocale(Astro.currentLocale ?? defaultLocale);
+const t = useTranslations(locale);
+
 const cards = [
   {
-    title: '商业地产',
-    copy: '以统一材料语言完成公区、电梯厅、立面与导视界面的整体串联，建立项目气质。',
-    tag: '旗舰叙事',
+    title: t('bentoScenarios.cards.first.title'),
+    copy: t('bentoScenarios.cards.first.teaser'),
+    expandedCopy: t('bentoScenarios.cards.first.expanded'),
+    tag: t('bentoScenarios.cards.first.tag'),
     image: 'https://images.unsplash.com/photo-1494526585095-c41746248156?q=80&w=1974&auto=format&fit=crop',
     shape: 'polygon(20% 0%, 100% 0, 100% 80%, 80% 100%, 0 100%, 0% 20%)'
   },
   {
-    title: '星级酒店',
-    copy: '兼顾高频使用与空间仪式感，控制批次稳定、触感细节与夜间光影层次。',
-    tag: '高频运营',
+    title: t('bentoScenarios.cards.second.title'),
+    copy: t('bentoScenarios.cards.second.teaser'),
+    expandedCopy: t('bentoScenarios.cards.second.expanded'),
+    tag: t('bentoScenarios.cards.second.tag'),
     image: 'https://images.unsplash.com/photo-1445019980597-93fa8acb246c?q=80&w=2070&auto=format&fit=crop',
     shape: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)'
   },
   {
-    title: '高端私宅',
-    copy: '围绕厅、厨、卧与卫浴的连续体验，建立克制而长期耐看的居住表情。',
-    tag: '私宅定制',
+    title: t('bentoScenarios.cards.third.title'),
+    copy: t('bentoScenarios.cards.third.teaser'),
+    expandedCopy: t('bentoScenarios.cards.third.expanded'),
+    tag: t('bentoScenarios.cards.third.tag'),
     image: 'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?q=80&w=2070&auto=format&fit=crop',
     shape: 'polygon(10% 0, 90% 0, 100% 50%, 90% 100%, 10% 100%, 0 50%)'
   },
   {
-    title: '文化会所',
-    copy: '通过石材、木艺与金属的复合搭配，塑造带有记忆点的安静空间。',
-    tag: '文化静场',
+    title: t('bentoScenarios.cards.fourth.title'),
+    copy: t('bentoScenarios.cards.fourth.teaser'),
+    expandedCopy: t('bentoScenarios.cards.fourth.expanded'),
+    tag: t('bentoScenarios.cards.fourth.tag'),
     image: 'https://images.unsplash.com/photo-1511818966892-d7d671e672a2?q=80&w=2070&auto=format&fit=crop',
     shape: 'polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%)'
   },
   {
-    title: '办公总部',
-    copy: '面向企业形象与效率空间，兼顾前台辨识度、会议区稳定感与动线秩序。',
-    tag: '总部形象',
+    title: t('bentoScenarios.cards.fifth.title'),
+    copy: t('bentoScenarios.cards.fifth.teaser'),
+    expandedCopy: t('bentoScenarios.cards.fifth.expanded'),
+    tag: t('bentoScenarios.cards.fifth.tag'),
     image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop',
     shape: 'polygon(0 0, 80% 0, 100% 20%, 100% 100%, 20% 100%, 0 80%)'
   },
@@ -49,11 +60,11 @@ const cards = [
   <div class="relative z-10 mx-auto flex min-h-[calc(100svh-2rem)] w-full max-w-[1800px] flex-col px-4 md:min-h-[calc(100svh-3rem)] md:px-8 lg:h-full lg:min-h-0">
     <div class="mb-8 flex flex-col gap-4 px-2 sm:px-4 md:mb-10 md:flex-row md:items-end md:justify-between">
       <div>
-        <span class="text-xs font-light tracking-[0.4em] text-[#cfa878]">04 / 应用场景</span>
-        <h2 class="mt-4 font-serif text-3xl font-normal text-white tracking-[0.15em] sm:text-4xl sm:tracking-widest">在复杂项目中，保持统一叙事</h2>
+        <span class="text-xs font-light tracking-[0.4em] text-[#cfa878]">{t('bentoScenarios.sectionLabel')}</span>
+        <h2 class="mt-4 font-serif text-3xl font-normal text-white tracking-[0.15em] sm:text-4xl sm:tracking-widest">{t('bentoScenarios.title')}</h2>
       </div>
       <p class="max-w-[400px] text-sm font-light leading-8 tracking-wider text-neutral-300 md:text-right">
-        不同场景拥有不同尺度、预算与耐久要求。我们用同一套供应与深化方法，让空间拥有独立表情。
+        {t('bentoScenarios.intro')}
       </p>
     </div>
 
@@ -62,6 +73,10 @@ const cards = [
         <button
           class={`bento-card group relative overflow-hidden rounded-[1.75rem] border border-[#cfa878]/20 bg-black/40 transition-all duration-500 hover:border-[#cfa878]/50 hover:shadow-[0_0_40px_rgba(207,168,120,0.15)] md:rounded-[2.5rem] ${index === 0 ? 'md:col-span-2' : ''} ${index === 1 ? 'md:col-span-1' : ''} ${index === 2 ? 'md:col-span-1' : ''} ${index === 3 ? 'md:col-span-1' : ''} ${index === 4 ? 'md:col-span-3' : ''} will-change-transform transform-gpu`}
           data-index={index}
+          data-title={card.title}
+          data-tag={card.tag}
+          data-image={card.image}
+          data-expanded-copy={card.expandedCopy}
           aria-label={card.title}
         >
           <img src={card.image} alt={card.title} loading="lazy" decoding="async" class="absolute inset-0 h-full w-full object-cover transition-transform duration-1000 group-hover:scale-110 will-change-transform transform-gpu" />
@@ -104,39 +119,6 @@ const cards = [
 
 <script>
   if (typeof window !== 'undefined') {
-    const cardsData = [
-      {
-        title: '商业地产',
-        copy: '以统一材料语言完成公区、电梯厅、立面与导视界面的整体串联，建立项目气质。让前场识别度、背景墙连续性与公共动线中的耐用秩序得到完美体现。',
-        tag: '旗舰叙事',
-        image: 'https://images.unsplash.com/photo-1494526585095-c41746248156?q=80&w=1974&auto=format&fit=crop'
-      },
-      {
-        title: '星级酒店',
-        copy: '兼顾高频使用与空间仪式感，控制批次稳定、触感细节与夜间光影层次。从大堂到套房，强化石材、木艺与金属之间的层次过渡。',
-        tag: '高频运营',
-        image: 'https://images.unsplash.com/photo-1445019980597-93fa8acb246c?q=80&w=2070&auto=format&fit=crop'
-      },
-      {
-        title: '高端私宅',
-        copy: '围绕厅、厨、卧与卫浴的连续体验，建立克制而长期耐看的居住表情。通过细部收口和表面触感，让日常空间拥有静水深流的力量。',
-        tag: '私宅定制',
-        image: 'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?q=80&w=2070&auto=format&fit=crop'
-      },
-      {
-        title: '文化会所',
-        copy: '通过石材、木艺与金属的复合搭配，塑造带有记忆点的安静空间。以更安静的材质关系控制情绪，让会所空间兼具停留感与仪式感。',
-        tag: '文化静场',
-        image: 'https://images.unsplash.com/photo-1511818966892-d7d671e672a2?q=80&w=2070&auto=format&fit=crop'
-      },
-      {
-        title: '办公总部',
-        copy: '面向企业形象与效率空间，兼顾前台辨识度、会议区稳定感与动线秩序。以简洁但不空洞的材料逻辑，为企业品牌建立长期可识别的办公界面。',
-        tag: '总部形象',
-        image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop'
-      }
-    ];
-
     const btns = Array.from(document.querySelectorAll<HTMLButtonElement>('.bento-card'));
     const overlay = document.getElementById('scenario-overlay');
     const closeBtn = document.getElementById('scenario-close');
@@ -180,13 +162,15 @@ const cards = [
     // Expansion Overlay Logic
     btns.forEach((btn) => {
       btn.addEventListener('click', () => {
-        const idx = parseInt(btn.getAttribute('data-index') || '0', 10);
-        const data = cardsData[idx];
+        const title = btn.getAttribute('data-title') || '';
+        const tag = btn.getAttribute('data-tag') || '';
+        const image = btn.getAttribute('data-image') || '';
+        const expandedCopy = btn.getAttribute('data-expanded-copy') || '';
         
-        if(expImg) expImg.setAttribute('src', data.image);
-        if(expTag) expTag.textContent = data.tag;
-        if(expTitle) expTitle.textContent = data.title;
-        if(expCopy) expCopy.textContent = data.copy;
+        if(expImg) expImg.setAttribute('src', image);
+        if(expTag) expTag.textContent = tag;
+        if(expTitle) expTitle.textContent = title;
+        if(expCopy) expCopy.textContent = expandedCopy;
 
         overlay?.classList.remove('opacity-0', 'pointer-events-none');
         content?.classList.remove('scale-95');

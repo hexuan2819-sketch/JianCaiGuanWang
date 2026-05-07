@@ -1,0 +1,12 @@
+---
+import ProductsOverviewPage from '../../../components/pages/ProductsOverviewPage.astro';
+import { secondaryLocales, type SupportedLocale } from '../../../i18n/config';
+
+export function getStaticPaths() {
+  return secondaryLocales.map((locale) => ({ params: { locale }, props: { locale } }));
+}
+
+const { locale } = Astro.props as { locale: SupportedLocale };
+---
+
+<ProductsOverviewPage locale={locale} />

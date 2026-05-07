@@ -1,25 +1,31 @@
 ---
+import { defaultLocale, normalizeLocale } from '../../i18n/config';
+import { useTranslations } from '../../i18n/ui';
+
+const locale = normalizeLocale(Astro.currentLocale ?? defaultLocale);
+const t = useTranslations(locale);
+
 const slides = [
   {
     image: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=2070&auto=format&fit=crop',
-    title: '原石肌理',
-    copy: '涵盖大理石、石英岩、洞石与花岗岩系统。我们关注的不只是纹理本身，更是它在大面积铺陈、转角收口与立面展开后的秩序感。',
-    detail: '适用于大堂主背景、立面挂板、吧台、卫浴墙面与艺术楼梯。支持对纹排版、样板确认与跨区域批次稳定控制。',
-    tags: ['BOOK MATCHING', 'CUT-TO-SIZE', 'VEIN CONTROL'],
+    title: t('categoryStone.slides.first.title'),
+    copy: t('categoryStone.slides.first.copy'),
+    detail: t('categoryStone.slides.first.detail'),
+    tags: [t('categoryStone.slides.first.tags.first'), t('categoryStone.slides.first.tags.second'), t('categoryStone.slides.first.tags.third')],
   },
   {
     image: 'https://images.unsplash.com/photo-1533090161767-e6ffed986c88?q=80&w=1974&auto=format&fit=crop',
-    title: '石英岩语汇',
-    copy: '以更克制的纹理密度和更高的表面强度，建立兼具审美判断与工程耐久性的当代石材系统。',
-    detail: '适用于大面积墙地面、岛台、吧台与高频触达区域。强调大规格展开后的连续性与维护成本控制。',
-    tags: ['LOW POROSITY', 'LARGE FORMAT', 'DURABLE SURFACE'],
+    title: t('categoryStone.slides.second.title'),
+    copy: t('categoryStone.slides.second.copy'),
+    detail: t('categoryStone.slides.second.detail'),
+    tags: [t('categoryStone.slides.second.tags.first'), t('categoryStone.slides.second.tags.second'), t('categoryStone.slides.second.tags.third')],
   },
   {
     image: 'https://images.unsplash.com/photo-1600607686527-6fb886090705?q=80&w=2070&auto=format&fit=crop',
-    title: '洞石层理',
-    copy: '通过横切、竖切与填孔工艺，重新定义洞石在现代空间中的秩序、留白与呼吸感。',
-    detail: '适合静区背景、会所动线、私宅卫浴与轻度商业空间，以细腻层理建立低调而持久的空间气氛。',
-    tags: ['CROSS CUT', 'FILLED FINISH', 'QUIET TEXTURE'],
+    title: t('categoryStone.slides.third.title'),
+    copy: t('categoryStone.slides.third.copy'),
+    detail: t('categoryStone.slides.third.detail'),
+    tags: [t('categoryStone.slides.third.tags.first'), t('categoryStone.slides.third.tags.second'), t('categoryStone.slides.third.tags.third')],
   },
 ];
 ---
@@ -38,8 +44,8 @@ const slides = [
   <div class="relative z-10 mx-auto flex min-h-[calc(100svh-2rem)] w-full max-w-[1800px] flex-col px-4 md:min-h-[calc(100svh-3rem)] md:px-8 lg:h-full lg:min-h-0">
     <div class="mb-6 flex items-center justify-between px-2 sm:px-4 md:mb-8">
       <div>
-        <span class="text-xs font-light tracking-[0.4em] text-[#cfa878]">02 / 王牌品类 01</span>
-        <h2 class="mt-4 font-serif text-3xl font-normal text-white tracking-[0.15em] sm:text-4xl sm:tracking-widest">原石肌理</h2>
+        <span class="text-xs font-light tracking-[0.4em] text-[#cfa878]">{t('categoryStone.sectionLabel')}</span>
+        <h2 class="mt-4 font-serif text-3xl font-normal text-white tracking-[0.15em] sm:text-4xl sm:tracking-widest">{t('categoryStone.title')}</h2>
       </div>
     </div>
 
@@ -47,7 +53,7 @@ const slides = [
       <!-- Left: 3D Hover Card (Aceternity Style) -->
       <div class="group flex w-full min-h-[24rem] items-center justify-center perspective-[2000px] sm:min-h-[28rem] lg:h-full lg:min-h-[50vh] lg:w-[55%]" id="stone-3d-container">
         <div id="stone-3d-card" class="relative h-full w-full max-w-[800px] overflow-hidden rounded-[2rem] border border-[#cfa878]/20 bg-black/50 shadow-2xl transition-all duration-300 ease-out cursor-pointer will-change-transform transform-gpu md:rounded-[2.5rem]" style="transform-style: preserve-3d;">
-          <img id="stone-image" src={slides[0].image} alt="Stone Background" loading="lazy" decoding="async" class="absolute inset-0 w-full h-full object-cover transition-opacity duration-500 will-change-opacity" />
+          <img id="stone-image" src={slides[0].image} alt={t('categoryStone.imageAlt')} loading="lazy" decoding="async" class="absolute inset-0 w-full h-full object-cover transition-opacity duration-500 will-change-opacity" />
           
           <!-- Glare Overlay -->
           <div id="stone-glare" class="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.2),transparent_60%)] opacity-0 transition-opacity duration-300 pointer-events-none mix-blend-overlay"></div>
@@ -75,8 +81,7 @@ const slides = [
         <!-- Floating Header above the list -->
         <div class="mb-8 border-l border-[#cfa878]/30 pl-5 md:mb-10 md:pl-6">
           <p class="text-sm font-light text-neutral-300 tracking-widest leading-loose">
-            以极致的选材标准，<br/>
-            重新定义自然纹理在现代建筑中的表现力。
+            {t('categoryStone.intro')}
           </p>
         </div>
 

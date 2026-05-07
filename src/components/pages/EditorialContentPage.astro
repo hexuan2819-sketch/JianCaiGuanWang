@@ -1,0 +1,208 @@
+---
+import Header from '../common/Header.astro';
+import Layout from '../../layouts/Layout.astro';
+import { defaultLocale, normalizeLocale, type SupportedLocale } from '../../i18n/config';
+
+export interface Props {
+  locale?: SupportedLocale;
+  title: string;
+  description: string;
+  eyebrow: string;
+  summary: string;
+  anchorItems?: { id: string; label: string }[];
+}
+
+const {
+  locale: localeProp,
+  title,
+  description,
+  eyebrow,
+  summary,
+  anchorItems = [],
+} = Astro.props as Props;
+
+const locale = normalizeLocale(localeProp ?? Astro.currentLocale ?? defaultLocale);
+const isZh = locale === 'zh';
+const storyCards = (anchorItems.length ? anchorItems : [{ id: 'overview', label: isZh ? '页面概览' : 'Overview' }]).map((item, index) => ({
+  ...item,
+  number: String(index + 1).padStart(2, '0'),
+  note: isZh ? ['项目视角', '系统逻辑', '交付结果'][index % 3] : ['Project View', 'System Logic', 'Delivery Result'][index % 3],
+  body: isZh
+    ? `${item.label} 模块将通过更完整的工程照片、系统节点、参数逻辑与项目结果，构建面向客户与顾问团队的品牌叙事。`
+    : `The ${item.label} module can expand with project imagery, system detailing, parameter logic and delivery outcomes for a more persuasive brand narrative.`,
+  stat: isZh ? ['300,000m2+ 场景适配', 'ISO / EN / ASTM 对标', '48H 项目响应'][index % 3] : ['300,000m2+ Scenario Fit', 'ISO / EN / ASTM Aligned', '48H Project Response'][index % 3],
+}));
+---
+
+<Layout title={title} description={description} locale={locale}>
+  <Header />
+
+  <section class="page-band-clear px-4 pb-10 pt-32 md:px-8 md:pb-14 md:pt-36">
+    <div class="mx-auto grid max-w-editorial gap-8 lg:grid-cols-[minmax(0,1.1fr)_20rem]">
+      <div data-animate-group class="industrial-frame bg-white p-8 md:p-12">
+        <p data-animate-item class="industrial-kicker">{eyebrow}</p>
+        <h1 data-animate-item class="mt-5 max-w-[12ch] text-fluid-3xl font-display font-semibold leading-[0.95] tracking-display text-ink">
+          {title}
+        </h1>
+        <p data-animate-item class="mt-8 max-w-reading text-fluid-base leading-[1.9] text-stone-700">
+          {summary}
+        </p>
+      </div>
+
+      <div class="industrial-frame bg-white p-6 md:p-8" data-animate-group>
+        <p data-animate-item class="industrial-kicker">{isZh ? '页面结构' : 'Page Structure'}</p>
+        <div class="mt-5 grid gap-3">
+          {anchorItems.length ? (
+            anchorItems.map((item, index) => (
+              <a
+                data-animate-item
+                href={`#${item.id}`}
+                class="flex items-center justify-between rounded-xl border border-neutral-100 bg-stone-50 px-4 py-4 text-sm text-stone-700 transition-colors duration-300 hover:bg-neutral-100"
+              >
+                <span>{item.label}</span>
+                 <span class="text-[11px] font-semibold uppercase tracking-[0.18em] text-stone-400">{String(index + 1).padStart(2, '0')}</span>
+              </a>
+            ))
+          ) : (
+            <div data-animate-item class="rounded-xl border border-neutral-100 bg-stone-50 px-4 py-4 text-sm text-stone-700">
+              {isZh ? '该页面内容模块将在下一阶段展开。' : 'Detailed modules will be expanded in the next phase.'}
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="page-band px-4 py-12 md:px-8 md:py-16">
+    <div class="mx-auto grid max-w-editorial gap-6">
+      {storyCards.map((item) => (
+        <section id={item.id} class="group industrial-frame industrial-hover-card bg-white p-6 md:p-8 lg:p-10" data-animate>
+          <div class="grid gap-8 md:grid-cols-[1fr_1fr] lg:grid-cols-[1.2fr_1fr] xl:grid-cols-[1.5fr_1fr]">
+            <div class="story-preview-card flex aspect-video w-full items-center justify-center rounded-none">
+              <div class="relative z-[1] grid gap-4 text-center transition-transform duration-500 group-hover:scale-[1.03]">
+                <div class="mx-auto h-12 w-12 border border-black/12 bg-white"></div>
+                <p class="text-[11px] font-semibold uppercase tracking-[0.18em] text-stone-500">{item.note}</p>
+                <span class="text-[clamp(1.4rem,1vw+1rem,2.1rem)] font-semibold tracking-[-0.04em] text-ink">{item.number}</span>
+              </div>
+            </div>
+            
+            <div class="flex flex-col justify-center">
+              <p class="industrial-kicker mb-3">{item.label}</p>
+              <h3 class="title-balance mb-4 text-2xl font-semibold text-ink md:text-3xl">{item.label} System</h3>
+              <p class="text-pretty mb-6 max-w-[30rem] text-fluid-base leading-[1.8] text-stone-700">{item.body}</p>
+              
+              <ul class="mb-8 grid gap-3">
+                <li class="flex items-center gap-3 text-sm text-stone-600">
+                  <div class="h-1.5 w-1.5 rounded-full bg-neutral-300"></div>
+                  {isZh ? '高标准制造参数' : 'High standard manufacturing'}
+                </li>
+                <li class="flex items-center gap-3 text-sm text-stone-600">
+                  <div class="h-1.5 w-1.5 rounded-full bg-neutral-300"></div>
+                  {isZh ? '稳定可靠的交付体系' : 'Reliable delivery system'}
+                </li>
+                <li class="flex items-center gap-3 text-sm text-stone-600">
+                  <div class="h-1.5 w-1.5 rounded-full bg-neutral-300"></div>
+                  {isZh ? '严格的技术测试' : 'Strict technical testing'}
+                </li>
+              </ul>
+              
+              <div class="mt-auto flex items-center justify-between gap-4 border-t border-black/8 pt-5">
+                <span class="text-[10px] font-semibold uppercase tracking-[0.22em] text-stone-400">{item.stat}</span>
+                <a href="#" class="group inline-flex items-center gap-2 text-sm font-medium text-ink transition-colors hover:text-stone-500">
+                  {isZh ? '查看详情' : 'View Details'}
+                  <svg class="h-4 w-4 transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M5 12h14M12 5l7 7-7 7" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+      ))}
+    </div>
+  </section>
+
+  <section class="page-band-soft px-4 pb-16 pt-12 md:px-8 md:pb-20 md:pt-16">
+    <div class="mx-auto grid max-w-editorial items-start gap-8 lg:grid-cols-[0.9fr_1.1fr]">
+      <div class="story-preview-card h-full min-h-[28rem] lg:min-h-[31rem]" data-animate>
+        <div class="relative z-[1] flex h-full flex-col justify-between">
+          <div>
+            <p id="editorial-story-note" class="industrial-kicker">{storyCards[0].note}</p>
+            <h2 id="editorial-story-title" class="title-balance mt-5 max-w-[10ch] text-fluid-2xl font-display font-semibold text-ink">
+              {storyCards[0].label}
+            </h2>
+            <p id="editorial-story-body" class="text-pretty mt-6 max-w-[30rem] text-fluid-base leading-[1.85] text-stone-700">
+              {storyCards[0].body}
+            </p>
+          </div>
+          <div class="grid gap-4">
+            <div class="industrial-rule"></div>
+            <div class="flex items-end justify-between gap-4">
+              <span id="editorial-story-stat" class="text-[clamp(1.5rem,1vw+1.2rem,2.35rem)] font-semibold tracking-[-0.04em] text-ink">{storyCards[0].stat}</span>
+              <span id="editorial-story-number" class="text-[10px] font-semibold uppercase tracking-[0.24em] text-stone-400">{storyCards[0].number}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid gap-5 lg:auto-rows-fr">
+        {storyCards.map((item) => (
+          <article
+            class="story-step flex h-full flex-col justify-between"
+            data-editorial-step
+            data-story-title={item.label}
+            data-story-body={item.body}
+            data-story-stat={item.stat}
+            data-story-number={item.number}
+            data-story-note={item.note}
+          >
+            <div class="flex items-center justify-between border-b border-black/10 pb-4">
+              <p class="industrial-kicker">{item.note}</p>
+              <span class="text-[10px] font-semibold uppercase tracking-[0.22em] text-stone-400">{item.number}</span>
+            </div>
+            <h3 class="title-balance mt-7 max-w-[14ch] text-[clamp(1.55rem,1vw+1.2rem,2.35rem)] font-semibold leading-[1.05] tracking-[-0.035em] text-ink">{item.label}</h3>
+            <p class="text-pretty mt-5 max-w-[32rem] text-fluid-base leading-[1.85] text-stone-700">{item.body}</p>
+            <div class="mt-auto border-t border-black/8 pt-6">
+              <span class="text-[10px] font-semibold uppercase tracking-[0.22em] text-stone-400">{item.stat}</span>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<script>
+  if (typeof window !== 'undefined') {
+    const steps = document.querySelectorAll('[data-editorial-step]');
+    const title = document.getElementById('editorial-story-title');
+    const body = document.getElementById('editorial-story-body');
+    const stat = document.getElementById('editorial-story-stat');
+    const number = document.getElementById('editorial-story-number');
+    const note = document.getElementById('editorial-story-note');
+
+    const setActive = (step) => {
+      if (!title || !body || !stat || !number || !note) return;
+      title.textContent = step.dataset.storyTitle ?? '';
+      body.textContent = step.dataset.storyBody ?? '';
+      stat.textContent = step.dataset.storyStat ?? '';
+      number.textContent = step.dataset.storyNumber ?? '';
+      note.textContent = step.dataset.storyNote ?? '';
+      steps.forEach((item) => item.classList.toggle('is-active', item === step));
+    };
+
+    if (steps.length) {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) setActive(entry.target);
+          });
+        },
+        { threshold: 0.5 }
+      );
+
+      steps.forEach((step) => observer.observe(step));
+      setActive(steps[0]);
+    }
+  }
+</script>

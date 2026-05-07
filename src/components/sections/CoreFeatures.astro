@@ -1,27 +1,33 @@
 ---
+import { defaultLocale, normalizeLocale } from '../../i18n/config';
+import { useTranslations } from '../../i18n/ui';
+
+const locale = normalizeLocale(Astro.currentLocale ?? defaultLocale);
+const t = useTranslations(locale);
+
 const features = [
   {
-    title: '全球物流',
-    copy: '覆盖海运、陆运与跨境清关环节，确保多地并行项目在时间轴上保持稳定推进。',
-    detail: '多港口并行订舱、落地清关与末端转运协同，让海外项目在高压工期中仍有确定性。',
+    title: t('coreFeatures.features.first.title'),
+    copy: t('coreFeatures.features.first.copy'),
+    detail: t('coreFeatures.features.first.detail'),
     image: 'https://images.unsplash.com/photo-1494412574643-ff11b0a5c1c3?q=80&w=2070&auto=format&fit=crop',
   },
   {
-    title: '国际认证',
-    copy: '支持项目所需的环保、防火、耐磨与结构性能资料，为国际招采流程提供充分依据。',
-    detail: '围绕项目审图、招采与合规节点，建立清晰材料资料包，减少跨境沟通成本。',
+    title: t('coreFeatures.features.second.title'),
+    copy: t('coreFeatures.features.second.copy'),
+    detail: t('coreFeatures.features.second.detail'),
     image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=2070&auto=format&fit=crop',
   },
   {
-    title: '定制工艺',
-    copy: '从分缝逻辑到异形节点深化，支持样板确认、批量制造与现场安装的连续协同。',
-    detail: '深化图、样板段、批量加工与安装节点彼此联动，让复杂设计真正转化为可施工成果。',
+    title: t('coreFeatures.features.third.title'),
+    copy: t('coreFeatures.features.third.copy'),
+    detail: t('coreFeatures.features.third.detail'),
     image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=2070&auto=format&fit=crop',
   },
   {
-    title: '极速交付',
-    copy: '设立专项项目经理与多节点追踪机制，让复杂供应链在高压工期下依旧可控。',
-    detail: '从下单、加工、出运到入场安装建立看板式追踪，关键节点提前预警，降低延期风险。',
+    title: t('coreFeatures.features.fourth.title'),
+    copy: t('coreFeatures.features.fourth.copy'),
+    detail: t('coreFeatures.features.fourth.detail'),
     image: 'https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?q=80&w=2070&auto=format&fit=crop',
   },
 ];
@@ -36,8 +42,8 @@ const features = [
   <div class="relative z-10 mx-auto flex min-h-[calc(100svh-2rem)] w-full max-w-[1800px] flex-col px-4 md:min-h-[calc(100svh-3rem)] md:px-10 lg:h-full lg:min-h-0 lg:px-12">
     <div class="mb-8 flex items-center justify-between px-2 md:mb-10">
       <div>
-        <span class="text-xs font-light tracking-[0.4em] text-[#cfa878]">05 / 核心优势</span>
-        <h2 class="mt-4 font-serif text-3xl font-normal text-white tracking-[0.15em] sm:text-4xl sm:tracking-widest">以系统能力支撑高标准落地</h2>
+        <span class="text-xs font-light tracking-[0.4em] text-[#cfa878]">{t('coreFeatures.sectionLabel')}</span>
+        <h2 class="mt-4 font-serif text-3xl font-normal text-white tracking-[0.15em] sm:text-4xl sm:tracking-widest">{t('coreFeatures.title')}</h2>
       </div>
     </div>
 
@@ -82,7 +88,7 @@ const features = [
 
           <div class="absolute inset-0 flex flex-col justify-end p-6 sm:p-8 md:p-12 lg:p-20" style="transform: translateZ(50px);">
             <div class="mb-6 inline-flex w-max rounded-full border border-[#cfa878]/30 bg-black/40 px-4 py-2.5 backdrop-blur-xl md:mb-8 md:px-6 md:py-3">
-              <span class="text-xs tracking-[0.3em] text-[#cfa878]">SYSTEM CAPABILITY</span>
+              <span class="text-xs tracking-[0.3em] text-[#cfa878]">{t('coreFeatures.stageLabel')}</span>
             </div>
             <p id="feature-stage-detail" class="max-w-2xl text-sm font-light leading-8 tracking-wide text-neutral-200 transition-opacity duration-500 md:text-lg md:leading-relaxed md:tracking-wider">
               {features[0].detail}

@@ -1,18 +1,24 @@
 ---
+import { defaultLocale, normalizeLocale } from '../../i18n/config';
+import { useTranslations } from '../../i18n/ui';
+
+const locale = normalizeLocale(Astro.currentLocale ?? defaultLocale);
+const t = useTranslations(locale);
+
 const slides = [
   {
-    title: '木地板系统',
-    copy: '适用于套房、会所与长住空间，强调脚感、拼缝稳定与耐用层表现。',
+    title: t('categoryWood.slides.first.title'),
+    copy: t('categoryWood.slides.first.copy'),
     image: 'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?q=80&w=2070&auto=format&fit=crop'
   },
   {
-    title: '墙面木饰面',
-    copy: '用于背景墙、走廊与接待区，兼顾节点收口、灯槽整合与大面积节奏控制。',
+    title: t('categoryWood.slides.second.title'),
+    copy: t('categoryWood.slides.second.copy'),
     image: 'https://images.unsplash.com/photo-1518005020951-eccb494ad742?q=80&w=2070&auto=format&fit=crop'
   },
   {
-    title: '定制家具面层',
-    copy: '延伸到柜门、门套与固定家具，让空间语言在细部层面保持一致。',
+    title: t('categoryWood.slides.third.title'),
+    copy: t('categoryWood.slides.third.copy'),
     image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop'
   }
 ];
@@ -29,11 +35,11 @@ const slides = [
   <div class="relative z-10 mx-auto flex min-h-[calc(100svh-2rem)] w-full max-w-[1800px] flex-col px-4 md:min-h-[calc(100svh-3rem)] md:px-8 lg:h-full lg:min-h-0">
     <div class="mb-6 flex flex-col gap-4 px-2 sm:px-4 md:mb-8 md:flex-row md:items-end md:justify-between">
       <div>
-        <span class="text-xs font-light tracking-[0.4em] text-[#cfa878]">03 / 王牌品类 02</span>
-        <h2 class="mt-4 font-serif text-3xl font-normal text-white tracking-[0.15em] sm:text-4xl sm:tracking-widest">温润木艺</h2>
+        <span class="text-xs font-light tracking-[0.4em] text-[#cfa878]">{t('categoryWood.sectionLabel')}</span>
+        <h2 class="mt-4 font-serif text-3xl font-normal text-white tracking-[0.15em] sm:text-4xl sm:tracking-widest">{t('categoryWood.title')}</h2>
       </div>
       <p class="max-w-[400px] text-sm font-light leading-8 tracking-wider text-neutral-300 md:text-right">
-        强调天然纹理、色差控制与触觉质感之间的平衡，让空间在深色背景中仍保有温度。
+        {t('categoryWood.intro')}
       </p>
     </div>
 
@@ -52,7 +58,7 @@ const slides = [
               <span class="font-serif text-lg font-normal text-[#cfa878]">0{index + 1}</span>
             </div>
             
-            <h3 class="mb-4 font-serif text-3xl font-normal text-white sm:text-4xl md:mb-6 md:whitespace-nowrap">{slide.title}</h3>
+            <h3 class="mb-4 max-w-[16ch] font-serif text-3xl font-normal text-white sm:text-4xl md:mb-6">{slide.title}</h3>
             
             <div class={`wood-content overflow-hidden transition-all duration-700 ${index === 0 ? 'max-h-[150px] opacity-100' : 'max-h-0 opacity-0'}`}>
               <p class="max-w-[400px] text-sm font-light leading-8 tracking-[0.1em] text-neutral-300 md:text-base">

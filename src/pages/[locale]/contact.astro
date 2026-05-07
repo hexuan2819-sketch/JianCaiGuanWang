@@ -1,0 +1,23 @@
+---
+import EditorialContentPage from '../../components/pages/EditorialContentPage.astro';
+import { secondaryLocales, type SupportedLocale } from '../../i18n/config';
+
+export function getStaticPaths() {
+  return secondaryLocales.map((locale) => ({ params: { locale }, props: { locale } }));
+}
+
+const { locale } = Astro.props as { locale: SupportedLocale };
+---
+
+<EditorialContentPage
+  locale={locale}
+  title="Contact"
+  description="Contact and inquiry page."
+  eyebrow="CONTACT"
+  summary="This route is prepared for inquiry forms, regional contact details, maps and response workflow content."
+  anchorItems={[
+    { id: 'inquiry', label: 'Inquiry' },
+    { id: 'offices', label: 'Contact Details' },
+    { id: 'response', label: 'Response Process' },
+  ]}
+/>

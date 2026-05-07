@@ -1,71 +1,237 @@
 ---
+import LanguagePicker from './LanguagePicker.astro';
+import { defaultLocale, normalizeLocale } from '../../i18n/config';
+import { getLocalizedPathname, stripLocaleFromPath } from '../../i18n/ui';
+
+const locale = normalizeLocale(Astro.currentLocale ?? defaultLocale);
+const isZh = locale === 'zh';
+const isHomeRoute = stripLocaleFromPath(Astro.url.pathname) === '/';
+
+const navLabel = {
+  open: isZh ? '打开菜单' : 'Open menu',
+  close: isZh ? '关闭菜单' : 'Close menu',
+  contact: isZh ? '联系我们' : 'Contact',
+  brand: isZh ? '工程保温材料系统' : 'ENGINEERED INSULATION SYSTEMS',
+  signature: isZh ? 'GLOBAL MATERIALS GROUP' : 'GLOBAL MATERIALS GROUP',
+  assurance: isZh ? 'ISO / ASTM / EN COMPLIANCE' : 'ISO / ASTM / EN COMPLIANCE',
+};
+
+const homeHref = getLocalizedPathname(locale, '/');
+
+const navItems = [
+  { href: homeHref, label: isZh ? '首页' : 'Home' },
+  { href: `${homeHref}#products`, label: isZh ? '产品总览' : 'Products' },
+  { href: `${homeHref}#about`, label: isZh ? '关于我们' : 'About' },
+  { href: `${homeHref}#cases`, label: isZh ? '案例分享' : 'Cases' },
+  { href: `${homeHref}#support`, label: isZh ? '支持中心' : 'Support' },
+  { href: `${homeHref}#blog`, label: isZh ? '企业博客' : 'Blog' },
+  { href: `${homeHref}#contact`, label: isZh ? '联系我们' : 'Contact' },
+];
 ---
 
-<header id="global-header" class="fixed left-0 top-0 z-50 w-full bg-transparent px-4 py-4 text-neutral-100 transition-all duration-500 md:px-10 md:py-5">
-  <div class="mx-auto flex max-w-[1600px] items-center justify-between gap-4">
-    <a href="#hero" class="shrink-0 font-display text-[11px] font-light tracking-[0.28em] text-neutral-100 sm:text-sm sm:tracking-[0.36em] md:text-base">
-      筑 物 为 诗
-    </a>
+<header
+  id="global-header"
+  class:list={[
+    'fixed inset-x-0 top-0 z-50 border-b transition-all duration-500',
+    isHomeRoute ? 'border-transparent bg-transparent' : 'border-black/10 bg-white/96 backdrop-blur-md shadow-sm',
+  ]}
+>
+  <div class="border-b border-transparent/0 bg-transparent">
+    <div id="header-shell" class="mx-auto flex max-w-editorial items-center justify-between gap-6 px-6 py-4 md:px-10 xl:px-12">
+      <a href={getLocalizedPathname(locale, '/')} class="grid min-w-0 gap-1">
+        <span data-header-text="subtle" class:list={['text-[10px] font-semibold tracking-[0.28em] md:text-[11px]', isHomeRoute ? 'text-white/62' : 'text-stone-600']}>{navLabel.signature}</span>
+        <span data-header-text="primary" class:list={['text-base font-semibold tracking-[0.08em] md:text-[1.05rem]', isHomeRoute ? 'text-white' : 'text-ink']}>{navLabel.brand}</span>
+      </a>
 
-    <nav class="hidden items-center gap-8 lg:flex">
-      <a href="#hero" class="editorial-label transition-colors duration-500 hover:text-white">首章</a>
-      <a href="#global-vision" class="editorial-label transition-colors duration-500 hover:text-white">版图</a>
-      <a href="#category-stone" class="editorial-label transition-colors duration-500 hover:text-white">原石</a>
-      <a href="#category-wood" class="editorial-label transition-colors duration-500 hover:text-white">木艺</a>
-      <a href="#bento-scenarios" class="editorial-label transition-colors duration-500 hover:text-white">场景</a>
-      <a href="#core-features" class="editorial-label transition-colors duration-500 hover:text-white">优势</a>
-      <a href="#craftsmanship" class="editorial-label transition-colors duration-500 hover:text-white">工艺</a>
-      <a href="#contact-form" class="editorial-label transition-colors duration-500 hover:text-white">洽询</a>
-    </nav>
+      <div class="hidden items-center gap-6 xl:flex">
+        <span data-header-text="subtle" class:list={['text-[10px] font-semibold tracking-[0.22em]', isHomeRoute ? 'text-white/58' : 'text-stone-500']}>{navLabel.assurance}</span>
+        <div data-header-divider class:list={['h-8 w-px', isHomeRoute ? 'bg-white/14' : 'bg-black/10']}></div>
+        <nav class="flex items-center gap-7">
+          {navItems.map((item) => (
+            <a
+              href={item.href}
+              data-header-text="nav"
+              class:list={[
+                'text-[11px] font-semibold uppercase tracking-[0.16em] transition-colors duration-300',
+                isHomeRoute ? 'text-white/78 hover:text-white' : 'text-stone-700 hover:text-ink',
+              ]}
+            >
+              {item.label}
+            </a>
+          ))}
+        </nav>
+      </div>
 
-    <a href="#contact-form" class="hidden border-b border-white/30 pb-1 text-[11px] font-light tracking-[0.28em] text-neutral-300 transition-colors duration-500 hover:border-white hover:text-white md:inline-block">
-      项目洽询
-    </a>
-
-    <button
-      id="mobile-nav-toggle"
-      type="button"
-      class="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/15 bg-black/25 text-white backdrop-blur-xl transition-all duration-300 hover:bg-white/10 lg:hidden"
-      aria-expanded="false"
-      aria-controls="mobile-nav-panel"
-      aria-label="打开导航"
-    >
-      <span class="sr-only">打开导航</span>
-      <svg class="pointer-events-none h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-        <path d="M4 7h16M4 12h16M4 17h16" />
-      </svg>
-    </button>
+      <div class="flex items-center gap-3 md:gap-4">
+        <LanguagePicker />
+        <a
+          href={`${homeHref}#contact`}
+          data-header-cta
+          class:list={[
+            'hidden px-6 py-3 text-[11px] font-semibold uppercase tracking-[0.18em] transition-all duration-300 md:inline-flex',
+            isHomeRoute
+              ? 'border border-white/20 bg-white/10 text-white backdrop-blur-sm hover:bg-white/16'
+              : 'border border-black/12 bg-steel text-white hover:bg-graphite',
+          ]}
+        >
+          {navLabel.contact}
+        </a>
+        <button
+          id="mobile-nav-toggle"
+          type="button"
+          class:list={[
+            'inline-flex h-11 w-11 items-center justify-center transition-all duration-300 xl:hidden',
+            isHomeRoute
+              ? 'border border-white/20 bg-white/10 text-white backdrop-blur-sm hover:bg-white/16'
+              : 'border border-black/10 bg-white text-ink hover:bg-concrete',
+          ]}
+          aria-expanded="false"
+          aria-controls="mobile-nav-panel"
+          aria-label={navLabel.open}
+        >
+          <span class="sr-only">{navLabel.open}</span>
+          <svg class="pointer-events-none h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M4 7h16M4 12h16M4 17h16" />
+          </svg>
+        </button>
+      </div>
+    </div>
   </div>
 
   <div
     id="mobile-nav-panel"
-    class="pointer-events-none absolute inset-x-4 top-[calc(100%+0.5rem)] rounded-[1.75rem] border border-white/10 bg-neutral-950/90 p-5 opacity-0 shadow-[0_30px_80px_rgba(0,0,0,0.45)] backdrop-blur-2xl transition-all duration-300 lg:hidden"
+    class="pointer-events-none absolute inset-x-4 top-[calc(100%+0.5rem)] border border-black/10 bg-white p-5 opacity-0 shadow-editorial transition-all duration-300 xl:hidden"
     aria-hidden="true"
   >
+    <div class="mb-4 flex items-center justify-between border-b border-black/10 pb-4">
+      <span class="text-[10px] font-semibold tracking-[0.24em] text-stone-500">{navLabel.assurance}</span>
+    </div>
     <nav class="grid gap-2">
-      <a href="#hero" class="rounded-2xl px-4 py-3 text-sm font-light tracking-[0.18em] text-neutral-200 transition-colors duration-300 hover:bg-white/5 hover:text-white">首章</a>
-      <a href="#global-vision" class="rounded-2xl px-4 py-3 text-sm font-light tracking-[0.18em] text-neutral-200 transition-colors duration-300 hover:bg-white/5 hover:text-white">版图</a>
-      <a href="#category-stone" class="rounded-2xl px-4 py-3 text-sm font-light tracking-[0.18em] text-neutral-200 transition-colors duration-300 hover:bg-white/5 hover:text-white">原石</a>
-      <a href="#category-wood" class="rounded-2xl px-4 py-3 text-sm font-light tracking-[0.18em] text-neutral-200 transition-colors duration-300 hover:bg-white/5 hover:text-white">木艺</a>
-      <a href="#bento-scenarios" class="rounded-2xl px-4 py-3 text-sm font-light tracking-[0.18em] text-neutral-200 transition-colors duration-300 hover:bg-white/5 hover:text-white">场景</a>
-      <a href="#core-features" class="rounded-2xl px-4 py-3 text-sm font-light tracking-[0.18em] text-neutral-200 transition-colors duration-300 hover:bg-white/5 hover:text-white">优势</a>
-      <a href="#craftsmanship" class="rounded-2xl px-4 py-3 text-sm font-light tracking-[0.18em] text-neutral-200 transition-colors duration-300 hover:bg-white/5 hover:text-white">工艺</a>
-      <a href="#contact-form" class="rounded-2xl bg-white/8 px-4 py-3 text-sm font-light tracking-[0.18em] text-white transition-colors duration-300 hover:bg-white/12">项目洽询</a>
+      {navItems.map((item) => (
+        <a href={item.href} class="border border-black/6 px-4 py-3 text-sm font-semibold tracking-[0.08em] text-stone-700 transition-colors duration-300 hover:bg-stone-50 hover:text-ink">
+          {item.label}
+        </a>
+      ))}
     </nav>
   </div>
 </header>
 
-<script>
+<script define:vars={{ openMenuLabel: navLabel.open, closeMenuLabel: navLabel.close, isHomeRoute }}>
   if (typeof window !== 'undefined') {
     const header = document.getElementById('global-header');
     const toggle = document.getElementById('mobile-nav-toggle');
     const panel = document.getElementById('mobile-nav-panel');
-    const mobileLinks = panel?.querySelectorAll('a[href^="#"]') ?? [];
-    const desktopMedia = window.matchMedia('(min-width: 1024px)');
+    const shell = header?.firstElementChild;
+    const mobileLinks = panel?.querySelectorAll('a') ?? [];
+    const desktopMedia = window.matchMedia('(min-width: 1280px)');
+    const textPrimary = header?.querySelectorAll('[data-header-text="primary"]') ?? [];
+    const textSubtle = header?.querySelectorAll('[data-header-text="subtle"]') ?? [];
+    const textNav = header?.querySelectorAll('[data-header-text="nav"]') ?? [];
+    const dividers = header?.querySelectorAll('[data-header-divider]') ?? [];
+    const cta = header?.querySelector('[data-header-cta]');
+    const pickerToggle = header?.querySelector('[data-language-picker-toggle]');
+    const pickerCode = header?.querySelector('[data-language-picker-code]');
+    const pickerLabel = header?.querySelector('[data-language-picker-label]');
+    const pickerIcon = header?.querySelector('[data-language-picker-icon]');
+
+    const applyTransparentTheme = () => {
+      if (!header || !toggle || !isHomeRoute) return;
+      header.classList.remove('bg-white/96', 'backdrop-blur-md', 'border-black/10', 'shadow-sm');
+      header.classList.add('bg-transparent', 'border-transparent');
+
+      textPrimary.forEach((node) => {
+        node.classList.remove('text-ink');
+        node.classList.add('text-white');
+      });
+      textSubtle.forEach((node) => {
+        node.classList.remove('text-stone-500', 'text-stone-600');
+        node.classList.add('text-white/62');
+      });
+      textNav.forEach((node) => {
+        node.classList.remove('text-stone-700', 'hover:text-ink');
+        node.classList.add('text-white/78', 'hover:text-white');
+      });
+      dividers.forEach((node) => {
+        node.classList.remove('bg-black/10');
+        node.classList.add('bg-white/14');
+      });
+      if (cta) {
+        cta.classList.remove('border-black/12', 'bg-steel', 'text-white', 'hover:bg-graphite');
+        cta.classList.add('border-white/20', 'bg-white/10', 'text-white', 'backdrop-blur-sm', 'hover:bg-white/16');
+      }
+
+      toggle.classList.remove('border-black/10', 'bg-white', 'text-ink', 'hover:bg-concrete');
+      toggle.classList.add('border-white/20', 'bg-white/10', 'text-white', 'backdrop-blur-sm', 'hover:bg-white/16');
+
+      if (pickerToggle) {
+        pickerToggle.classList.remove('border-black/10', 'bg-white', 'text-ink', 'hover:bg-stone-50');
+        pickerToggle.classList.add('border-white/20', 'bg-white/10', 'text-white', 'backdrop-blur-sm', 'hover:bg-white/16');
+      }
+      if (pickerCode) {
+        pickerCode.classList.remove('text-stone-700');
+        pickerCode.classList.add('text-white');
+      }
+      if (pickerLabel) {
+        pickerLabel.classList.remove('text-stone-600');
+        pickerLabel.classList.add('text-white/72');
+      }
+      if (pickerIcon) {
+        pickerIcon.classList.remove('text-stone-500');
+        pickerIcon.classList.add('text-white/62');
+      }
+    };
+
+    const applySolidTheme = () => {
+      if (!header || !toggle) return;
+      header.classList.add('bg-white/96', 'backdrop-blur-md', 'border-black/10', 'shadow-sm');
+      header.classList.remove('bg-transparent', 'border-transparent');
+
+      textPrimary.forEach((node) => {
+        node.classList.remove('text-white');
+        node.classList.add('text-ink');
+      });
+      textSubtle.forEach((node) => {
+        node.classList.remove('text-white/62');
+        node.classList.add('text-stone-600');
+      });
+      textNav.forEach((node) => {
+        node.classList.remove('text-white/78', 'hover:text-white');
+        node.classList.add('text-stone-700', 'hover:text-ink');
+      });
+      dividers.forEach((node) => {
+        node.classList.remove('bg-white/14');
+        node.classList.add('bg-black/10');
+      });
+      if (cta) {
+        cta.classList.remove('border-white/20', 'bg-white/10', 'backdrop-blur-sm', 'hover:bg-white/16');
+        cta.classList.add('border-black/12', 'bg-steel', 'text-white', 'hover:bg-graphite');
+      }
+
+      toggle.classList.remove('border-white/20', 'bg-white/10', 'text-white', 'backdrop-blur-sm', 'hover:bg-white/16');
+      toggle.classList.add('border-black/10', 'bg-white', 'text-ink', 'hover:bg-concrete');
+
+      if (pickerToggle) {
+        pickerToggle.classList.remove('border-white/20', 'bg-white/10', 'text-white', 'backdrop-blur-sm', 'hover:bg-white/16');
+        pickerToggle.classList.add('border-black/10', 'bg-white', 'text-ink', 'hover:bg-stone-50');
+      }
+      if (pickerCode) {
+        pickerCode.classList.remove('text-white');
+        pickerCode.classList.add('text-stone-700');
+      }
+      if (pickerLabel) {
+        pickerLabel.classList.remove('text-white/72');
+        pickerLabel.classList.add('text-stone-600');
+      }
+      if (pickerIcon) {
+        pickerIcon.classList.remove('text-white/62');
+        pickerIcon.classList.add('text-stone-500');
+      }
+    };
 
     const closeMenu = () => {
       if (!toggle || !panel) return;
       toggle.setAttribute('aria-expanded', 'false');
+      toggle.setAttribute('aria-label', openMenuLabel);
       panel.setAttribute('aria-hidden', 'true');
       panel.classList.add('pointer-events-none', 'opacity-0', '-translate-y-2');
       document.body.style.removeProperty('overflow');
@@ -74,20 +240,23 @@
     const openMenu = () => {
       if (!toggle || !panel) return;
       toggle.setAttribute('aria-expanded', 'true');
+      toggle.setAttribute('aria-label', closeMenuLabel);
       panel.setAttribute('aria-hidden', 'false');
       panel.classList.remove('pointer-events-none', 'opacity-0', '-translate-y-2');
       document.body.style.setProperty('overflow', 'hidden');
     };
 
     const updateHeaderState = () => {
-      if (!header) return;
+      if (!header || !shell) return;
 
-      if (window.scrollY > 24) {
-        header.classList.add('backdrop-blur-xl', 'bg-neutral-950/70');
-        header.classList.remove('bg-transparent');
+      if (isHomeRoute && window.scrollY <= 50) {
+        applyTransparentTheme();
+        shell.classList.remove('py-4');
+        shell.classList.add('py-5');
       } else {
-        header.classList.remove('backdrop-blur-xl', 'bg-neutral-950/70');
-        header.classList.add('bg-transparent');
+        applySolidTheme();
+        shell.classList.remove('py-3');
+        shell.classList.add('py-4');
       }
     };
 

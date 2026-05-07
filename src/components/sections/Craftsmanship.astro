@@ -1,12 +1,17 @@
 ---
+import { defaultLocale, normalizeLocale } from '../../i18n/config';
+import { useTranslations } from '../../i18n/ui';
+
 const image =
   'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=2070&auto=format&fit=crop';
+const locale = normalizeLocale(Astro.currentLocale ?? defaultLocale);
+const t = useTranslations(locale);
 ---
 
 <section id="craftsmanship" class="relative flex min-h-[100svh] w-full flex-col justify-center overflow-hidden bg-black lg:h-[100svh]">
   <!-- Full-bleed Background with Parallax -->
   <div id="craft-stage" class="absolute inset-0 z-0 h-full w-full overflow-hidden">
-    <img src={image} alt="精密制造产线" loading="lazy" decoding="async" class="absolute inset-0 h-[110%] w-[110%] object-cover -top-[5%] -left-[5%] transition-transform duration-700 ease-out will-change-transform transform-gpu" id="craft-image" />
+    <img src={image} alt={t('craftsmanship.imageAlt')} loading="lazy" decoding="async" class="absolute inset-0 h-[110%] w-[110%] object-cover -top-[5%] -left-[5%] transition-transform duration-700 ease-out will-change-transform transform-gpu" id="craft-image" />
     
     <!-- Cinematic Dark Gradients -->
     <div class="absolute inset-0 bg-gradient-to-b from-[#050505] via-transparent to-[#050505] opacity-90"></div>
@@ -23,48 +28,48 @@ const image =
 
   <!-- Content Container -->
   <div class="relative z-10 mx-auto flex w-full max-w-[1800px] flex-col items-center justify-center px-4 text-center md:px-8">
-    <div data-animate-group class="flex flex-col items-center justify-center">
+    <div data-animate-group class="glass-cinematic flex flex-col items-center justify-center border border-white/10 bg-black/25 px-6 py-10 md:px-12 md:py-14">
       <!-- Section Label -->
       <div data-animate-item class="flex items-center justify-center gap-4 mb-8">
         <div class="h-px w-8 bg-[#cfa878]/40"></div>
-        <span class="text-[10px] font-light tracking-[0.4em] text-[#cfa878] uppercase">PRECISION MANUFACTURING</span>
+        <span class="text-[10px] font-light tracking-[0.4em] text-[#cfa878] uppercase">{t('craftsmanship.sectionLabel')}</span>
         <div class="h-px w-8 bg-[#cfa878]/40"></div>
       </div>
 
       <!-- Headlines -->
       <h2 data-animate-item class="font-serif text-[clamp(2.5rem,6vw,5rem)] font-normal leading-[1.1] text-white mb-2 tracking-wide drop-shadow-2xl">
-        实现极具质感的纹理表现
+        {t('craftsmanship.title')}
       </h2>
       <h3 data-animate-item class="font-serif text-[clamp(2rem,4.5vw,4rem)] font-normal italic leading-[1.1] text-neutral-400 mb-10 tracking-wide drop-shadow-xl">
-        源于绝对精密的制造工序
+        {t('craftsmanship.subtitle')}
       </h3>
 
       <!-- Body Copy -->
       <p data-animate-item class="max-w-[800px] text-sm font-light leading-8 tracking-[0.08em] text-neutral-300 md:text-base md:leading-9 mb-16 md:mb-24">
-        从荒料甄别、板面排版、异形切割到表面处理，我们建立了贯穿工厂与现场的质量闭环。每一个节点都被量化，每一次打样都对应明确的结果标准，让设计意图不在落地中失真。
+        {t('craftsmanship.body')}
       </p>
 
       <!-- Metrics Row -->
       <div data-animate-item class="flex flex-col items-center justify-center gap-12 md:flex-row md:gap-16 lg:gap-24">
         <div class="flex flex-col items-center group">
-          <span class="font-serif text-4xl md:text-5xl font-normal text-white mb-3 transition-transform duration-500 group-hover:-translate-y-1">5-Axis</span>
-          <span class="text-[10px] tracking-[0.25em] text-neutral-500 uppercase">CNC PROFILING</span>
+          <span class="font-serif text-4xl md:text-5xl font-normal text-white mb-3 transition-transform duration-500 group-hover:-translate-y-1">{t('craftsmanship.metrics.first.value')}</span>
+          <span class="text-[10px] tracking-[0.25em] text-neutral-500 uppercase">{t('craftsmanship.metrics.first.label')}</span>
         </div>
         
         <div class="hidden h-16 w-px bg-white/10 md:block"></div>
         <div class="block h-px w-16 bg-white/10 md:hidden"></div>
         
         <div class="flex flex-col items-center group">
-          <span class="font-serif text-4xl md:text-5xl font-normal text-[#cfa878] mb-3 transition-transform duration-500 group-hover:-translate-y-1 drop-shadow-[0_0_15px_rgba(207,168,120,0.4)]">16 Steps</span>
-          <span class="text-[10px] tracking-[0.25em] text-neutral-500 uppercase">SURFACE TREATMENT</span>
+          <span class="font-serif text-4xl md:text-5xl font-normal text-[#cfa878] mb-3 transition-transform duration-500 group-hover:-translate-y-1 drop-shadow-[0_0_15px_rgba(207,168,120,0.4)]">{t('craftsmanship.metrics.second.value')}</span>
+          <span class="text-[10px] tracking-[0.25em] text-neutral-500 uppercase">{t('craftsmanship.metrics.second.label')}</span>
         </div>
         
         <div class="hidden h-16 w-px bg-white/10 md:block"></div>
         <div class="block h-px w-16 bg-white/10 md:hidden"></div>
         
         <div class="flex flex-col items-center group">
-          <span class="font-serif text-4xl md:text-5xl font-normal text-white mb-3 transition-transform duration-500 group-hover:-translate-y-1">100%</span>
-          <span class="text-[10px] tracking-[0.25em] text-neutral-500 uppercase">FULL QC INSPECTION</span>
+          <span class="font-serif text-4xl md:text-5xl font-normal text-white mb-3 transition-transform duration-500 group-hover:-translate-y-1">{t('craftsmanship.metrics.third.value')}</span>
+          <span class="text-[10px] tracking-[0.25em] text-neutral-500 uppercase">{t('craftsmanship.metrics.third.label')}</span>
         </div>
       </div>
     </div>

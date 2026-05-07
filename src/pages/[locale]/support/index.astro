@@ -1,0 +1,23 @@
+---
+import EditorialContentPage from '../../../components/pages/EditorialContentPage.astro';
+import { secondaryLocales, type SupportedLocale } from '../../../i18n/config';
+
+export function getStaticPaths() {
+  return secondaryLocales.map((locale) => ({ params: { locale }, props: { locale } }));
+}
+
+const { locale } = Astro.props as { locale: SupportedLocale };
+---
+
+<EditorialContentPage
+  locale={locale}
+  title="Support Center"
+  description="Support center with service and technical guidance."
+  eyebrow="SUPPORT CENTER"
+  summary="This route is prepared for custom service, FAQs and technical support modules in a structured multi-page experience."
+  anchorItems={[
+    { id: 'custom-service', label: 'Custom Service' },
+    { id: 'faqs', label: 'FAQs' },
+    { id: 'technical-support', label: 'Technical Support' },
+  ]}
+/>

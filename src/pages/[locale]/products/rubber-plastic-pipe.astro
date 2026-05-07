@@ -1,0 +1,23 @@
+---
+import EditorialContentPage from '../../../components/pages/EditorialContentPage.astro';
+import { secondaryLocales, type SupportedLocale } from '../../../i18n/config';
+
+export function getStaticPaths() {
+  return secondaryLocales.map((locale) => ({ params: { locale }, props: { locale } }));
+}
+
+const { locale } = Astro.props as { locale: SupportedLocale };
+---
+
+<EditorialContentPage
+  locale={locale}
+  title="Rubber Plastic Pipe"
+  description="Detail page for rubber plastic insulation pipe."
+  eyebrow="RUBBER PLASTIC PIPE"
+  summary="This route is prepared for fire rating, weather resistance, insulation performance and system coordination details."
+  anchorItems={[
+    { id: 'specification', label: 'Specification' },
+    { id: 'applications', label: 'Applications' },
+    { id: 'technical-data', label: 'Technical Data' },
+  ]}
+/>

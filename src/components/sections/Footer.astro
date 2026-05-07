@@ -1,47 +1,96 @@
 ---
+import { defaultLocale, normalizeLocale } from '../../i18n/config';
+import { getLocalizedPathname } from '../../i18n/ui';
+
+const locale = normalizeLocale(Astro.currentLocale ?? defaultLocale);
+const isZh = locale === 'zh';
+
+const copy = isZh
+  ? {
+      brand: '工程保温材料系统',
+      group: 'GLOBAL MATERIALS GROUP',
+      description:
+        '聚焦玻璃棉毡、橡塑保温管及系统化工程材料，为建筑围护、暖通机电与工业设施项目提供稳定交付与技术协同。',
+      navTitle: '站点导航',
+      nav: [
+        { label: '首页', href: '/' },
+        { label: '产品总览', href: '/products/' },
+        { label: '关于我们', href: '/about' },
+        { label: '案例分享', href: '/cases/' },
+        { label: '支持中心', href: '/support/' },
+        { label: '企业博客', href: '/blog/' },
+        { label: '联系我们', href: '/contact' },
+      ],
+      contactTitle: '联系信息',
+      contact: ['邮箱：contact@globalmaterials.com', '电话：+86 400 888 0000', '地址：中国 河北省 廊坊市'],
+      legalTitle: '备案与说明',
+      legal: ['冀ICP备2025000000号-1', '公网安备 13100002000000号', '本网站内容仅作企业展示与商务沟通使用'],
+      copyright: 'Global Materials Group. 保留所有权利。',
+    }
+  : {
+      brand: 'ENGINEERED INSULATION SYSTEMS',
+      group: 'GLOBAL MATERIALS GROUP',
+      description:
+        'Focused on glass wool felt, rubber plastic pipe and coordinated engineered materials for building envelope, HVAC, MEP and industrial facilities.',
+      navTitle: 'Navigation',
+      nav: [
+        { label: 'Home', href: '/' },
+        { label: 'Products', href: '/products/' },
+        { label: 'About', href: '/about' },
+        { label: 'Cases', href: '/cases/' },
+        { label: 'Support', href: '/support/' },
+        { label: 'Blog', href: '/blog/' },
+        { label: 'Contact', href: '/contact' },
+      ],
+      contactTitle: 'Contact',
+      contact: ['Email: contact@globalmaterials.com', 'Phone: +86 400 888 0000', 'Address: Langfang, Hebei, China'],
+      legalTitle: 'Filing & Notice',
+      legal: ['Ji ICP No.2025000000-1', 'PSB Registration 13100002000000', 'This website is for corporate presentation and business communication only'],
+      copyright: 'Global Materials Group. All rights reserved.',
+    };
 ---
 
-<footer id="corporate-footer" class="bg-[linear-gradient(180deg,#121315_0%,#0c0d0f_100%)] px-4 py-10 text-neutral-400 md:px-10 md:py-16">
-  <div class="mx-auto max-w-[1600px]">
-    <div class="grid gap-10 border-t border-white/5 pt-8 md:grid-cols-2 md:gap-12 md:pt-10 xl:grid-cols-5" data-animate-group>
-      <div data-animate-item class="xl:col-span-2">
-        <p class="font-display text-xl font-light tracking-[0.2em] text-neutral-100">筑 物 为 诗</p>
-        <p class="mt-5 max-w-md text-sm font-light leading-8 tracking-[0.08em] text-neutral-500">
-          面向全球地标空间的高端建材供应服务商。以稳定履约、深度深化与审美判断，连接项目与材料之间最关键的一段距离。
-        </p>
+<footer id="corporate-footer" class="page-band border-t border-black/10 bg-[linear-gradient(180deg,rgba(246,244,239,0.92)_0%,rgba(233,229,220,0.96)_100%)] px-4 py-12 md:px-8 md:py-16">
+  <div class="mx-auto max-w-editorial">
+    <div class="grid gap-10 md:grid-cols-2 xl:grid-cols-[1.35fr_0.9fr_0.95fr] xl:gap-16" data-animate-group>
+      <div data-animate-item>
+        <p class="text-[10px] font-semibold uppercase tracking-[0.28em] text-stone-500">{copy.group}</p>
+        <h2 class="mt-4 text-[clamp(1.35rem,1vw+1rem,2rem)] font-semibold tracking-[-0.035em] text-ink">{copy.brand}</h2>
+        <p class="text-pretty mt-5 max-w-[34rem] text-sm leading-7 text-stone-700">{copy.description}</p>
       </div>
 
       <div data-animate-item>
-        <p class="text-[10px] tracking-[0.3em] text-neutral-500">导航</p>
-        <ul class="mt-5 space-y-3 break-words text-sm font-light">
-          <li><a href="#hero" class="transition-colors hover:text-white">首章</a></li>
-          <li><a href="#global-vision" class="transition-colors hover:text-white">全球版图</a></li>
-          <li><a href="#bento-scenarios" class="transition-colors hover:text-white">应用场景</a></li>
-          <li><a href="#contact-form" class="transition-colors hover:text-white">项目咨询</a></li>
+        <p class="industrial-kicker">{copy.navTitle}</p>
+        <ul class="mt-5 grid gap-3 text-sm text-stone-700">
+          {copy.nav.map((item) => (
+            <li>
+              <a href={getLocalizedPathname(locale, item.href)} class="transition-colors duration-300 hover:text-ink">
+                {item.label}
+              </a>
+            </li>
+          ))}
         </ul>
       </div>
 
       <div data-animate-item>
-        <p class="text-[10px] tracking-[0.3em] text-neutral-500">联系</p>
-        <ul class="mt-5 space-y-3 text-sm font-light">
-          <li>邮箱：contact@globalmaterials.com</li>
-          <li>电话：+86 400 888 8888</li>
-          <li>地址：上海市徐汇区国际建筑设计中心 A 座 42 层</li>
+        <p class="industrial-kicker">{copy.contactTitle}</p>
+        <ul class="mt-5 grid gap-3 text-sm leading-7 text-stone-700">
+          {copy.contact.map((item) => (
+            <li>{item}</li>
+          ))}
         </ul>
-      </div>
-
-      <div data-animate-item>
-        <p class="text-[10px] tracking-[0.3em] text-neutral-500">信息</p>
-        <ul class="mt-5 space-y-3 text-sm font-light">
-          <li>隐私政策</li>
-          <li>法律声明</li>
-          <li>沪ICP备20260000号-1</li>
+        <p class="industrial-kicker mt-8">{copy.legalTitle}</p>
+        <ul class="mt-5 grid gap-3 text-sm leading-7 text-stone-700">
+          {copy.legal.map((item) => (
+            <li>{item}</li>
+          ))}
         </ul>
       </div>
     </div>
 
-    <div class="mt-10 border-t border-white/5 pt-6 text-[11px] font-light tracking-[0.12em] text-neutral-600 md:mt-12" data-animate>
-      © {new Date().getFullYear()} GLOBAL MATERIALS. ALL RIGHTS RESERVED.
+    <div class="mt-10 flex flex-col gap-4 border-t border-black/8 pt-6 text-[11px] font-medium tracking-[0.12em] text-stone-500 md:mt-12 md:flex-row md:items-center md:justify-between" data-animate>
+      <span>© {new Date().getFullYear()} {copy.copyright}</span>
+      <span>{isZh ? '本页已接入静态多语言架构' : 'Built on a static multilingual architecture'}</span>
     </div>
   </div>
 </footer>

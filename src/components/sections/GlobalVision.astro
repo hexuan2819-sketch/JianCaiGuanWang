@@ -1,30 +1,36 @@
 ---
+import { defaultLocale, normalizeLocale } from '../../i18n/config';
+import { useTranslations } from '../../i18n/ui';
+
+const locale = normalizeLocale(Astro.currentLocale ?? defaultLocale);
+const t = useTranslations(locale);
+
 const slides = [
   {
-    title: '深耕中东与中亚，服务全球地标',
-    copy: '以迪拜、利雅得、塔什干与阿拉木图为关键节点，构建覆盖原材采购、工厂制造、国际物流与项目交付的连续服务链路。让地标建筑在复杂供应条件下依然保持稳定推进。',
-    metricA: '26+',
-    metricALabel: '核心供应节点',
-    metricB: '72h',
-    metricBLabel: '快速响应机制',
+    title: t('globalVision.slides.first.title'),
+    copy: t('globalVision.slides.first.copy'),
+    metricA: t('globalVision.slides.first.metricA'),
+    metricALabel: t('globalVision.slides.first.metricALabel'),
+    metricB: t('globalVision.slides.first.metricB'),
+    metricBLabel: t('globalVision.slides.first.metricBLabel'),
     image: 'https://images.unsplash.com/photo-1511818966892-d7d671e672a2?q=80&w=1974&auto=format&fit=crop',
   },
   {
-    title: '从城市天际线到项目落地，建立跨区域协同',
-    copy: '针对酒店、商业综合体与总部办公项目，我们将样板确认、批次控制与节点交付整合为同一套执行语言，减少跨国协作中的信息损耗。',
-    metricA: '14',
-    metricALabel: '跨境协作项目组',
-    metricB: '100%',
-    metricBLabel: '关键节点追踪',
+    title: t('globalVision.slides.second.title'),
+    copy: t('globalVision.slides.second.copy'),
+    metricA: t('globalVision.slides.second.metricA'),
+    metricALabel: t('globalVision.slides.second.metricALabel'),
+    metricB: t('globalVision.slides.second.metricB'),
+    metricBLabel: t('globalVision.slides.second.metricBLabel'),
     image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1974&auto=format&fit=crop',
   },
   {
-    title: '让材料能力与建筑叙事在同一画面里发生',
-    copy: '无论是高端私宅还是公共空间，我们更关注材料如何参与空间叙事，而非只承担装饰角色。每一次供货，最终都指向更完整的项目气质与体验。',
-    metricA: '200+',
-    metricALabel: '项目交付经验',
-    metricB: 'A+',
-    metricBLabel: '客户复购口碑',
+    title: t('globalVision.slides.third.title'),
+    copy: t('globalVision.slides.third.copy'),
+    metricA: t('globalVision.slides.third.metricA'),
+    metricALabel: t('globalVision.slides.third.metricALabel'),
+    metricB: t('globalVision.slides.third.metricB'),
+    metricBLabel: t('globalVision.slides.third.metricBLabel'),
     image: 'https://images.unsplash.com/photo-1518005020951-eccb494ad742?q=80&w=2070&auto=format&fit=crop',
   },
 ];
@@ -65,14 +71,14 @@ const slides = [
     <!-- Dynamic Background Glow for Content -->
     <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60vw] h-[60vh] bg-[#cfa878]/5 rounded-full blur-[120px] mix-blend-screen animate-pulse pointer-events-none"></div>
 
-    <div class="flex flex-col items-center justify-center text-center max-w-[1000px] mx-auto z-10 w-full flex-1" data-animate-group>
+    <div class="glass-cinematic flex flex-col items-center justify-center text-center max-w-[1080px] mx-auto z-10 w-full flex-1 border border-white/10 bg-black/20 px-6 py-10 md:px-12 md:py-14" data-animate-group>
       <div data-animate-item class="flex items-center justify-center gap-4 mb-8 mt-auto">
         <div class="h-px w-8 bg-[#cfa878]/40"></div>
-        <span class="text-[10px] font-light tracking-[0.4em] text-[#cfa878] uppercase">01 / GLOBAL VISION</span>
+        <span class="text-[10px] font-light tracking-[0.4em] text-[#cfa878] uppercase">{t('globalVision.sectionLabel')}</span>
         <div class="h-px w-8 bg-[#cfa878]/40"></div>
       </div>
       
-      <h2 id="vision-title" data-animate-item class="font-serif text-[clamp(2.5rem,5.5vw,5.5rem)] font-normal leading-[1.1] text-white mb-6 tracking-wide drop-shadow-2xl max-w-[16ch]">
+      <h2 id="vision-title" data-animate-item class="font-serif text-[clamp(2.5rem,5.5vw,5.5rem)] font-normal leading-[1.1] text-white mb-6 tracking-wide drop-shadow-2xl max-w-[20ch]">
         {slides[0].title}
       </h2>
       
@@ -112,40 +118,8 @@ const slides = [
     </div>
   </div>
 </section>
-<script>
+<script define:vars={{ slideData: slides }}>
   if (typeof window !== 'undefined') {
-    const slideData = [
-      {
-        title: '深耕中东与中亚，服务全球地标',
-        copy: '以迪拜、利雅得、塔什干与阿拉木图为关键节点，构建覆盖原材采购、工厂制造、国际物流与项目交付的连续服务链路。让地标建筑在复杂供应条件下依然保持稳定推进。',
-        metricA: '26+',
-        metricALabel: '核心供应节点',
-        metricB: '72h',
-        metricBLabel: '快速响应机制',
-        note: '从关键城市节点出发，建立更稳定的跨境材料履约系统。',
-        mode: '供应、深化、清关与交付在同一时间轴下协同。',
-      },
-      {
-        title: '从城市天际线到项目落地，建立跨区域协同',
-        copy: '针对酒店、商业综合体与总部办公项目，我们将样板确认、批次控制与节点交付整合为同一套执行语言，减少跨国协作中的信息损耗。',
-        metricA: '14',
-        metricALabel: '跨境协作项目组',
-        metricB: '100%',
-        metricBLabel: '关键节点追踪',
-        note: '跨国协同不只靠响应速度，更依赖标准化的项目界面与节点判断。',
-        mode: '样板先行、批次复核、节点交付三位一体推进。',
-      },
-      {
-        title: '让材料能力与建筑叙事在同一画面里发生',
-        copy: '无论是高端私宅还是公共空间，我们更关注材料如何参与空间叙事，而非只承担装饰角色。每一次供货，最终都指向更完整的项目气质与体验。',
-        metricA: '200+',
-        metricALabel: '项目交付经验',
-        metricB: 'A+',
-        metricBLabel: '客户复购口碑',
-        note: '材料不只是被选择，更应该主动参与空间叙事的建立。',
-        mode: '从选材到现场表现，以审美与工程双线同步推进。',
-      },
-    ];
     const slides = Array.from(document.querySelectorAll('#vision-carousel .vision-slide'));
     const indexLabel = document.getElementById('vision-index');
     const prev = document.getElementById('vision-prev');
@@ -159,9 +133,9 @@ const slides = [
 
     if (slides.length && indexLabel && prev && next && title && copy && metricA && metricALabel && metricB && metricBLabel) {
       let active = 0;
-      let timer: ReturnType<typeof setInterval> | undefined;
+      let timer;
 
-      const render = (index: number) => {
+      const render = (index) => {
         active = (index + slides.length) % slides.length;
         slides.forEach((slide, i) => {
           if (i === active) {

@@ -1,0 +1,23 @@
+---
+import EditorialContentPage from '../../../components/pages/EditorialContentPage.astro';
+import { secondaryLocales, type SupportedLocale } from '../../../i18n/config';
+
+export function getStaticPaths() {
+  return secondaryLocales.map((locale) => ({ params: { locale }, props: { locale } }));
+}
+
+const { locale } = Astro.props as { locale: SupportedLocale };
+---
+
+<EditorialContentPage
+  locale={locale}
+  title="Blog"
+  description="Editorial journal and company blog."
+  eyebrow="EDITORIAL JOURNAL"
+  summary="This route is prepared for industry insight, technical writing and company updates presented in a refined editorial format."
+  anchorItems={[
+    { id: 'insights', label: 'Insights' },
+    { id: 'technology', label: 'Technology' },
+    { id: 'news', label: 'News' },
+  ]}
+/>

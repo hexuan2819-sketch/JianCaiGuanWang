@@ -1,0 +1,652 @@
+---
+import Header from '../common/Header.astro';
+import Hero from '../sections/Hero.astro';
+import Layout from '../../layouts/Layout.astro';
+import { defaultLocale, normalizeLocale, type SupportedLocale } from '../../i18n/config';
+import { getLocalizedPathname } from '../../i18n/ui';
+
+export interface Props {
+  locale?: SupportedLocale;
+}
+
+const activeLocale = normalizeLocale(Astro.props.locale ?? Astro.currentLocale ?? defaultLocale);
+const isZh = activeLocale === 'zh';
+const homeHref = getLocalizedPathname(activeLocale, '/');
+
+const meta = isZh
+  ? {
+      title: '建筑保温材料解决方案',
+      description: '聚焦玻璃棉毡与橡塑保温管，构建具有工业权威感与国际审美的多页面工程材料企业站。',
+      ticker: ['ASTM / EN / ISO Standards', 'Fire Safety Systems', 'Thermal Efficiency', 'Acoustic Performance', 'Specification Ready', 'Global Project Delivery'],
+      stories: [
+        {
+          id: 'manufacturing',
+          number: '01',
+          title: '从制造端建立性能稳定性',
+          body: '通过标准化生产、来料控制与批次追踪，把保温、吸声与耐久性能转化为可复制的工程结果。',
+          stat: '12+ 生产线联动',
+          note: 'Manufacturing Narrative',
+        },
+        {
+          id: 'specification',
+          number: '02',
+          title: '让材料真正进入图纸与清单',
+          body: '围绕检测标准、参数表与技术响应，形成面向顾问、设计院与采购团队的规格书式支持体系。',
+          stat: '48H 技术评审响应',
+          note: 'Specification Logic',
+        },
+        {
+          id: 'delivery',
+          number: '03',
+          title: '把交付能力延伸到项目现场',
+          body: '从样品确认到节点建议，再到施工沟通和交付节点控制，建立完整的工程协同链路。',
+          stat: 'Global Project Delivery',
+          note: 'Project Execution',
+        },
+      ],
+      modules: [
+        {
+          id: '01',
+          title: '产品体系',
+          body: '以玻璃棉毡、橡塑保温管和系统配套材料构成完整工程采购入口。',
+          footnote: 'Spec-driven portfolio',
+        },
+        {
+          id: '02',
+          title: '项目交付',
+          body: '覆盖商业建筑、工业设施与基础建设项目的系统化落地能力。',
+          footnote: 'From drawing to site',
+        },
+        {
+          id: '03',
+          title: '标准与认证',
+          body: '围绕检测标准、技术资料与规格书建立可验证的采购信任。',
+          footnote: 'Verified compliance',
+        },
+      ],
+      sections: {
+        products: {
+          eyebrow: 'ENGINEERING PRODUCT PORTFOLIO',
+          title: '产品总览',
+          summary: '围绕防火、导热、吸声、耐久与安装效率等关键指标，建立面向设计院、总包与采购团队的选型入口。',
+          items: [
+            {
+              id: 'glass-wool-felt',
+              title: '玻璃棉毡',
+              subtitle: '建筑围护 / 暖通风管 / 工业设备 / 声学控制',
+              facts: [
+                ['防火体系', 'A1 / 不燃'],
+                ['导热系数', '0.032–0.040 W/m·K'],
+                ['声学支持', 'NRC 指标可配'],
+              ],
+              href: '/products/glass-wool-felt',
+            },
+            {
+              id: 'rubber-plastic-pipe',
+              title: '橡塑保温管',
+              subtitle: '冷热水管线 / 机电设备 / 复杂管路系统',
+              facts: [
+                ['闭孔结构', '稳定防凝露'],
+                ['导热管理', '低热损失'],
+                ['施工效率', '现场快速包覆'],
+              ],
+              href: '/products/rubber-plastic-pipe',
+            },
+          ],
+          action: '进入规格书',
+        },
+        about: {
+          eyebrow: 'ABOUT THE GROUP',
+          title: '关于我们',
+          summary: '以标准化制造、检测对标与项目协同为核心，将材料性能转化为可验证、可交付的工程结果。',
+          bullets: ['ISO / EN / ASTM 对标', '批次追踪与来料控制', '48H 技术评审响应', '现场节点与施工协同'],
+          action: '了解企业体系',
+          href: '/about',
+        },
+        cases: {
+          eyebrow: 'PROJECT PORTFOLIO',
+          title: '案例分享',
+          summary: '面向公共建筑、工业设施与基础建设场景，展示系统落地与交付路径。',
+          items: [
+            { title: '商业综合体 HVAC 风管保温', meta: 'Thermal + Fire Safety', tag: '01' },
+            { title: '工业厂房 机电管线保温体系', meta: 'MEP Piping', tag: '02' },
+            { title: '公共建筑 声学控制与围护节点', meta: 'Acoustic + Envelope', tag: '03' },
+          ],
+          action: '查看案例库',
+          href: '/cases/',
+        },
+        support: {
+          eyebrow: 'SUPPORT CENTER',
+          title: '支持中心',
+          summary: '为设计院、顾问、总包与采购团队提供规格书、检测数据、节点建议与技术咨询入口。',
+          items: [
+            { title: '客户服务', body: '交付沟通、样品管理与对接流程。' },
+            { title: '常见问题', body: '参数选型、覆面规格与施工要点。' },
+            { title: '技术支持', body: '节点建议、检测对标与资料输出。' },
+          ],
+          action: '进入支持中心',
+          href: '/support/',
+        },
+        blog: {
+          eyebrow: 'INSIGHTS',
+          title: '企业博客',
+          summary: '以工程视角解读材料参数、规范趋势与项目节点，服务设计与采购决策。',
+          items: [
+            { title: '保温材料参数如何进入清单', meta: 'Specification', tag: 'A1' },
+            { title: '防火体系与检测标准对标', meta: 'Compliance', tag: 'A2' },
+            { title: '现场安装效率与节点风险控制', meta: 'Delivery', tag: 'A3' },
+          ],
+          action: '进入博客',
+          href: '/blog/',
+        },
+        contact: {
+          eyebrow: 'CONTACT',
+          title: '联系我们',
+          summary: '留下需求信息，我们将在 48 小时内给出材料建议与规格书支持。',
+          cards: [
+            { label: '邮箱', value: 'contact@globalmaterials.com' },
+            { label: '电话', value: '+86 400 888 0000' },
+            { label: '响应', value: '48H Technical Review' },
+          ],
+          action: '提交需求',
+        },
+      },
+    }
+  : {
+      title: 'Architectural Insulation Materials',
+      description: 'A multi-page engineered materials website with industrial authority, refined typography and a global visual language.',
+      ticker: ['ASTM / EN / ISO Standards', 'Fire Safety Systems', 'Thermal Efficiency', 'Acoustic Performance', 'Specification Ready', 'Global Project Delivery'],
+      stories: [
+        {
+          id: 'manufacturing',
+          number: '01',
+          title: 'Manufacturing Builds Performance Stability',
+          body: 'Standardized production, incoming inspection and batch traceability turn insulation and acoustic performance into repeatable engineering outcomes.',
+          stat: '12+ Linked Production Lines',
+          note: 'Manufacturing Narrative',
+        },
+        {
+          id: 'specification',
+          number: '02',
+          title: 'Materials That Enter Drawings And Specs',
+          body: 'Test standards, parameter logic and technical response create a specification-oriented support system for consultants and procurement teams.',
+          stat: '48H Technical Review',
+          note: 'Specification Logic',
+        },
+        {
+          id: 'delivery',
+          number: '03',
+          title: 'Delivery Extends All The Way To Site',
+          body: 'From sample confirmation to node guidance and installation coordination, the delivery chain stays structured and project-ready.',
+          stat: 'Global Project Delivery',
+          note: 'Project Execution',
+        },
+      ],
+      modules: [
+        {
+          id: '01',
+          title: 'Product Systems',
+          body: 'Glass wool felt, rubber plastic pipe and coordinated insulation materials form a complete engineering portfolio.',
+          footnote: 'Spec-driven portfolio',
+        },
+        {
+          id: '02',
+          title: 'Project Delivery',
+          body: 'Structured support for commercial buildings, industrial facilities and infrastructure construction.',
+          footnote: 'From drawing to site',
+        },
+        {
+          id: '03',
+          title: 'Standards & Compliance',
+          body: 'Specification sheets, test data and compliance logic build procurement confidence from the first screen.',
+          footnote: 'Verified compliance',
+        },
+      ],
+      sections: {
+        products: {
+          eyebrow: 'ENGINEERING PRODUCT PORTFOLIO',
+          title: 'Products',
+          summary: 'A specification-driven entry built around fire, thermal, acoustic, durability and installation performance.',
+          items: [
+            {
+              id: 'glass-wool-felt',
+              title: 'Glass Wool Felt',
+              subtitle: 'Envelope / HVAC Duct / Industrial Equipment / Acoustic Control',
+              facts: [
+                ['Fire System', 'A1 / Non-combustible'],
+                ['Thermal k', '0.032–0.040 W/m·K'],
+                ['Acoustic', 'NRC-oriented'],
+              ],
+              href: '/products/glass-wool-felt',
+            },
+            {
+              id: 'rubber-plastic-pipe',
+              title: 'Rubber Plastic Pipe',
+              subtitle: 'Chilled Water / MEP Equipment / Complex Piping',
+              facts: [
+                ['Closed Cell', 'Condensation control'],
+                ['Thermal', 'Low heat loss'],
+                ['Installation', 'Fast on-site wrap'],
+              ],
+              href: '/products/rubber-plastic-pipe',
+            },
+          ],
+          action: 'Open Spec Sheets',
+        },
+        about: {
+          eyebrow: 'ABOUT THE GROUP',
+          title: 'About',
+          summary: 'Standardized manufacturing, test alignment and project coordination transform performance into verifiable delivery.',
+          bullets: ['ISO / EN / ASTM aligned', 'Incoming inspection & traceability', '48H technical review', 'On-site detailing support'],
+          action: 'Explore System',
+          href: '/about',
+        },
+        cases: {
+          eyebrow: 'PROJECT PORTFOLIO',
+          title: 'Cases',
+          summary: 'For public buildings, industrial facilities and infrastructure scenarios with structured delivery.',
+          items: [
+            { title: 'Mixed-use HVAC duct insulation', meta: 'Thermal + Fire Safety', tag: '01' },
+            { title: 'Industrial MEP piping insulation', meta: 'MEP Piping', tag: '02' },
+            { title: 'Public building acoustic envelope', meta: 'Acoustic + Envelope', tag: '03' },
+          ],
+          action: 'Open Case Library',
+          href: '/cases/',
+        },
+        support: {
+          eyebrow: 'SUPPORT CENTER',
+          title: 'Support',
+          summary: 'Spec sheets, test data, detailing guidance and technical response for consultants and procurement teams.',
+          items: [
+            { title: 'Customer Service', body: 'Delivery coordination, samples and communication.' },
+            { title: 'FAQs', body: 'Selection logic, facing options and installation notes.' },
+            { title: 'Technical Support', body: 'Detail guidance, test alignment and documentation.' },
+          ],
+          action: 'Open Support Center',
+          href: '/support/',
+        },
+        blog: {
+          eyebrow: 'INSIGHTS',
+          title: 'Blog',
+          summary: 'Engineering notes on parameters, compliance and on-site execution for better decisions.',
+          items: [
+            { title: 'How parameters enter drawings and specs', meta: 'Specification', tag: 'A1' },
+            { title: 'Fire system and compliance alignment', meta: 'Compliance', tag: 'A2' },
+            { title: 'On-site efficiency and risk control', meta: 'Delivery', tag: 'A3' },
+          ],
+          action: 'Open Blog',
+          href: '/blog/',
+        },
+        contact: {
+          eyebrow: 'CONTACT',
+          title: 'Contact',
+          summary: 'Share your needs and receive material guidance and specification support within 48 hours.',
+          cards: [
+            { label: 'Email', value: 'contact@globalmaterials.com' },
+            { label: 'Phone', value: '+86 400 888 0000' },
+            { label: 'Response', value: '48H Technical Review' },
+          ],
+          action: 'Send Request',
+        },
+      },
+    };
+---
+
+<Layout title={meta.title} description={meta.description} locale={activeLocale}>
+  <Header />
+  <Hero />
+
+  <section class="ticker-shell page-band-soft">
+    <div class="ticker-track py-4">
+      {[...meta.ticker, ...meta.ticker].map((item) => (
+        <div class="flex items-center gap-4 px-6">
+          <span class="h-1.5 w-1.5 rounded-full bg-stone-400"></span>
+          <span class="text-[11px] font-semibold uppercase tracking-[0.22em] text-stone-600">{item}</span>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="page-band px-4 py-16 md:px-8 md:py-20">
+    <div class="mx-auto grid max-w-editorial gap-4 lg:auto-rows-fr lg:grid-cols-[1.2fr_0.8fr_0.8fr]">
+      {meta.modules.map((module) => (
+        <div class="group industrial-frame industrial-hover-card flex h-full flex-col bg-white p-6 md:p-8" data-animate>
+          <div class="flex items-center justify-between border-b border-black/10 pb-4">
+            <p class="industrial-kicker">{module.title}</p>
+            <span class="text-[10px] font-semibold uppercase tracking-[0.22em] text-stone-400">{module.id}</span>
+          </div>
+          <p class="title-balance mt-8 text-[clamp(1.45rem,1vw+1.2rem,2.2rem)] font-semibold leading-[1.08] tracking-[-0.035em] text-ink">
+            {module.title}
+          </p>
+          <p class="text-pretty mt-4 max-w-[30rem] text-sm leading-7 text-stone-700">{module.body}</p>
+          <div class="mt-auto flex items-center justify-between border-t border-black/8 pt-6">
+            <span class="text-[10px] font-semibold uppercase tracking-[0.2em] text-stone-400">{module.footnote}</span>
+            <span class="text-sm text-stone-500 transition-transform duration-300 group-hover:translate-x-1">01</span>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="page-band-soft px-4 pb-16 pt-16 md:px-8 md:pb-24 md:pt-20">
+    <div class="mx-auto grid max-w-editorial items-start gap-8 lg:grid-cols-[0.92fr_1.08fr]">
+      <div class="story-preview-card h-full min-h-[28rem] lg:min-h-[31rem]" data-animate>
+        <div id="home-story-preview" class="relative z-[1] flex h-full flex-col justify-between">
+          <div>
+            <p id="home-story-note" class="industrial-kicker">{meta.stories[0].note}</p>
+            <h2 id="home-story-title" class="title-balance mt-5 max-w-[10ch] text-fluid-2xl font-display font-semibold leading-[0.96] text-ink">
+              {meta.stories[0].title}
+            </h2>
+            <p id="home-story-body" class="text-pretty mt-6 max-w-[32rem] text-fluid-base leading-[1.85] text-stone-700">
+              {meta.stories[0].body}
+            </p>
+          </div>
+          <div class="grid gap-4">
+            <div class="industrial-rule"></div>
+            <div class="flex items-end justify-between gap-4">
+              <span id="home-story-stat" class="text-[clamp(1.6rem,1.2vw+1.2rem,2.5rem)] font-semibold tracking-[-0.04em] text-ink">
+                {meta.stories[0].stat}
+              </span>
+              <span id="home-story-number" class="text-[10px] font-semibold uppercase tracking-[0.24em] text-stone-400">
+                {meta.stories[0].number}
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid gap-5 lg:auto-rows-fr">
+        {meta.stories.map((story) => (
+          <article
+            id={story.id}
+            class="story-step flex h-full flex-col justify-between"
+            data-home-story-step
+            data-story-title={story.title}
+            data-story-body={story.body}
+            data-story-stat={story.stat}
+            data-story-number={story.number}
+            data-story-note={story.note}
+          >
+            <div class="flex items-center justify-between border-b border-black/10 pb-4">
+              <p class="industrial-kicker">{story.note}</p>
+              <span class="text-[10px] font-semibold uppercase tracking-[0.22em] text-stone-400">{story.number}</span>
+            </div>
+            <h3 class="title-balance mt-7 max-w-[14ch] text-[clamp(1.65rem,1.2vw+1.2rem,2.65rem)] font-semibold leading-[1.04] tracking-[-0.035em] text-ink">
+              {story.title}
+            </h3>
+            <p class="text-pretty mt-5 max-w-[34rem] text-fluid-base leading-[1.85] text-stone-700">{story.body}</p>
+            <div class="mt-auto flex items-center justify-between border-t border-black/8 pt-6">
+              <span class="text-sm font-semibold text-stone-700">{story.stat}</span>
+              <span class="text-[10px] font-semibold uppercase tracking-[0.22em] text-stone-400">{story.note}</span>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section id="products" class="page-band px-4 py-16 md:px-8 md:py-20 scroll-mt-24">
+    <div class="mx-auto grid max-w-editorial gap-10">
+      <div class="industrial-frame p-8 md:p-12" data-animate-group>
+        <p data-animate-item class="industrial-kicker">{meta.sections.products.eyebrow}</p>
+        <h2 data-animate-item class="mt-5 text-fluid-2xl font-display font-semibold tracking-[-0.04em] text-ink">{meta.sections.products.title}</h2>
+        <p data-animate-item class="mt-6 max-w-reading text-fluid-base leading-[1.85] text-stone-700">{meta.sections.products.summary}</p>
+      </div>
+
+      <div class="grid gap-6 lg:grid-cols-2">
+        {meta.sections.products.items.map((item) => (
+          <article class="group industrial-frame industrial-hover-card p-7 md:p-9" data-animate>
+            <div class="flex items-center justify-between border-b border-black/8 pb-4">
+              <p class="industrial-kicker">{item.id.toUpperCase()}</p>
+              <span class="text-[10px] font-semibold uppercase tracking-[0.22em] text-stone-400">{isZh ? '规格入口' : 'SPEC'}</span>
+            </div>
+            <h3 class="title-balance mt-6 text-2xl font-semibold tracking-[-0.035em] text-ink md:text-3xl">{item.title}</h3>
+            <p class="text-pretty mt-3 text-sm leading-7 text-stone-700">{item.subtitle}</p>
+            <div class="mt-7 grid gap-3 md:grid-cols-3">
+              {item.facts.map(([label, value]) => (
+                <div class="border border-black/8 bg-white/55 px-4 py-4 backdrop-blur-md">
+                  <p class="text-[10px] font-semibold uppercase tracking-[0.18em] text-stone-500">{label}</p>
+                  <p class="mt-3 text-sm font-semibold text-ink">{value}</p>
+                </div>
+              ))}
+            </div>
+            <div class="mt-7 flex items-center justify-between border-t border-black/8 pt-5">
+              <a
+                href={getLocalizedPathname(activeLocale, item.href)}
+                class="group inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-ink transition-colors hover:text-stone-500"
+              >
+                {meta.sections.products.action}
+                <svg class="h-4 w-4 transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
+              </a>
+              <span class="text-[10px] font-semibold uppercase tracking-[0.22em] text-stone-400">ISO / EN / ASTM</span>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="page-band-soft px-4 py-16 md:px-8 md:py-20 scroll-mt-24">
+    <div class="mx-auto grid max-w-editorial gap-6 lg:grid-cols-[1.1fr_0.9fr]">
+      <div class="industrial-frame p-8 md:p-12" data-animate-group>
+        <p data-animate-item class="industrial-kicker">{meta.sections.about.eyebrow}</p>
+        <h2 data-animate-item class="mt-5 text-fluid-2xl font-display font-semibold tracking-[-0.04em] text-ink">{meta.sections.about.title}</h2>
+        <p data-animate-item class="mt-6 max-w-reading text-fluid-base leading-[1.85] text-stone-700">{meta.sections.about.summary}</p>
+        <div data-animate-item class="mt-8 grid gap-3 md:grid-cols-2">
+          {meta.sections.about.bullets.map((item) => (
+            <div class="flex items-start gap-3 border-l-2 border-black/10 bg-white/35 px-4 py-4 backdrop-blur-md">
+              <span class="mt-[0.45rem] h-1.5 w-1.5 shrink-0 bg-ink"></span>
+              <span class="text-sm leading-7 text-stone-700">{item}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <aside class="industrial-frame p-8 md:sticky md:top-28 md:p-10" data-animate>
+        <div class="flex items-center justify-between border-b border-black/10 pb-4">
+          <p class="industrial-kicker">{isZh ? '企业级背书' : 'Enterprise Signals'}</p>
+          <span class="text-[10px] font-semibold uppercase tracking-[0.22em] text-stone-400">G1</span>
+        </div>
+        <div class="mt-6 grid gap-4">
+          <div class="border border-black/8 bg-white/55 px-5 py-5 backdrop-blur-md">
+            <p class="text-[10px] font-semibold uppercase tracking-[0.18em] text-stone-500">{isZh ? '标准体系' : 'Compliance'}</p>
+            <p class="mt-3 text-sm font-semibold text-ink">ISO / EN / ASTM</p>
+          </div>
+          <div class="border border-black/8 bg-white/55 px-5 py-5 backdrop-blur-md">
+            <p class="text-[10px] font-semibold uppercase tracking-[0.18em] text-stone-500">{isZh ? '产线能力' : 'Manufacturing'}</p>
+            <p class="mt-3 text-sm font-semibold text-ink">{isZh ? '12+ 生产线联动' : '12+ linked lines'}</p>
+          </div>
+          <div class="border border-black/8 bg-white/55 px-5 py-5 backdrop-blur-md">
+            <p class="text-[10px] font-semibold uppercase tracking-[0.18em] text-stone-500">{isZh ? '技术响应' : 'Technical Response'}</p>
+            <p class="mt-3 text-sm font-semibold text-ink">{isZh ? '48H 评审' : '48H review'}</p>
+          </div>
+        </div>
+        <a
+          href={getLocalizedPathname(activeLocale, meta.sections.about.href)}
+          class="mt-8 inline-flex w-full items-center justify-center bg-steel px-6 py-4 text-[11px] font-semibold uppercase tracking-[0.18em] text-white transition-all duration-300 hover:bg-graphite"
+        >
+          {meta.sections.about.action}
+        </a>
+      </aside>
+    </div>
+  </section>
+
+  <section id="cases" class="page-band px-4 py-16 md:px-8 md:py-20 scroll-mt-24">
+    <div class="mx-auto grid max-w-editorial gap-10">
+      <div class="industrial-frame p-8 md:p-12" data-animate-group>
+        <p data-animate-item class="industrial-kicker">{meta.sections.cases.eyebrow}</p>
+        <h2 data-animate-item class="mt-5 text-fluid-2xl font-display font-semibold tracking-[-0.04em] text-ink">{meta.sections.cases.title}</h2>
+        <p data-animate-item class="mt-6 max-w-reading text-fluid-base leading-[1.85] text-stone-700">{meta.sections.cases.summary}</p>
+      </div>
+      <div class="grid gap-6 lg:grid-cols-3">
+        {meta.sections.cases.items.map((item) => (
+          <article class="group industrial-frame industrial-hover-card p-7 md:p-9" data-animate>
+            <div class="flex items-center justify-between border-b border-black/10 pb-4">
+              <p class="industrial-kicker">{item.meta}</p>
+              <span class="text-[10px] font-semibold uppercase tracking-[0.22em] text-stone-400">{item.tag}</span>
+            </div>
+            <div class="mt-7 aspect-[16/10] overflow-hidden border border-black/8 bg-neutral-100">
+              <div class="h-full w-full bg-[radial-gradient(circle_at_top_left,rgba(22,24,29,0.08),transparent_50%),linear-gradient(180deg,rgba(255,255,255,0.85),rgba(226,223,215,0.78))]"></div>
+            </div>
+            <h3 class="title-balance mt-6 text-lg font-semibold tracking-[-0.03em] text-ink">{item.title}</h3>
+            <div class="mt-6 flex items-center justify-between border-t border-black/8 pt-5">
+              <span class="text-[10px] font-semibold uppercase tracking-[0.22em] text-stone-400">{isZh ? '交付路径可追溯' : 'Traceable delivery'}</span>
+              <span class="text-sm text-stone-500 transition-transform duration-300 group-hover:translate-x-1">→</span>
+            </div>
+          </article>
+        ))}
+      </div>
+      <div class="flex justify-end" data-animate>
+        <a
+          href={getLocalizedPathname(activeLocale, meta.sections.cases.href)}
+          class="inline-flex items-center gap-2 border border-black/10 bg-white/55 px-6 py-4 text-[11px] font-semibold uppercase tracking-[0.18em] text-ink backdrop-blur-md transition-colors duration-300 hover:bg-white/70"
+        >
+          {meta.sections.cases.action}
+          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M5 12h14M12 5l7 7-7 7" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section id="support" class="page-band-soft px-4 py-16 md:px-8 md:py-20 scroll-mt-24">
+    <div class="mx-auto grid max-w-editorial gap-10">
+      <div class="industrial-frame p-8 md:p-12" data-animate-group>
+        <p data-animate-item class="industrial-kicker">{meta.sections.support.eyebrow}</p>
+        <h2 data-animate-item class="mt-5 text-fluid-2xl font-display font-semibold tracking-[-0.04em] text-ink">{meta.sections.support.title}</h2>
+        <p data-animate-item class="mt-6 max-w-reading text-fluid-base leading-[1.85] text-stone-700">{meta.sections.support.summary}</p>
+      </div>
+      <div class="grid gap-6 lg:grid-cols-3">
+        {meta.sections.support.items.map((item, index) => (
+          <article class="industrial-frame p-7 md:p-9" data-animate>
+            <div class="flex items-center justify-between border-b border-black/10 pb-4">
+              <p class="industrial-kicker">{item.title}</p>
+              <span class="text-[10px] font-semibold uppercase tracking-[0.22em] text-stone-400">{String(index + 1).padStart(2, '0')}</span>
+            </div>
+            <p class="text-pretty mt-6 text-fluid-base leading-[1.8] text-stone-700">{item.body}</p>
+            <div class="mt-7 border-t border-black/8 pt-5">
+              <span class="text-[10px] font-semibold uppercase tracking-[0.22em] text-stone-400">{isZh ? 'Docs / Data / Detail' : 'Docs / Data / Detail'}</span>
+            </div>
+          </article>
+        ))}
+      </div>
+      <div class="flex justify-end" data-animate>
+        <a
+          href={getLocalizedPathname(activeLocale, meta.sections.support.href)}
+          class="inline-flex items-center justify-center bg-steel px-6 py-4 text-[11px] font-semibold uppercase tracking-[0.18em] text-white transition-all duration-300 hover:bg-graphite"
+        >
+          {meta.sections.support.action}
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section id="blog" class="page-band px-4 py-16 md:px-8 md:py-20 scroll-mt-24">
+    <div class="mx-auto grid max-w-editorial gap-10">
+      <div class="industrial-frame p-8 md:p-12" data-animate-group>
+        <p data-animate-item class="industrial-kicker">{meta.sections.blog.eyebrow}</p>
+        <h2 data-animate-item class="mt-5 text-fluid-2xl font-display font-semibold tracking-[-0.04em] text-ink">{meta.sections.blog.title}</h2>
+        <p data-animate-item class="mt-6 max-w-reading text-fluid-base leading-[1.85] text-stone-700">{meta.sections.blog.summary}</p>
+      </div>
+      <div class="grid gap-6 lg:grid-cols-3">
+        {meta.sections.blog.items.map((item) => (
+          <article class="group industrial-frame industrial-hover-card p-7 md:p-9" data-animate>
+            <div class="flex items-center justify-between border-b border-black/10 pb-4">
+              <p class="industrial-kicker">{item.meta}</p>
+              <span class="text-[10px] font-semibold uppercase tracking-[0.22em] text-stone-400">{item.tag}</span>
+            </div>
+            <h3 class="title-balance mt-7 text-lg font-semibold tracking-[-0.03em] text-ink">{item.title}</h3>
+            <div class="mt-8 flex items-center justify-between border-t border-black/8 pt-5">
+              <span class="text-[10px] font-semibold uppercase tracking-[0.22em] text-stone-400">{isZh ? '工程视角' : 'Engineering'}</span>
+              <span class="text-sm text-stone-500 transition-transform duration-300 group-hover:translate-x-1">→</span>
+            </div>
+          </article>
+        ))}
+      </div>
+      <div class="flex justify-end" data-animate>
+        <a
+          href={getLocalizedPathname(activeLocale, meta.sections.blog.href)}
+          class="inline-flex items-center gap-2 border border-black/10 bg-white/55 px-6 py-4 text-[11px] font-semibold uppercase tracking-[0.18em] text-ink backdrop-blur-md transition-colors duration-300 hover:bg-white/70"
+        >
+          {meta.sections.blog.action}
+          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M5 12h14M12 5l7 7-7 7" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="page-band-soft px-4 py-16 md:px-8 md:py-20 scroll-mt-24">
+    <div class="mx-auto grid max-w-editorial gap-8 lg:grid-cols-[1.05fr_0.95fr]">
+      <div class="industrial-frame p-8 md:p-12" data-animate-group>
+        <p data-animate-item class="industrial-kicker">{meta.sections.contact.eyebrow}</p>
+        <h2 data-animate-item class="mt-5 text-fluid-2xl font-display font-semibold tracking-[-0.04em] text-ink">{meta.sections.contact.title}</h2>
+        <p data-animate-item class="mt-6 max-w-reading text-fluid-base leading-[1.85] text-stone-700">{meta.sections.contact.summary}</p>
+        <div data-animate-item class="mt-8 grid gap-4 sm:grid-cols-3">
+          {meta.sections.contact.cards.map((card) => (
+            <div class="border border-black/8 bg-white/55 px-5 py-5 backdrop-blur-md">
+              <p class="text-[10px] font-semibold uppercase tracking-[0.18em] text-stone-500">{card.label}</p>
+              <p class="mt-3 text-sm font-semibold text-ink">{card.value}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div class="industrial-frame p-8 md:p-12" data-animate-group>
+        <div data-animate-item class="flex items-center justify-between border-b border-black/10 pb-4">
+          <p class="industrial-kicker">{isZh ? '需求提交' : 'Request'}</p>
+          <span class="text-[10px] font-semibold uppercase tracking-[0.22em] text-stone-400">RFQ</span>
+        </div>
+        <div data-animate-item class="mt-7 grid gap-4">
+          <input class="w-full border border-black/10 bg-white/60 px-4 py-4 text-sm text-ink backdrop-blur-md placeholder:text-stone-500" placeholder={isZh ? '您的姓名' : 'Your Name'} />
+          <input class="w-full border border-black/10 bg-white/60 px-4 py-4 text-sm text-ink backdrop-blur-md placeholder:text-stone-500" placeholder={isZh ? '邮箱或电话' : 'Email or Phone'} />
+          <textarea class="min-h-[9rem] w-full border border-black/10 bg-white/60 px-4 py-4 text-sm text-ink backdrop-blur-md placeholder:text-stone-500" placeholder={isZh ? '项目需求与应用场景' : 'Project needs and application'}></textarea>
+          <button class="inline-flex items-center justify-center bg-steel px-6 py-4 text-[11px] font-semibold uppercase tracking-[0.18em] text-white transition-all duration-300 hover:bg-graphite">
+            {meta.sections.contact.action}
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<script define:vars={{ stories: meta.stories }}>
+  if (typeof window !== 'undefined') {
+    const steps = document.querySelectorAll('[data-home-story-step]');
+    const previewTitle = document.getElementById('home-story-title');
+    const previewBody = document.getElementById('home-story-body');
+    const previewStat = document.getElementById('home-story-stat');
+    const previewNumber = document.getElementById('home-story-number');
+    const previewNote = document.getElementById('home-story-note');
+
+    const setStory = (step) => {
+      if (!previewTitle || !previewBody || !previewStat || !previewNumber || !previewNote) return;
+      previewTitle.textContent = step.dataset.storyTitle ?? '';
+      previewBody.textContent = step.dataset.storyBody ?? '';
+      previewStat.textContent = step.dataset.storyStat ?? '';
+      previewNumber.textContent = step.dataset.storyNumber ?? '';
+      previewNote.textContent = step.dataset.storyNote ?? '';
+      steps.forEach((item) => item.classList.toggle('is-active', item === step));
+    };
+
+    if (steps.length) {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              setStory(entry.target);
+            }
+          });
+        },
+        { threshold: 0.55 }
+      );
+
+      steps.forEach((step) => observer.observe(step));
+      setStory(steps[0]);
+    }
+  }
+</script>

@@ -1,0 +1,23 @@
+---
+import EditorialContentPage from '../../components/pages/EditorialContentPage.astro';
+import { secondaryLocales, type SupportedLocale } from '../../i18n/config';
+
+export function getStaticPaths() {
+  return secondaryLocales.map((locale) => ({ params: { locale }, props: { locale } }));
+}
+
+const { locale } = Astro.props as { locale: SupportedLocale };
+---
+
+<EditorialContentPage
+  locale={locale}
+  title="About"
+  description="Company overview and capability page."
+  eyebrow="ABOUT THE PRACTICE"
+  summary="This page is ready to express manufacturing capability, quality control and international project coordination in a more editorial tone."
+  anchorItems={[
+    { id: 'vision', label: 'Vision' },
+    { id: 'capability', label: 'Capability' },
+    { id: 'quality', label: 'Quality' },
+  ]}
+/>

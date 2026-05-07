@@ -1,4 +1,9 @@
 ---
+import { defaultLocale, normalizeLocale } from '../../i18n/config';
+import { useTranslations } from '../../i18n/ui';
+
+const locale = normalizeLocale(Astro.currentLocale ?? defaultLocale);
+const t = useTranslations(locale);
 ---
 
 <section id="contact-form" class="relative flex min-h-[100svh] w-full flex-col justify-center overflow-hidden bg-black py-4 perspective-[2000px] md:py-6 lg:h-[100svh]">
@@ -20,12 +25,12 @@
       
       <div class="relative z-10 grid gap-8 lg:grid-cols-[1fr_1.2fr] lg:gap-24" style="transform: translateZ(60px);">
         <div data-animate-group class="flex flex-col justify-center">
-          <span data-animate-item class="inline-block px-4 py-2 rounded-full border border-white/20 bg-white/5 text-[10px] font-light tracking-[0.34em] text-white/90 mb-6 w-max">07 / 项目咨询</span>
+          <span data-animate-item class="inline-block px-4 py-2 rounded-full border border-white/20 bg-white/5 text-[10px] font-light tracking-[0.34em] text-white/90 mb-6 w-max">{t('contactForm.sectionLabel')}</span>
           <h2 data-animate-item class="font-display text-[clamp(2.2rem,6vw,4.8rem)] font-light leading-tight tracking-wide text-white">
-            让项目从材料开始，<br/>进入正确的节奏
+            {t('contactForm.titleLine1')}<br/>{t('contactForm.titleLine2')}
           </h2>
           <p data-animate-item class="mt-6 text-sm font-light leading-8 tracking-wide text-neutral-300 md:mt-8 md:text-base md:leading-9">
-            如果你正在推进酒店、商业综合体、私宅会所或总部办公项目，我们可以基于预算、工期、风格与应用部位，快速提供材料方向与交付策略。
+            {t('contactForm.description')}
           </p>
           
           <div data-animate-item class="mt-8 space-y-4 md:mt-12 md:space-y-6">
@@ -33,44 +38,46 @@
               <div class="h-12 w-12 rounded-full border border-white/10 bg-white/5 flex items-center justify-center transition-all duration-300 group-hover:bg-white/10 group-hover:scale-110">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="text-white/70 group-hover:text-white"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
               </div>
-              <p class="break-all text-sm font-light tracking-wider text-neutral-300 transition-colors group-hover:text-white">contact@globalmaterials.com</p>
+              <p class="break-all text-sm font-light tracking-wider text-neutral-300 transition-colors group-hover:text-white">{t('contactForm.email')}</p>
             </div>
             <div class="group flex flex-wrap items-center gap-4 md:gap-6">
               <div class="h-12 w-12 rounded-full border border-white/10 bg-white/5 flex items-center justify-center transition-all duration-300 group-hover:bg-white/10 group-hover:scale-110">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="text-white/70 group-hover:text-white"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
               </div>
-              <p class="text-sm font-light tracking-wider text-neutral-300 group-hover:text-white transition-colors">+86 400 888 8888</p>
+              <p class="text-sm font-light tracking-wider text-neutral-300 group-hover:text-white transition-colors">{t('contactForm.phone')}</p>
             </div>
           </div>
         </div>
 
-        <form class="grid gap-6" data-animate-group>
+        <!-- TODO: 接入 EmailJS / Resend API -->
+        <div class="grid gap-6" data-animate-group>
           <div class="relative group" data-animate-item>
             <div class="absolute -inset-0.5 bg-gradient-to-r from-white/20 to-white/0 rounded-2xl blur opacity-0 group-hover:opacity-100 transition duration-500"></div>
-            <input class="relative w-full rounded-2xl border border-white/10 bg-black/40 backdrop-blur-md px-6 py-5 text-sm text-white outline-none transition-all focus:border-white/30 focus:bg-white/5" type="text" placeholder="姓名 / 公司名称" />
+            <input class="relative w-full rounded-2xl border border-white/10 bg-black/40 backdrop-blur-md px-6 py-5 text-sm text-white outline-none transition-all focus:border-white/30 focus:bg-white/5" type="text" placeholder={t('contactForm.placeholders.name')} />
           </div>
           <div class="relative group" data-animate-item>
             <div class="absolute -inset-0.5 bg-gradient-to-r from-white/20 to-white/0 rounded-2xl blur opacity-0 group-hover:opacity-100 transition duration-500"></div>
-            <input class="relative w-full rounded-2xl border border-white/10 bg-black/40 backdrop-blur-md px-6 py-5 text-sm text-white outline-none transition-all focus:border-white/30 focus:bg-white/5" type="email" placeholder="工作邮箱" />
+            <input class="relative w-full rounded-2xl border border-white/10 bg-black/40 backdrop-blur-md px-6 py-5 text-sm text-white outline-none transition-all focus:border-white/30 focus:bg-white/5" type="email" placeholder={t('contactForm.placeholders.email')} />
           </div>
           <div class="relative group" data-animate-item>
             <div class="absolute -inset-0.5 bg-gradient-to-r from-white/20 to-white/0 rounded-2xl blur opacity-0 group-hover:opacity-100 transition duration-500"></div>
-            <input class="relative w-full rounded-2xl border border-white/10 bg-black/40 backdrop-blur-md px-6 py-5 text-sm text-white outline-none transition-all focus:border-white/30 focus:bg-white/5" type="text" placeholder="项目类型 / 国家地区" />
+            <input class="relative w-full rounded-2xl border border-white/10 bg-black/40 backdrop-blur-md px-6 py-5 text-sm text-white outline-none transition-all focus:border-white/30 focus:bg-white/5" type="text" placeholder={t('contactForm.placeholders.project')} />
           </div>
           <div class="relative group" data-animate-item>
             <div class="absolute -inset-0.5 bg-gradient-to-r from-white/20 to-white/0 rounded-2xl blur opacity-0 group-hover:opacity-100 transition duration-500"></div>
-            <textarea class="relative w-full min-h-[180px] rounded-2xl border border-white/10 bg-black/40 px-6 py-5 text-sm text-white outline-none transition-all resize-none backdrop-blur-md focus:border-white/30 focus:bg-white/5 md:min-h-[200px]" placeholder="请简述项目体量、所需材料方向、预期交付时间..."></textarea>
+            <textarea class="relative w-full min-h-[180px] rounded-2xl border border-white/10 bg-black/40 px-6 py-5 text-sm text-white outline-none transition-all resize-none backdrop-blur-md focus:border-white/30 focus:bg-white/5 md:min-h-[200px]" placeholder={t('contactForm.placeholders.message')}></textarea>
           </div>
           <div data-animate-item class="mt-4">
-            <button type="button" class="group relative inline-flex w-full items-center justify-center gap-3 overflow-hidden rounded-full border border-white/20 bg-white/10 px-8 py-4 text-xs font-light tracking-[0.24em] text-white transition-all duration-500 hover:bg-white/20 hover:scale-105 md:w-auto md:px-10 md:py-5">
+            <button type="button" aria-disabled="true" class="group relative inline-flex w-full items-center justify-center gap-3 overflow-hidden rounded-full border border-white/20 bg-white/10 px-8 py-4 text-xs font-light tracking-[0.24em] text-white transition-all duration-500 hover:bg-white/20 hover:scale-105 md:w-auto md:px-10 md:py-5">
               <div class="absolute inset-0 flex h-full w-full justify-center [transform:skew(-12deg)_translateX(-150%)] group-hover:duration-1000 group-hover:[transform:skew(-12deg)_translateX(150%)]">
                 <div class="relative h-full w-8 bg-white/20"></div>
               </div>
-              <span class="relative">提交需求</span>
+              <span class="relative">{t('contactForm.button')}</span>
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="relative transition-transform duration-300 group-hover:translate-x-1"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </button>
+            <p class="mt-4 text-xs tracking-[0.2em] text-neutral-500">{t('contactForm.note')}</p>
           </div>
-        </form>
+        </div>
       </div>
     </div>
   </div>

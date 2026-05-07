@@ -1,0 +1,23 @@
+---
+import EditorialContentPage from '../../../components/pages/EditorialContentPage.astro';
+import { secondaryLocales, type SupportedLocale } from '../../../i18n/config';
+
+export function getStaticPaths() {
+  return secondaryLocales.map((locale) => ({ params: { locale }, props: { locale } }));
+}
+
+const { locale } = Astro.props as { locale: SupportedLocale };
+---
+
+<EditorialContentPage
+  locale={locale}
+  title="Case Studies"
+  description="Case study overview page."
+  eyebrow="CASE STUDIES"
+  summary="This route is prepared for commercial, industrial and infrastructure case studies with architectural imagery and delivery outcomes."
+  anchorItems={[
+    { id: 'commercial', label: 'Commercial' },
+    { id: 'industrial', label: 'Industrial' },
+    { id: 'infrastructure', label: 'Infrastructure' },
+  ]}
+/>

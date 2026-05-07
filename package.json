@@ -13,7 +13,6 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.9.8",
-    "@directus/sdk": "^21.2.2",
     "@tailwindcss/vite": "^4.2.2",
     "astro": "^6.1.6",
     "gsap": "^3.15.0",

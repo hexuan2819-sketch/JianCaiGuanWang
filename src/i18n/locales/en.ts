@@ -1,0 +1,252 @@
+import type { UIDictionary } from './zh';
+
+export const en = {
+  meta: {
+    siteTitle: 'Spatial Poetics | Global Material Supply Chain',
+    siteDescription: 'A dark cinematic website presenting global material sourcing, signature categories, application scenarios, core strengths, and project consultation.',
+  },
+  brand: {
+    name: 'SPATIAL POETICS',
+  },
+  navigation: {
+    hero: 'Intro',
+    vision: 'Network',
+    stone: 'Stone',
+    wood: 'Wood',
+    scenarios: 'Scenarios',
+    features: 'Strengths',
+    craftsmanship: 'Craft',
+    contact: 'Contact',
+  },
+  actions: {
+    contact: 'Project Inquiry',
+    openMenu: 'Open navigation',
+    closeMenu: 'Close navigation',
+    chooseLanguage: 'Choose language',
+  },
+  languagePicker: {
+    title: 'Global Site Languages',
+    description: 'Switch the browsing language for global B2B audiences.',
+    current: 'Current language',
+    cookieNotice: 'We will remember your language preference.',
+  },
+  hero: {
+    pretitle: 'Global Premium Material Supply System',
+    outlineLine1: 'Spatial',
+    outlineLine2: 'Poetics',
+    titleLine1: 'Spatial',
+    titleLine2: 'Poetics',
+    body: 'Anchored by supply networks in the Middle East, Central Asia, and domestic manufacturing bases, we consolidate sourcing, detailing, sampling, production, cross-border logistics, and on-site delivery into a single execution chain. Clients no longer need to coordinate scattered vendors; they can understand our material strategy directly through a pure static brand site that remains easy to maintain.',
+    cta: 'Explore The Nine Scenes',
+    metricRegionValue: '17',
+    metricRegionLabel: 'Regions Covered',
+    metricProjectValue: '200+',
+    metricProjectLabel: 'Projects Delivered',
+    imageAlt: 'Dark architectural facade',
+  },
+  globalVision: {
+    sectionLabel: '01 / GLOBAL VISION',
+    slides: {
+      first: {
+        title: 'Deep Roots In The Middle East And Central Asia, Serving Landmark Projects Worldwide',
+        copy: 'With key nodes in Dubai, Riyadh, Tashkent, and Almaty, we build a continuous service chain covering raw material sourcing, fabrication, international logistics, and project delivery, keeping landmark developments stable under complex supply conditions.',
+        metricA: '26+',
+        metricALabel: 'Core Supply Nodes',
+        metricB: '72h',
+        metricBLabel: 'Rapid Response Window',
+      },
+      second: {
+        title: 'From Skyline Concepts To Site Delivery, We Coordinate Across Regions',
+        copy: 'For hotels, mixed-use developments, and headquarters projects, we unify mock-up approvals, batch control, and milestone delivery into one execution language, reducing friction across international collaboration.',
+        metricA: '14',
+        metricALabel: 'Cross-Border Teams',
+        metricB: '100%',
+        metricBLabel: 'Milestone Tracking',
+      },
+      third: {
+        title: 'Material Capability And Architectural Narrative Are Designed In The Same Frame',
+        copy: 'Whether for private residences or public spaces, we care about how materials participate in storytelling rather than acting as decoration alone. Every shipment ultimately contributes to a more coherent project character and experience.',
+        metricA: '200+',
+        metricALabel: 'Delivery Experience',
+        metricB: 'A+',
+        metricBLabel: 'Repeat Client Trust',
+      },
+    },
+  },
+  categoryStone: {
+    sectionLabel: '02 / SIGNATURE CATEGORY 01',
+    title: 'Stone Textures',
+    intro: 'With uncompromising material standards, we redefine how natural texture performs in contemporary architecture.',
+    imageAlt: 'Stone system background',
+    slides: {
+      first: {
+        title: 'Stone Textures',
+        copy: 'From marble and quartzite to travertine and granite systems, we focus not only on the beauty of each vein but on how it behaves across broad surfaces, corner junctions, and vertical elevations.',
+        detail: 'Ideal for lobby feature walls, facade cladding, bar counters, bathroom walls, and sculptural staircases. Supports book matching, mock-up approval, and stable batch control across regions.',
+        tags: {
+          first: 'Book Matching',
+          second: 'Cut To Size',
+          third: 'Vein Control',
+        },
+      },
+      second: {
+        title: 'Quartzite Language',
+        copy: 'With more restrained visual density and higher surface strength, quartzite establishes a contemporary stone system that balances aesthetic judgment with engineering durability.',
+        detail: 'Suitable for expansive wall and floor zones, islands, counters, and high-touch surfaces. Emphasizes continuity at large scale and manageable maintenance costs.',
+        tags: {
+          first: 'Low Porosity',
+          second: 'Large Format',
+          third: 'Durable Surface',
+        },
+      },
+      third: {
+        title: 'Travertine Layers',
+        copy: 'Through cross-cut, vein-cut, and filling processes, we redefine the sense of order, breathing room, and quiet atmosphere that travertine brings to modern interiors.',
+        detail: 'Well suited for calm backgrounds, clubhouse circulation, residential bathrooms, and light commercial spaces where subtle layers shape a refined long-term mood.',
+        tags: {
+          first: 'Cross Cut',
+          second: 'Filled Finish',
+          third: 'Quiet Texture',
+        },
+      },
+    },
+  },
+  categoryWood: {
+    sectionLabel: '03 / SIGNATURE CATEGORY 02',
+    title: 'Warm Timber Craft',
+    intro: 'We balance natural grain, tone control, and tactile warmth so that interiors keep their temperature even inside a darker cinematic palette.',
+    slides: {
+      first: {
+        title: 'Flooring Systems',
+        copy: 'Designed for suites, clubs, and long-stay spaces, with attention to underfoot comfort, joint stability, and wear-layer performance.',
+      },
+      second: {
+        title: 'Wall Veneer Systems',
+        copy: 'Used for feature walls, corridors, and reception zones while coordinating edge details, integrated lighting, and large-surface rhythm.',
+      },
+      third: {
+        title: 'Custom Furniture Finishes',
+        copy: 'Extended to cabinet fronts, door frames, and built-in furniture so that the spatial language remains consistent down to the smallest detail.',
+      },
+    },
+  },
+  bentoScenarios: {
+    sectionLabel: '04 / APPLICATION SCENARIOS',
+    title: 'Maintaining One Coherent Narrative Across Complex Projects',
+    intro: 'Each scenario carries different scales, budgets, and durability requirements. We rely on the same supply and detailing methodology to give every space its own expression.',
+    cards: {
+      first: {
+        title: 'Commercial Real Estate',
+        tag: 'Flagship Narrative',
+        teaser: 'We connect public areas, lift lobbies, facades, and signage through one material language to build a clear project identity.',
+        expanded: 'We connect public areas, lift lobbies, facades, and signage through one material language to build a clear project identity, strengthening front-of-house recognition, wall continuity, and durable order along public circulation.',
+      },
+      second: {
+        title: 'Luxury Hotels',
+        tag: 'High-Frequency Operation',
+        teaser: 'We balance intensive use with ceremony, controlling batch stability, tactile quality, and layered night-time lighting.',
+        expanded: 'We balance intensive use with ceremony, controlling batch stability, tactile quality, and layered night-time lighting. From lobby to guest suite, stone, timber, and metal are composed with deliberate transitions.',
+      },
+      third: {
+        title: 'Private Residences',
+        tag: 'Tailored Living',
+        teaser: 'Across living, kitchen, bedroom, and bath, we shape a restrained residential atmosphere that remains elegant over time.',
+        expanded: 'Across living, kitchen, bedroom, and bath, we shape a restrained residential atmosphere that remains elegant over time. Fine junctions and tactile surfaces give everyday life a quiet but lasting intensity.',
+      },
+      fourth: {
+        title: 'Cultural Clubs',
+        tag: 'Quiet Cultural Setting',
+        teaser: 'By combining stone, timber, and metal, we create memorable spaces with a calm and immersive atmosphere.',
+        expanded: 'By combining stone, timber, and metal, we create memorable spaces with a calm and immersive atmosphere. Material relationships are tuned with restraint so the club feels both ceremonial and comfortable for longer stays.',
+      },
+      fifth: {
+        title: 'Corporate Headquarters',
+        tag: 'Brand Headquarters',
+        teaser: 'For image-driven and efficiency-focused offices, we balance reception identity, meeting room stability, and circulation order.',
+        expanded: 'For image-driven and efficiency-focused offices, we balance reception identity, meeting room stability, and circulation order. A concise but substantial material logic helps brands build a workplace interface that remains recognizable over time.',
+      },
+    },
+  },
+  coreFeatures: {
+    sectionLabel: '05 / CORE STRENGTHS',
+    title: 'System Capability That Supports High-Standard Delivery',
+    stageLabel: 'System Capability Matrix',
+    features: {
+      first: {
+        title: 'Global Logistics',
+        copy: 'Across sea freight, land transport, and customs clearance, we keep multi-location projects stable on the same timeline.',
+        detail: 'Parallel port bookings, local customs coordination, and final-mile transfer planning allow overseas projects to maintain certainty even under compressed schedules.',
+      },
+      second: {
+        title: 'International Certification',
+        copy: 'We provide the environmental, fire, wear, and structural documentation needed for international procurement and compliance reviews.',
+        detail: 'Around design approval, procurement, and compliance milestones, we build clear material packages that reduce friction in cross-border communication.',
+      },
+      third: {
+        title: 'Custom Fabrication',
+        copy: 'From joint logic to bespoke geometry detailing, we support continuous coordination across mock-ups, mass production, and site installation.',
+        detail: 'Detailing drawings, sample sections, fabrication batches, and installation milestones are linked so that complex design intent becomes truly buildable.',
+      },
+      fourth: {
+        title: 'Accelerated Delivery',
+        copy: 'Dedicated project managers and multi-milestone tracking keep complex supply chains controlled even under aggressive deadlines.',
+        detail: 'From ordering and manufacturing to shipping and on-site installation, a dashboard-style tracking flow provides early warnings and lowers delay risk.',
+      },
+    },
+  },
+  craftsmanship: {
+    sectionLabel: 'Precision Manufacturing System',
+    title: 'Texture With True Material Depth',
+    subtitle: 'Built On Absolute Manufacturing Precision',
+    body: 'From raw block selection and slab sequencing to bespoke cutting and surface treatment, we build a quality loop that connects factory and site. Every milestone is measurable, every sample has a defined performance target, and the original design intent stays intact through delivery.',
+    imageAlt: 'Precision manufacturing line',
+    metrics: {
+      first: {
+        value: '5-Axis',
+        label: 'CNC Profiling',
+      },
+      second: {
+        value: '16 Steps',
+        label: 'Surface Process',
+      },
+      third: {
+        value: '100%',
+        label: 'Full QC Inspection',
+      },
+    },
+  },
+  contactForm: {
+    sectionLabel: '07 / PROJECT INQUIRY',
+    titleLine1: 'Let The Project Start With Materials,',
+    titleLine2: 'And Move In The Right Rhythm',
+    description: 'If you are advancing a hotel, mixed-use complex, private residence, clubhouse, or headquarters project, we can quickly propose material directions and delivery strategies based on budget, schedule, style, and application zones.',
+    email: 'contact@globalmaterials.com',
+    phone: '+86 400 888 8888',
+    placeholders: {
+      name: 'Name / Company',
+      email: 'Work Email',
+      project: 'Project Type / Country',
+      message: 'Share the project scale, material direction, and expected delivery schedule...',
+    },
+    button: 'UI Reserved',
+    note: 'This section is currently a static UI only. Email delivery and lead capture APIs will be connected in a later phase.',
+  },
+  footer: {
+    brandDescription: 'A premium material supply partner for landmark spaces worldwide. Through reliable delivery, deep detailing, and refined aesthetic judgment, we bridge the most critical distance between architecture and material execution.',
+    navTitle: 'Navigation',
+    navHero: 'Intro',
+    navVision: 'Global Network',
+    navScenarios: 'Scenarios',
+    navContact: 'Project Inquiry',
+    contactTitle: 'Contact',
+    emailLabel: 'Email',
+    phoneLabel: 'Phone',
+    addressLabel: 'Address',
+    address: '42F, Tower A, International Architecture Design Center, Xuhui District, Shanghai',
+    infoTitle: 'Information',
+    privacy: 'Privacy Policy',
+    legal: 'Legal Notice',
+    filing: 'ICP 20260000-1',
+    copyright: 'GLOBAL MATERIALS. ALL RIGHTS RESERVED.',
+  },
+} as const satisfies UIDictionary;

@@ -1,0 +1,252 @@
+export const zh = {
+  meta: {
+    siteTitle: '筑物为诗 | 全球建材供应链',
+    siteDescription: '深色沉浸式叙事网页，呈现全球建材供应、王牌品类、应用场景、核心优势与项目咨询。',
+  },
+  brand: {
+    name: '筑 物 为 诗',
+  },
+  navigation: {
+    hero: '首章',
+    vision: '版图',
+    stone: '原石',
+    wood: '木艺',
+    scenarios: '场景',
+    features: '优势',
+    craftsmanship: '工艺',
+    contact: '洽询',
+  },
+  actions: {
+    contact: '项目洽询',
+    openMenu: '打开导航',
+    closeMenu: '关闭导航',
+    chooseLanguage: '选择语言',
+  },
+  languagePicker: {
+    title: '全球站点语言',
+    description: '为全球 B2B 客户切换合适的浏览语言。',
+    current: '当前语言',
+    cookieNotice: '系统将记住你的语言偏好。',
+  },
+  hero: {
+    pretitle: '全球高端建材供应体系',
+    outlineLine1: '筑物',
+    outlineLine2: '为诗',
+    titleLine1: '筑物',
+    titleLine2: '为诗',
+    body: '以中东、中亚与国内制造体系为支点，我们把选材、深化、打样、生产、跨境运输与现场交付收束为同一条执行链路。客户无需面对零散供应商，只需在一套纯静态、可直接改文案的品牌站点里，清晰看到我们如何让材料真正服务建筑气质。',
+    cta: '浏览九屏叙事',
+    metricRegionValue: '17',
+    metricRegionLabel: '覆盖地区',
+    metricProjectValue: '200+',
+    metricProjectLabel: '交付项目',
+    imageAlt: '深色建筑立面',
+  },
+  globalVision: {
+    sectionLabel: '01 / 全球版图',
+    slides: {
+      first: {
+        title: '深耕中东与中亚，服务全球地标',
+        copy: '以迪拜、利雅得、塔什干与阿拉木图为关键节点，构建覆盖原材采购、工厂制造、国际物流与项目交付的连续服务链路。让地标建筑在复杂供应条件下依然保持稳定推进。',
+        metricA: '26+',
+        metricALabel: '核心供应节点',
+        metricB: '72h',
+        metricBLabel: '快速响应机制',
+      },
+      second: {
+        title: '从城市天际线到项目落地，建立跨区域协同',
+        copy: '针对酒店、商业综合体与总部办公项目，我们将样板确认、批次控制与节点交付整合为同一套执行语言，减少跨国协作中的信息损耗。',
+        metricA: '14',
+        metricALabel: '跨境协作项目组',
+        metricB: '100%',
+        metricBLabel: '关键节点追踪',
+      },
+      third: {
+        title: '让材料能力与建筑叙事在同一画面里发生',
+        copy: '无论是高端私宅还是公共空间，我们更关注材料如何参与空间叙事，而非只承担装饰角色。每一次供货，最终都指向更完整的项目气质与体验。',
+        metricA: '200+',
+        metricALabel: '项目交付经验',
+        metricB: 'A+',
+        metricBLabel: '客户复购口碑',
+      },
+    },
+  },
+  categoryStone: {
+    sectionLabel: '02 / 王牌品类 01',
+    title: '原石肌理',
+    intro: '以极致的选材标准，重新定义自然纹理在现代建筑中的表现力。',
+    imageAlt: '石材系统背景',
+    slides: {
+      first: {
+        title: '原石肌理',
+        copy: '涵盖大理石、石英岩、洞石与花岗岩系统。我们关注的不只是纹理本身，更是它在大面积铺陈、转角收口与立面展开后的秩序感。',
+        detail: '适用于大堂主背景、立面挂板、吧台、卫浴墙面与艺术楼梯。支持对纹排版、样板确认与跨区域批次稳定控制。',
+        tags: {
+          first: '对纹排版',
+          second: '定尺加工',
+          third: '纹理控制',
+        },
+      },
+      second: {
+        title: '石英岩语汇',
+        copy: '以更克制的纹理密度和更高的表面强度，建立兼具审美判断与工程耐久性的当代石材系统。',
+        detail: '适用于大面积墙地面、岛台、吧台与高频触达区域。强调大规格展开后的连续性与维护成本控制。',
+        tags: {
+          first: '低吸水率',
+          second: '大规格',
+          third: '耐久表面',
+        },
+      },
+      third: {
+        title: '洞石层理',
+        copy: '通过横切、竖切与填孔工艺，重新定义洞石在现代空间中的秩序、留白与呼吸感。',
+        detail: '适合静区背景、会所动线、私宅卫浴与轻度商业空间，以细腻层理建立低调而持久的空间气氛。',
+        tags: {
+          first: '横切层理',
+          second: '填孔处理',
+          third: '安静肌理',
+        },
+      },
+    },
+  },
+  categoryWood: {
+    sectionLabel: '03 / 王牌品类 02',
+    title: '温润木艺',
+    intro: '强调天然纹理、色差控制与触觉质感之间的平衡，让空间在深色背景中仍保有温度。',
+    slides: {
+      first: {
+        title: '木地板系统',
+        copy: '适用于套房、会所与长住空间，强调脚感、拼缝稳定与耐用层表现。',
+      },
+      second: {
+        title: '墙面木饰面',
+        copy: '用于背景墙、走廊与接待区，兼顾节点收口、灯槽整合与大面积节奏控制。',
+      },
+      third: {
+        title: '定制家具面层',
+        copy: '延伸到柜门、门套与固定家具，让空间语言在细部层面保持一致。',
+      },
+    },
+  },
+  bentoScenarios: {
+    sectionLabel: '04 / 应用场景',
+    title: '在复杂项目中，保持统一叙事',
+    intro: '不同场景拥有不同尺度、预算与耐久要求。我们用同一套供应与深化方法，让空间拥有独立表情。',
+    cards: {
+      first: {
+        title: '商业地产',
+        tag: '旗舰叙事',
+        teaser: '以统一材料语言完成公区、电梯厅、立面与导视界面的整体串联，建立项目气质。',
+        expanded: '以统一材料语言完成公区、电梯厅、立面与导视界面的整体串联，建立项目气质。让前场识别度、背景墙连续性与公共动线中的耐用秩序得到完美体现。',
+      },
+      second: {
+        title: '星级酒店',
+        tag: '高频运营',
+        teaser: '兼顾高频使用与空间仪式感，控制批次稳定、触感细节与夜间光影层次。',
+        expanded: '兼顾高频使用与空间仪式感，控制批次稳定、触感细节与夜间光影层次。从大堂到套房，强化石材、木艺与金属之间的层次过渡。',
+      },
+      third: {
+        title: '高端私宅',
+        tag: '私宅定制',
+        teaser: '围绕厅、厨、卧与卫浴的连续体验，建立克制而长期耐看的居住表情。',
+        expanded: '围绕厅、厨、卧与卫浴的连续体验，建立克制而长期耐看的居住表情。通过细部收口和表面触感，让日常空间拥有静水深流的力量。',
+      },
+      fourth: {
+        title: '文化会所',
+        tag: '文化静场',
+        teaser: '通过石材、木艺与金属的复合搭配，塑造带有记忆点的安静空间。',
+        expanded: '通过石材、木艺与金属的复合搭配，塑造带有记忆点的安静空间。以更安静的材质关系控制情绪，让会所空间兼具停留感与仪式感。',
+      },
+      fifth: {
+        title: '办公总部',
+        tag: '总部形象',
+        teaser: '面向企业形象与效率空间，兼顾前台辨识度、会议区稳定感与动线秩序。',
+        expanded: '面向企业形象与效率空间，兼顾前台辨识度、会议区稳定感与动线秩序。以简洁但不空洞的材料逻辑，为企业品牌建立长期可识别的办公界面。',
+      },
+    },
+  },
+  coreFeatures: {
+    sectionLabel: '05 / 核心优势',
+    title: '以系统能力支撑高标准落地',
+    stageLabel: '系统能力矩阵',
+    features: {
+      first: {
+        title: '全球物流',
+        copy: '覆盖海运、陆运与跨境清关环节，确保多地并行项目在时间轴上保持稳定推进。',
+        detail: '多港口并行订舱、落地清关与末端转运协同，让海外项目在高压工期中仍有确定性。',
+      },
+      second: {
+        title: '国际认证',
+        copy: '支持项目所需的环保、防火、耐磨与结构性能资料，为国际招采流程提供充分依据。',
+        detail: '围绕项目审图、招采与合规节点，建立清晰材料资料包，减少跨境沟通成本。',
+      },
+      third: {
+        title: '定制工艺',
+        copy: '从分缝逻辑到异形节点深化，支持样板确认、批量制造与现场安装的连续协同。',
+        detail: '深化图、样板段、批量加工与安装节点彼此联动，让复杂设计真正转化为可施工成果。',
+      },
+      fourth: {
+        title: '极速交付',
+        copy: '设立专项项目经理与多节点追踪机制，让复杂供应链在高压工期下依旧可控。',
+        detail: '从下单、加工、出运到入场安装建立看板式追踪，关键节点提前预警，降低延期风险。',
+      },
+    },
+  },
+  craftsmanship: {
+    sectionLabel: '精密制造体系',
+    title: '实现极具质感的纹理表现',
+    subtitle: '源于绝对精密的制造工序',
+    body: '从荒料甄别、板面排版、异形切割到表面处理，我们建立了贯穿工厂与现场的质量闭环。每一个节点都被量化，每一次打样都对应明确的结果标准，让设计意图不在落地中失真。',
+    imageAlt: '精密制造产线',
+    metrics: {
+      first: {
+        value: '五轴',
+        label: '数控成型',
+      },
+      second: {
+        value: '16 道',
+        label: '表面工序',
+      },
+      third: {
+        value: '100%',
+        label: '全检质控',
+      },
+    },
+  },
+  contactForm: {
+    sectionLabel: '07 / 项目咨询',
+    titleLine1: '让项目从材料开始，',
+    titleLine2: '进入正确的节奏',
+    description: '如果你正在推进酒店、商业综合体、私宅会所或总部办公项目，我们可以基于预算、工期、风格与应用部位，快速提供材料方向与交付策略。',
+    email: 'contact@globalmaterials.com',
+    phone: '+86 400 888 8888',
+    placeholders: {
+      name: '姓名 / 公司名称',
+      email: '工作邮箱',
+      project: '项目类型 / 国家地区',
+      message: '请简述项目体量、所需材料方向、预期交付时间...',
+    },
+    button: '界面预留中',
+    note: '当前仅保留静态展示界面，后期统一接入邮件发送与线索收集接口。',
+  },
+  footer: {
+    brandDescription: '面向全球地标空间的高端建材供应服务商。以稳定履约、深度深化与审美判断，连接项目与材料之间最关键的一段距离。',
+    navTitle: '导航',
+    navHero: '首章',
+    navVision: '全球版图',
+    navScenarios: '应用场景',
+    navContact: '项目咨询',
+    contactTitle: '联系',
+    emailLabel: '邮箱',
+    phoneLabel: '电话',
+    addressLabel: '地址',
+    address: '上海市徐汇区国际建筑设计中心 A 座 42 层',
+    infoTitle: '信息',
+    privacy: '隐私政策',
+    legal: '法律声明',
+    filing: '沪ICP备20260000号-1',
+    copyright: 'GLOBAL MATERIALS. ALL RIGHTS RESERVED.',
+  },
+} as const;
+
+export type UIDictionary = typeof zh;
