@@ -5,12 +5,56 @@ import EditorialContentPage from '../../components/pages/EditorialContentPage.as
 <EditorialContentPage
   locale="zh"
   title="玻璃棉毡"
-  description="玻璃棉毡产品详情页面。"
-  eyebrow="GLASS WOOL FELT"
-  summary="用于暖通、屋面与幕墙围护系统的高性能玻璃棉毡页面已建立，后续可继续填充厚度、密度、导热系数与施工节点。"
+  description="玻璃棉毡 — A1级防火保温吸声材料，适用于建筑围护、暖通空调及工业设备保温。"
+  eyebrow="GLASS WOOL FELT · 玻璃纤维保温材料"
+  summary="以玻璃纤维为基材，采用高速离心成纤与热固粘结工艺制造，具备 A1 级不燃、低导热系数与宽频吸声三重核心性能，广泛应用于建筑围护结构、暖通风管、工业设备及声学控制工程。"
   anchorItems={[
     { id: 'specification', label: '规格参数' },
     { id: 'applications', label: '应用场景' },
     { id: 'technical-data', label: '技术资料' },
+  ]}
+  sections={[
+    {
+      id: 'specification',
+      label: '规格参数',
+      title: '物理性能与规格范围',
+      body: '玻璃棉毡按密度、厚度与覆面形式形成完整产品矩阵，覆盖从轻质吸声到高密度承压的多元工程需求。产品符合 GB/T 13350、ASTM C612 及 EN 13162 标准。',
+      stat: '密度 10–96 kg/m³',
+      specs: [
+        { label: '防火等级', value: 'A1 级不燃 (GB 8624)' },
+        { label: '导热系数', value: '0.032–0.040 W/m·K (25°C)' },
+        { label: '最高使用温度', value: '≤ 350°C' },
+        { label: '吸声系数', value: 'NRC 0.80–1.00' },
+        { label: '纤维平均直径', value: '≤ 7.0 μm' },
+      ],
+    },
+    {
+      id: 'applications',
+      label: '应用场景',
+      title: '典型工程应用领域',
+      body: '玻璃棉毡因其优异的防火、保温和吸声综合性能，已成为建筑与工业领域最广泛使用的保温材料之一，适用于新建与改造项目中的各类围护与管线系统。',
+      stat: '覆盖建筑 / 暖通 / 工业',
+      specs: [
+        { label: '建筑外墙与屋面', value: '幕墙、金属屋面保温层' },
+        { label: '暖通空调风管', value: '矩形 / 圆形风管外保温' },
+        { label: '工业设备与管道', value: '锅炉、储罐及大口径管道' },
+        { label: '隔墙与吊顶', value: '轻钢龙骨体系填充保温吸声' },
+        { label: '声学工程', value: '影剧院、录音棚宽频吸声' },
+      ],
+    },
+    {
+      id: 'technical-data',
+      label: '技术资料',
+      title: '检测报告与技术文档',
+      body: '为设计院、顾问公司与总包单位提供全套技术支撑文件，包括第三方检测报告、规格书、节点详图与 CAD/BIM 图块，支持项目全周期技术决策。',
+      stat: 'CE / SGS / ISO 认证',
+      specs: [
+        { label: '检测报告', value: 'GB / ASTM / EN 标准检测' },
+        { label: '技术规格书', value: 'PDF / 纸质版可索取' },
+        { label: 'CAD 图块', value: 'DWG 格式节点详图' },
+        { label: 'BIM 模型', value: 'Revit 族文件支持' },
+        { label: '施工指导', value: '安装手册与验收标准' },
+      ],
+    },
   ]}
 />

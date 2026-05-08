@@ -50,21 +50,21 @@ const copy = isZh
     };
 ---
 
-<footer id="corporate-footer" class="page-band border-t border-black/10 bg-[linear-gradient(180deg,rgba(246,244,239,0.92)_0%,rgba(233,229,220,0.96)_100%)] px-4 py-12 md:px-8 md:py-16">
+<footer id="corporate-footer" class="border-t border-white/8 bg-black/80 px-4 py-8 md:px-8 md:py-10 backdrop-blur-md">
   <div class="mx-auto max-w-editorial">
-    <div class="grid gap-10 md:grid-cols-2 xl:grid-cols-[1.35fr_0.9fr_0.95fr] xl:gap-16" data-animate-group>
+    <div class="grid gap-8 md:grid-cols-3 xl:gap-12" data-animate-group>
       <div data-animate-item>
-        <p class="text-[10px] font-semibold uppercase tracking-[0.28em] text-stone-500">{copy.group}</p>
-        <h2 class="mt-4 text-[clamp(1.35rem,1vw+1rem,2rem)] font-semibold tracking-[-0.035em] text-ink">{copy.brand}</h2>
-        <p class="text-pretty mt-5 max-w-[34rem] text-sm leading-7 text-stone-700">{copy.description}</p>
+        <p class="text-[10px] font-semibold uppercase tracking-[0.22em] text-white/40">{copy.group}</p>
+        <p class="mt-3 text-sm font-semibold text-white/90">{copy.brand}</p>
+        <p class="text-pretty mt-3 max-w-[28rem] text-xs leading-[1.7] text-white/45">{copy.description}</p>
       </div>
 
       <div data-animate-item>
-        <p class="industrial-kicker">{copy.navTitle}</p>
-        <ul class="mt-5 grid gap-3 text-sm text-stone-700">
+        <p class="text-[10px] font-semibold uppercase tracking-[0.2em] text-white/35">{copy.navTitle}</p>
+        <ul class="mt-3 grid gap-1.5 text-xs text-white/50">
           {copy.nav.map((item) => (
             <li>
-              <a href={getLocalizedPathname(locale, item.href)} class="transition-colors duration-300 hover:text-ink">
+              <a href={getLocalizedPathname(locale, item.href)} class="transition-colors duration-300 hover:text-white/80">
                 {item.label}
               </a>
             </li>
@@ -73,14 +73,14 @@ const copy = isZh
       </div>
 
       <div data-animate-item>
-        <p class="industrial-kicker">{copy.contactTitle}</p>
-        <ul class="mt-5 grid gap-3 text-sm leading-7 text-stone-700">
+        <p class="text-[10px] font-semibold uppercase tracking-[0.2em] text-white/35">{copy.contactTitle}</p>
+        <ul class="mt-3 grid gap-1.5 text-xs leading-[1.7] text-white/50">
           {copy.contact.map((item) => (
             <li>{item}</li>
           ))}
         </ul>
-        <p class="industrial-kicker mt-8">{copy.legalTitle}</p>
-        <ul class="mt-5 grid gap-3 text-sm leading-7 text-stone-700">
+        <p class="mt-5 text-[10px] font-semibold uppercase tracking-[0.2em] text-white/35">{copy.legalTitle}</p>
+        <ul class="mt-2 grid gap-1.5 text-xs leading-[1.7] text-white/35">
           {copy.legal.map((item) => (
             <li>{item}</li>
           ))}
@@ -88,9 +88,9 @@ const copy = isZh
       </div>
     </div>
 
-    <div class="mt-10 flex flex-col gap-4 border-t border-black/8 pt-6 text-[11px] font-medium tracking-[0.12em] text-stone-500 md:mt-12 md:flex-row md:items-center md:justify-between" data-animate>
+    <div class="mt-8 flex flex-col gap-3 border-t border-white/8 pt-5 text-[10px] font-medium tracking-[0.1em] text-white/30 md:flex-row md:items-center md:justify-between" data-animate>
       <span>© {new Date().getFullYear()} {copy.copyright}</span>
-      <span>{isZh ? '本页已接入静态多语言架构' : 'Built on a static multilingual architecture'}</span>
+      <span>{isZh ? '静态多语言架构' : 'Static multilingual architecture'}</span>
     </div>
   </div>
 </footer>

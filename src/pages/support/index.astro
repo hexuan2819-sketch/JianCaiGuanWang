@@ -5,12 +5,56 @@ import EditorialContentPage from '../../components/pages/EditorialContentPage.as
 <EditorialContentPage
   locale="zh"
   title="支持中心"
-  description="客户服务、常见问题与技术支持页面。"
+  description="技术支持与客户服务 — 选型指导、技术咨询与文档下载。"
   eyebrow="SUPPORT CENTER"
-  summary="支持中心路由已经建立，可继续扩展定制服务、常见问题与技术支持资料，为销售前中后流程提供统一入口。"
+  summary="为设计院、顾问公司、总包单位与采购团队提供从材料选型、技术评审到施工指导与文档交付的全流程技术支持，确保每个项目都能获得及时、专业的工程服务。"
   anchorItems={[
-    { id: 'custom-service', label: 'Custom Service' },
-    { id: 'faqs', label: 'FAQs' },
-    { id: 'technical-support', label: 'Technical Support' },
+    { id: 'customer-service', label: '客户服务' },
+    { id: 'faq', label: '常见问题' },
+    { id: 'technical', label: '技术支持' },
+  ]}
+  sections={[
+    {
+      id: 'customer-service',
+      label: '客户服务',
+      title: '专属客服对接项目全过程',
+      body: '我们为每个项目配备专属客户服务人员，从样品申请、订单确认、生产排期、质量检验到物流发运与到货确认，全流程跟踪并及时反馈进度。无论项目大小，均可获得对等的服务体验。',
+      stat: '全流程项目跟踪',
+      specs: [
+        { label: '样品服务', value: '免费样品寄送与确认' },
+        { label: '订单管理', value: '生产排期实时反馈' },
+        { label: '物流协调', value: '国内 / 国际运输安排' },
+        { label: '售后支持', value: '到货验收与问题响应' },
+        { label: '联系方式', value: 'contact@globalmaterials.com' },
+      ],
+    },
+    {
+      id: 'faq',
+      label: '常见问题',
+      title: '产品选型、施工与验收常见问题解答',
+      body: '汇总了设计选型、规格参数、施工安装与现场验收环节中客户最常提出的技术问题，帮助您快速获取答案。如需进一步支持，欢迎联系我们的技术团队。',
+      stat: '选型 · 安装 · 验收',
+      specs: [
+        { label: '选型指导', value: '密度 / 厚度 / 覆面如何选择' },
+        { label: '防火要求', value: '不同建筑类别的防火等级' },
+        { label: '施工建议', value: '切割、固定与拼接要点' },
+        { label: '验收标准', value: '外观、厚度与密度检验' },
+        { label: '存储要求', value: '防潮、防压与堆码规范' },
+      ],
+    },
+    {
+      id: 'technical',
+      label: '技术支持',
+      title: '规格书、节点详图与检测报告交付',
+      body: '技术团队可在 48 小时内完成项目技术评审，并根据项目需求输出规格书、节点详图、CAD 图块、BIM 模型与第三方检测报告。对于复杂工程节点，可提供定制化保温方案设计。',
+      stat: '48H 技术评审响应',
+      specs: [
+        { label: '技术规格书', value: 'PDF / 纸质版可索取' },
+        { label: '节点详图', value: 'DWG / PDF 格式' },
+        { label: '检测报告', value: 'GB / ASTM / EN 标准' },
+        { label: 'BIM 支持', value: 'Revit 族文件' },
+        { label: '方案定制', value: '复杂节点保温设计' },
+      ],
+    },
   ]}
 />

@@ -5,12 +5,56 @@ import EditorialContentPage from '../../components/pages/EditorialContentPage.as
 <EditorialContentPage
   locale="zh"
   title="橡塑保温管"
-  description="橡塑保温管产品详情页面。"
-  eyebrow="RUBBER PLASTIC PIPE"
-  summary="用于机电、管道与设备保温系统的橡塑保温管页面已建立，后续可继续补充阻燃等级、耐候性与系统配套细节。"
+  description="橡塑保温管 — 闭孔发泡弹性体保温材料，适用于冷热管线、机电设备及复杂管路系统。"
+  eyebrow="RUBBER PLASTIC PIPE · 弹性体闭孔保温"
+  summary="以丁腈橡胶（NBR）与聚氯乙烯（PVC）为主要原料，经连续发泡工艺成型的闭孔弹性体保温材料。闭孔结构有效阻隔水汽渗透，兼具低导热与柔韧包覆特性，适用于 -40°C 至 +105°C 的管线与设备保温。"
   anchorItems={[
     { id: 'specification', label: '规格参数' },
     { id: 'applications', label: '应用场景' },
     { id: 'technical-data', label: '技术资料' },
+  ]}
+  sections={[
+    {
+      id: 'specification',
+      label: '规格参数',
+      title: '闭孔结构与性能指标',
+      body: '橡塑保温管以闭孔发泡结构为核心，具备极低的导热系数与优异的湿阻因子，长期使用中不吸水、不霉变。产品符合 GB/T 17794、ASTM C534 及 EN 14304 标准。',
+      stat: '湿阻因子 ≥ 10,000',
+      specs: [
+        { label: '导热系数', value: '≤ 0.034 W/m·K (0°C)' },
+        { label: '使用温度范围', value: '-40 ~ +105°C' },
+        { label: '氧指数', value: '≥ 32%' },
+        { label: '湿阻因子 μ', value: '≥ 10,000' },
+        { label: '密度', value: '40–80 kg/m³' },
+      ],
+    },
+    {
+      id: 'applications',
+      label: '应用场景',
+      title: '典型工程设计应用',
+      body: '橡塑保温管因其闭孔防凝露、柔韧易施工、外观整洁等优势，广泛应用于中央空调、冷冻水、热水及工业管线的保温系统中，是机电工程的标准选材。',
+      stat: '管径覆盖 6–160 mm',
+      specs: [
+        { label: '中央空调冷冻水', value: '风机盘管、空调箱供回水管' },
+        { label: '冷却水系统', value: '冷却塔至冷水机组管线' },
+        { label: '生活热水管线', value: '酒店、医院、住宅热水循环' },
+        { label: '工业管道', value: '化工、制药、食品加工管线' },
+        { label: '风管与设备', value: '新风管道、风机外壳保冷' },
+      ],
+    },
+    {
+      id: 'technical-data',
+      label: '技术资料',
+      title: '选型支持与文档下载',
+      body: '提供从管径选型、壁厚计算到节点详图的技术支持文件，帮助设计院和安装单位准确完成材料清单与施工方案编制。',
+      stat: '全套技术文档',
+      specs: [
+        { label: '选型手册', value: '管径与壁厚对照表' },
+        { label: '检测报告', value: 'GB / ASTM / EN 标准' },
+        { label: '节点详图', value: '弯头、三通与阀门保温节点' },
+        { label: '施工规程', value: '胶粘安装与验收标准' },
+        { label: '材料估算', value: '管线长度与材料换算工具' },
+      ],
+    },
   ]}
 />

@@ -5,12 +5,56 @@ import EditorialContentPage from '../components/pages/EditorialContentPage.astro
 <EditorialContentPage
   locale="zh"
   title="联系我们"
-  description="联系与商务咨询页面。"
+  description="联系工程保温材料团队 — 技术咨询、样品申请与项目询价。"
   eyebrow="CONTACT"
-  summary="联系页面路由已建立，后续可接入询盘表单、地区联系方式、地图与业务响应流程。"
+  summary="无论您是设计院、顾问公司、总包单位还是采购商，欢迎通过以下方式联系我们。我们将在 48 小时内回复您的技术咨询或项目询价，并提供针对性的材料建议与方案支持。"
   anchorItems={[
-    { id: 'inquiry', label: '项目咨询' },
-    { id: 'offices', label: '联络方式' },
-    { id: 'response', label: '响应机制' },
+    { id: 'channels', label: '联系方式' },
+    { id: 'rfq', label: '项目询价' },
+    { id: 'visit', label: '来访指南' },
+  ]}
+  sections={[
+    {
+      id: 'channels',
+      label: '联系方式',
+      title: '多种渠道，快速响应',
+      body: '您可以通过企业邮箱、服务热线或在线表单提交需求。我们的客户服务与技术团队将在工作时间内第一时间响应，确保沟通高效顺畅。',
+      stat: '48H 内回复',
+      specs: [
+        { label: '企业邮箱', value: 'contact@globalmaterials.com' },
+        { label: '服务热线', value: '+86 400 888 0000' },
+        { label: '工作时间', value: '周一至周五 8:30–17:30' },
+        { label: '工厂地址', value: '中国 · 河北省 · 廊坊市' },
+        { label: '在线客服', value: '网站右下角 / 微信' },
+      ],
+    },
+    {
+      id: 'rfq',
+      label: '项目询价',
+      title: '提供项目信息，获取精准报价',
+      body: '请尽可能提供项目类型、建筑面积、应用场景、产品类型、规格需求及预计用量等信息。完善的项目资料将帮助我们更准确地完成选型建议与价格核算。',
+      stat: '资料完备，报价更快',
+      specs: [
+        { label: '项目类型', value: '商业 / 工业 / 公共建筑' },
+        { label: '产品需求', value: '玻璃棉毡 / 橡塑保温管 / 综合' },
+        { label: '技术参数', value: '密度 / 厚度 / 覆面要求' },
+        { label: '预计用量', value: '面积 / 管径与长度' },
+        { label: '交付要求', value: '交期 / 物流方式 / 特殊包装' },
+      ],
+    },
+    {
+      id: 'visit',
+      label: '来访指南',
+      title: '欢迎预约参观工厂与样品展示',
+      body: '我们诚挚邀请客户、设计院及合作伙伴莅临工厂参观考察，实地了解生产线、质检流程与仓储能力。请提前联系客户服务团队预约参观时间，以便我们安排专人接待与产品演示。',
+      stat: '预约参观，专人接待',
+      specs: [
+        { label: '工厂地址', value: '中国 · 河北省 · 廊坊市' },
+        { label: '接待时间', value: '周一至周五 9:00–16:00' },
+        { label: '预约方式', value: '电话 / 邮箱 / 在线预约' },
+        { label: '交通指引', value: '北京大兴机场驾车约 1 小时' },
+        { label: '考察内容', value: '产线 / 实验室 / 样品展厅' },
+      ],
+    },
   ]}
 />

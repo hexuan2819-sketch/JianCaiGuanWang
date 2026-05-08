@@ -5,12 +5,56 @@ import EditorialContentPage from '../../components/pages/EditorialContentPage.as
 <EditorialContentPage
   locale="zh"
   title="案例分享"
-  description="工程案例与场景展示页面。"
-  eyebrow="CASE STUDIES"
-  summary="用于承载办公、工业与基础设施等项目案例，通过建筑摄影、系统节点与交付结果展示材料如何进入真实工程。"
+  description="保温材料工程应用案例 — 商业建筑、工业厂房与交通枢纽项目实绩。"
+  eyebrow="PROJECT PORTFOLIO"
+  summary="我们的玻璃棉毡与橡塑保温管产品已广泛应用于商业综合体、工业厂房、交通枢纽及公共建筑等多元场景，以可追溯的交付质量与稳定的材料性能赢得项目各方信任。"
   anchorItems={[
+    { id: 'transport', label: '交通枢纽' },
     { id: 'commercial', label: '商业建筑' },
-    { id: 'industrial', label: '工业项目' },
-    { id: 'infrastructure', label: '基础设施' },
+    { id: 'industrial', label: '工业设施' },
+  ]}
+  sections={[
+    {
+      id: 'transport',
+      label: '交通枢纽',
+      title: '某国际机场航站楼 HVAC 风管保温工程',
+      body: '航站楼总建筑面积逾 70 万平方米，暖通空调系统采用玻璃棉毡 + 铝箔覆面方案进行矩形与圆形风管外保温，满足大空间公共建筑的 A 级防火要求，同时将风管沿途热损失控制在设计允许范围内。',
+      stat: '覆盖面积 70 万 m²',
+      specs: [
+        { label: '项目类型', value: '国际机场航站楼' },
+        { label: '应用材料', value: '玻璃棉毡 + 铝箔覆面' },
+        { label: '核心指标', value: 'A 级防火 / 低导热' },
+        { label: '施工周期', value: '分阶段交付 18 个月' },
+        { label: '质量标准', value: 'ASTM C612 / GB/T 13350' },
+      ],
+    },
+    {
+      id: 'commercial',
+      label: '商业建筑',
+      title: '大型商业综合体暖通空调保温体系',
+      body: '该项目制冷总量约 12,000 RT，冷冻水与冷却水管线全面采用橡塑保温管进行保温防凝露处理。闭孔结构确保长期运行中不吸水、不霉变，外观整洁且维护成本极低。',
+      stat: '总冷量 12,000 RT',
+      specs: [
+        { label: '项目类型', value: '大型商业综合体' },
+        { label: '应用材料', value: '橡塑保温管 (NBR/PVC)' },
+        { label: '核心指标', value: '防凝露 / 低热损失' },
+        { label: '管线覆盖', value: '冷冻水 / 冷却水全系统' },
+        { label: '质量标准', value: 'GB/T 17794 / ASTM C534' },
+      ],
+    },
+    {
+      id: 'industrial',
+      label: '工业设施',
+      title: '工业厂房机电管线综合保温项目',
+      body: '项目管线总长逾 24 公里，覆盖蒸汽、热水与冷冻水等多温区管道系统。我们根据介质温度、管径与环境条件，提供定制化的玻璃棉毡与橡塑保温管组合方案，实现不同温区管线的差异化保温设计。',
+      stat: '管线总长 24 km',
+      specs: [
+        { label: '项目类型', value: '大型工业厂房' },
+        { label: '应用材料', value: '玻璃棉毡 + 橡塑保温管' },
+        { label: '核心指标', value: '多温区差异化保温' },
+        { label: '管线范围', value: '蒸汽 / 热水 / 冷冻水' },
+        { label: '质量标准', value: '定制化管径与壁厚方案' },
+      ],
+    },
   ]}
 />

@@ -5,12 +5,56 @@ import EditorialContentPage from '../components/pages/EditorialContentPage.astro
 <EditorialContentPage
   locale="zh"
   title="关于我们"
-  description="企业介绍与能力展示页面。"
-  eyebrow="ABOUT THE PRACTICE"
-  summary="围绕制造能力、质量控制与国际项目协同，建立企业品牌故事与能力表达页面，为后续团队、工厂与资质内容预留结构。"
+  description="以工程标准定义材料价值 — 专注于建筑保温声学材料研发与制造。"
+  eyebrow="ABOUT THE GROUP"
+  summary="我们是一家专注于保温声学材料研发与制造的企业，秉承'以标准定义品质，以交付兑现承诺'的理念，通过 ISO 9001 / ISO 14001 / ISO 45001 三大管理体系认证，产品通过 ASTM、EN、GB 等多国标准检测，服务全球建筑工程市场。"
   anchorItems={[
     { id: 'vision', label: '企业愿景' },
     { id: 'capability', label: '制造能力' },
     { id: 'quality', label: '质量体系' },
+  ]}
+  sections={[
+    {
+      id: 'vision',
+      label: '企业愿景',
+      title: '让每一平方米的保温材料都经得起工程检验',
+      body: '在建筑能耗占比日益增长的今天，保温材料不再只是建筑规范中的一个条目，而是决定建筑全生命周期能效、安全与舒适度的关键系统组件。我们致力于将材料性能转化为可验证、可追溯的工程结果，为全球建筑项目提供值得信赖的保温声学材料。',
+      stat: '20+ 出口国家和地区',
+      specs: [
+        { label: '服务领域', value: '商业建筑 / 工业厂房 / 基础设施' },
+        { label: '核心产品', value: '玻璃棉毡 / 橡塑保温管' },
+        { label: '产能规模', value: '12+ 条自动化生产线' },
+        { label: '项目经验', value: '500+ 已交付项目' },
+        { label: '客户类型', value: '设计院 / 总包 / 机电分包' },
+      ],
+    },
+    {
+      id: 'capability',
+      label: '制造能力',
+      title: '从原料进厂到成品出库的全链质量闭环',
+      body: '我们依托多条自动化生产线联动，建立从来料检验、过程控制到成品抽检的三级质量管理体系。每批次产品均可追溯原料来源、生产参数与检测数据，确保交付的每一卷棉毡、每一根管材都满足工程规范要求。',
+      stat: '年产能满足大型项目批量交付',
+      specs: [
+        { label: '生产线', value: '12+ 条自动化产线联动' },
+        { label: '来料控制', value: '玻璃纤维 / NBR / PVC 准入检验' },
+        { label: '过程控制', value: '在线密度 / 厚度 / 粘结强度监控' },
+        { label: '成品检测', value: '导热 / 防火 / 吸声全项抽检' },
+        { label: '批次追溯', value: '原料到发货全链路可追溯' },
+      ],
+    },
+    {
+      id: 'quality',
+      label: '质量体系',
+      title: '以国际标准为基准，以项目交付为检验',
+      body: '我们建立了涵盖产品检测、过程管理与持续改进的三级质量体系，确保从单批次产品到全年交付均保持一致性。技术团队可在 48 小时内完成项目技术评审并提供规格书、节点详图与检测报告。',
+      stat: 'ISO 9001 / 14001 / 45001 认证',
+      specs: [
+        { label: '管理体系', value: 'ISO 9001 / 14001 / 45001' },
+        { label: '产品检测', value: 'ASTM C612 / EN 13162 / GB/T 13350' },
+        { label: '出口认证', value: 'CE / RoHS / REACH' },
+        { label: '技术响应', value: '48H 内完成技术评审' },
+        { label: '文档交付', value: '规格书 / CAD / BIM / 检测报告' },
+      ],
+    },
   ]}
 />

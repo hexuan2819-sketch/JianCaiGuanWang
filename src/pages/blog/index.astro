@@ -5,12 +5,56 @@ import EditorialContentPage from '../../components/pages/EditorialContentPage.as
 <EditorialContentPage
   locale="zh"
   title="企业博客"
-  description="企业文章、行业观点与技术内容页面。"
-  eyebrow="EDITORIAL JOURNAL"
-  summary="用于发布企业动态、技术文章与工程观察，后续可承载建筑节能趋势、材料选型方法与交付经验。"
+  description="建筑保温材料技术洞察 — 参数解读、标准趋势与施工指导。"
+  eyebrow="INSIGHTS"
+  summary="以工程视角解读保温材料参数、防火规范趋势与现场施工要点，为设计人员、采购工程师与项目管理者提供技术决策参考。"
   anchorItems={[
-    { id: 'insights', label: '行业洞察' },
-    { id: 'technology', label: '技术文章' },
-    { id: 'news', label: '企业动态' },
+    { id: 'param', label: '技术参数' },
+    { id: 'compliance', label: '标准解读' },
+    { id: 'construction', label: '施工指导' },
+  ]}
+  sections={[
+    {
+      id: 'param',
+      label: '技术参数',
+      title: '玻璃棉毡导热系数对 HVAC 系统能耗的影响分析',
+      body: '导热系数是衡量保温材料隔热性能的核心指标。本文以玻璃棉毡为例，分析 0.032 W/m·K 与 0.040 W/m·K 两种导热系数在典型商业建筑 HVAC 风管保温中的能耗差异，帮助设计师在材料选型中做出更精准的决策。',
+      stat: '2025-03-15',
+      specs: [
+        { label: '关键参数', value: '导热系数 λ (W/m·K)' },
+        { label: '对比对象', value: '0.032 vs 0.040 W/m·K' },
+        { label: '应用场景', value: '商业建筑 HVAC 风管' },
+        { label: '结论摘要', value: '低导热可降低 12-18% 沿途热损失' },
+        { label: '适用标准', value: 'GB/T 13350 / ASTM C612' },
+      ],
+    },
+    {
+      id: 'compliance',
+      label: '标准解读',
+      title: '建筑防火规范中保温材料燃烧性能分级解读',
+      body: '不同建筑类型对保温材料的燃烧性能有明确分级要求。本文梳理 GB 8624、EN 13501-1 与 ASTM E84 三大标准体系中的燃烧性能分级逻辑，帮助项目团队在规范框架内完成材料合规选型。',
+      stat: '2025-02-28',
+      specs: [
+        { label: '中国标准', value: 'GB 8624 A/B1/B2/B3' },
+        { label: '欧盟标准', value: 'EN 13501-1 A1/A2/B-F' },
+        { label: '美国标准', value: 'ASTM E84 Class A/B/C' },
+        { label: '玻璃棉毡', value: 'A1 级 (GB) / A1 (EN)' },
+        { label: '橡塑保温管', value: 'B1 级 (GB) / B-s3,d0 (EN)' },
+      ],
+    },
+    {
+      id: 'construction',
+      label: '施工指导',
+      title: '橡塑保温管在冷冻水系统中的防凝露设计与施工要点',
+      body: '冷冻水管线保温的核心挑战在于防止凝露。本文从闭孔结构原理出发，结合管径选型、壁厚计算、胶粘施工与接缝处理四个环节，系统阐述橡塑保温管在冷冻水系统中的防凝露设计原则与现场操作要点。',
+      stat: '2025-01-20',
+      specs: [
+        { label: '核心机理', value: '闭孔结构阻隔水汽渗透' },
+        { label: '关键指标', value: '湿阻因子 μ ≥ 10,000' },
+        { label: '壁厚计算', value: '依据管径、介质温度与环境条件' },
+        { label: '施工要点', value: '胶粘满涂、接缝压实' },
+        { label: '验收标准', value: 'GB/T 17794 凝露试验' },
+      ],
+    },
   ]}
 />

@@ -9,54 +9,22 @@ const backgroundImage =
 
 const copy = isZh
   ? {
-      eyebrow: 'ENGINEERED THERMAL & ACOUSTIC MATERIALS',
-      titleTop: '工程保温与',
-      titleBottom: '声学材料体系',
-      body:
-        '面向工业厂房、商业综合体、轨道交通与基础设施项目，提供玻璃棉毡、橡塑保温管及系统化配套材料，以标准化制造、稳定产能与工程级技术响应建立长期采购信任。',
-      primary: '进入产品规格',
-      secondary: '查看资质与能力',
+      title: '工程保温与声学材料',
+      subtitle: 'ISO / EN / ASTM 标准体系  ·  全球项目交付',
+      cta: '查看产品',
       imageAlt: '工业设施与工程保温结构',
-      supportTitle: '工程背书',
-      supportBody: '围绕防火、导热、吸声与耐久性能建立标准化质量链路，让材料不仅能展示，更能进入图纸、清单与现场。',
-      signals: [
-        { label: '国际标准', value: 'ASTM / EN / ISO' },
-        { label: '制造体系', value: '12+ 生产线' },
-        { label: '项目响应', value: '48H Technical Review' },
-      ],
-      facts: [
-        { value: 'A1', label: '防火等级体系' },
-        { value: '0.032', label: '低导热能力' },
-        { value: 'NRC', label: '吸声性能支持' },
-      ],
-      credentials: ['CE / SGS / ISO 9001', 'Thermal + Acoustic Solutions', 'Spec Sheet / CAD / Test Data'],
+      badge: 'ASTM · EN · ISO',
     }
   : {
-      eyebrow: 'ENGINEERED THERMAL & ACOUSTIC MATERIALS',
-      titleTop: 'Industrial Insulation',
-      titleBottom: 'Built For Specification',
-      body:
-        'For industrial plants, commercial buildings, transit systems and infrastructure projects, we deliver glass wool felt, rubber plastic insulation pipe and coordinated thermal systems with disciplined manufacturing, stable capacity and engineering-grade response.',
-      primary: 'View Product Specs',
-      secondary: 'Capability & Compliance',
+      title: 'Engineered Thermal Insulation',
+      subtitle: 'ISO / EN / ASTM Compliance  ·  Global Project Delivery',
+      cta: 'View Products',
       imageAlt: 'Industrial facility and engineered insulation systems',
-      supportTitle: 'Engineering Proof',
-      supportBody: 'Fire safety, thermal control, acoustic performance and long-life durability are translated into structured manufacturing and specification-ready technical support.',
-      signals: [
-        { label: 'Standards', value: 'ASTM / EN / ISO' },
-        { label: 'Manufacturing', value: '12+ Production Lines' },
-        { label: 'Project Review', value: '48H Technical Review' },
-      ],
-      facts: [
-        { value: 'A1', label: 'Fire Performance' },
-        { value: '0.032', label: 'Low Thermal Conductivity' },
-        { value: 'NRC', label: 'Acoustic Support' },
-      ],
-      credentials: ['CE / SGS / ISO 9001', 'Thermal + Acoustic Solutions', 'Spec Sheet / CAD / Test Data'],
+      badge: 'ASTM · EN · ISO',
     };
 ---
 
-<section id="hero" class="relative min-h-[92svh] overflow-hidden border-b border-black/10 lg:min-h-[98svh]">
+<section id="hero" class="relative flex min-h-[100svh] items-end overflow-hidden">
   <div class="absolute inset-0">
     <img
       id="hero-image"
@@ -66,90 +34,36 @@ const copy = isZh
       decoding="async"
       class="parallax-media absolute inset-0 h-full w-full object-cover"
     />
-    <div class="absolute inset-0 bg-[linear-gradient(90deg,rgba(255,255,255,0.92)_0%,rgba(255,255,255,0.82)_28%,rgba(255,255,255,0.58)_48%,rgba(255,255,255,0.18)_72%,rgba(255,255,255,0)_100%)]"></div>
-    <div class="absolute inset-0 bg-[linear-gradient(180deg,rgba(11,13,16,0.04)_0%,rgba(11,13,16,0.22)_100%)]"></div>
+    <div class="absolute inset-0 bg-gradient-to-t from-black/55 via-black/25 to-black/10"></div>
+    <div class="absolute inset-0 bg-gradient-to-r from-black/30 via-transparent to-transparent"></div>
   </div>
 
-  <div class="relative mx-auto flex min-h-[92svh] max-w-editorial flex-col justify-end px-5 pb-14 pt-36 md:px-10 md:pb-20 md:pt-40 lg:min-h-[98svh] xl:px-14">
-    <div class="grid gap-14 lg:grid-cols-[minmax(0,1.15fr)_minmax(21rem,0.85fr)] lg:items-end">
-      <div data-animate-group class="max-w-[760px]">
-        <div data-animate-item class="flex items-center gap-4">
-          <span class="h-px w-14 bg-black/18"></span>
-          <p class="industrial-kicker text-stone-600">{copy.eyebrow}</p>
-        </div>
-        <h1
-          data-animate-item
-          class:list={[
-            'title-balance mt-8 font-display font-semibold text-ink',
-            isZh
-              ? 'max-w-[7ch] text-[clamp(4rem,7vw+1rem,7rem)] leading-[0.9] tracking-[-0.065em] md:max-w-[8ch]'
-              : 'max-w-[9ch] text-fluid-display leading-[0.86] tracking-[-0.055em]',
-          ]}
-        >
-          <span class="block">{copy.titleTop}</span>
-          <span class="block">{copy.titleBottom}</span>
+  <div class="relative w-full px-6 pb-16 pt-40 md:px-12 md:pb-24 md:pt-48 lg:px-20 lg:pb-28 xl:px-28">
+    <div class="mx-auto max-w-[1440px]">
+      <div data-animate class="max-w-[800px]">
+        <h1 class="text-balance font-display text-[clamp(2.8rem,6vw,5.5rem)] font-semibold leading-[0.94] tracking-[-0.04em] text-white">
+          {copy.title}
         </h1>
-        <p data-animate-item class="text-pretty mt-9 max-w-[37rem] text-[0.98rem] leading-[1.9] text-stone-700 md:text-[1.04rem]">
-          {copy.body}
+        <p class="mt-6 max-w-[520px] text-[clamp(0.95rem,1.05vw,1.1rem)] leading-[1.7] text-white/75 md:mt-8">
+          {copy.subtitle}
         </p>
-
-        <div data-animate-item class="mt-12 flex flex-col gap-4 sm:flex-row">
+        <div class="mt-10 md:mt-12">
           <a
             href={getLocalizedPathname(locale, '/products/')}
-            class="inline-flex items-center justify-center border border-white/20 bg-white px-7 py-4 text-[11px] font-semibold uppercase tracking-[0.18em] text-ink shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:bg-stone-100 hover:shadow-md"
+            class="inline-flex items-center gap-3 border border-white/25 bg-white/10 px-8 py-4 text-sm font-medium tracking-[0.06em] text-white backdrop-blur-sm transition-all duration-500 hover:bg-white/20 hover:shadow-[0_0_40px_rgba(255,255,255,0.08)]"
           >
-            {copy.primary}
+            {copy.cta}
+            <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M5 12h14M12 5l7 7-7 7" />
+            </svg>
           </a>
-          <a
-            href={getLocalizedPathname(locale, '/about')}
-            class="inline-flex items-center justify-center border border-neutral-200 bg-white/68 px-7 py-4 text-[11px] font-semibold uppercase tracking-[0.18em] text-ink shadow-sm backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:bg-white/90 hover:shadow-md"
-          >
-            {copy.secondary}
-          </a>
-        </div>
-
-        <div data-animate-item class="mt-16 grid gap-3 md:max-w-[42rem] md:grid-cols-3">
-          {copy.signals.map((signal) => (
-            <div class="industrial-hover-card border border-white/45 bg-white/20 px-4 py-4 shadow-[0_8px_24px_rgba(0,0,0,0.04)] backdrop-blur-xl">
-              <p class="text-[10px] font-semibold uppercase tracking-[0.2em] text-stone-500">{signal.label}</p>
-              <p class="mt-3 text-lg font-semibold text-ink">{signal.value}</p>
-            </div>
-          ))}
         </div>
       </div>
 
-      <div
-        id="hero-proof-panel"
-        data-animate-group
-        class="industrial-hover-card tilt-surface border border-white/34 bg-[#11151b]/52 p-6 text-white shadow-[0_30px_80px_rgba(0,0,0,0.16)] backdrop-blur-[22px] md:p-8"
-      >
-        <div data-animate-item class="flex items-end justify-between gap-4 border-b border-white/12 pb-5">
-          <div>
-            <p class="industrial-kicker text-white/72">{copy.supportTitle}</p>
-            <p class="mt-4 max-w-[24rem] text-[1rem] font-medium leading-[1.78] text-white/96 md:text-[1.08rem]">
-              {copy.supportBody}
-            </p>
-          </div>
-          <span class="text-[11px] uppercase tracking-[0.24em] text-white/44">01</span>
-        </div>
-
-        <div class="mt-6 grid gap-4 sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3">
-          {copy.facts.map((fact) => (
-            <div data-animate-item class="industrial-hover-card border border-white/18 bg-white/[0.12] px-5 py-5 backdrop-blur-xl transition-transform duration-500 hover:-translate-y-1">
-              <p class="text-[1.85rem] font-semibold tracking-[-0.03em] text-white md:text-[2.2rem]">{fact.value}</p>
-              <p class="mt-3 text-[11px] font-semibold uppercase tracking-[0.16em] text-white/72">{fact.label}</p>
-            </div>
-          ))}
-        </div>
-
-        <div data-animate-item class="mt-6 grid gap-3 border-t border-white/12 pt-5">
-          {copy.credentials.map((item) => (
-            <div class="flex items-center justify-between border-b border-white/8 pb-3 text-sm text-white/82 last:border-b-0 last:pb-0">
-              <span>{item}</span>
-              <span class="text-[10px] font-semibold uppercase tracking-[0.2em] text-white/48">Verified</span>
-            </div>
-          ))}
-        </div>
+      <div class="mt-16 flex items-center gap-8 border-t border-white/10 pt-8 md:mt-20 md:pt-10">
+        <span class="text-[11px] font-semibold uppercase tracking-[0.22em] text-white/45">{copy.badge}</span>
+        <span class="h-px w-12 bg-white/15"></span>
+        <span class="text-[11px] font-semibold uppercase tracking-[0.22em] text-white/45">{isZh ? '全球项目交付' : 'Global Delivery'}</span>
       </div>
     </div>
   </div>
@@ -159,38 +73,16 @@ const copy = isZh
   if (typeof window !== 'undefined') {
     const section = document.getElementById('hero');
     const image = document.getElementById('hero-image');
-
-    const proofPanel = document.getElementById('hero-proof-panel');
-
     if (section && image) {
       const applyParallax = () => {
         const rect = section.getBoundingClientRect();
         const progress = Math.min(Math.max((window.innerHeight - rect.top) / (window.innerHeight + rect.height), 0), 1);
-        const offset = (progress - 0.5) * 26;
+        const offset = (progress - 0.5) * 18;
         image.style.transform = `translate3d(0, ${offset}px, 0) scale(1.05)`;
       };
-
       applyParallax();
       window.addEventListener('scroll', applyParallax, { passive: true });
       window.addEventListener('resize', applyParallax);
-    }
-
-    if (proofPanel && window.matchMedia('(pointer: fine)').matches) {
-      const handleMove = (event) => {
-        const rect = proofPanel.getBoundingClientRect();
-        const offsetX = (event.clientX - rect.left) / rect.width - 0.5;
-        const offsetY = (event.clientY - rect.top) / rect.height - 0.5;
-        proofPanel.classList.add('is-tilting');
-        proofPanel.style.transform = `perspective(1200px) rotateX(${offsetY * -1.5}deg) rotateY(${offsetX * 2.5}deg) translateY(-4px)`;
-      };
-
-      const resetMove = () => {
-        proofPanel.classList.remove('is-tilting');
-        proofPanel.style.transform = 'perspective(1200px) rotateX(0deg) rotateY(0deg) translateY(0)';
-      };
-
-      proofPanel.addEventListener('mousemove', handleMove);
-      proofPanel.addEventListener('mouseleave', resetMove);
     }
   }
 </script>

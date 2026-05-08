@@ -10,8 +10,6 @@ export interface Props {
 
 const locale = normalizeLocale(Astro.props.locale ?? Astro.currentLocale ?? defaultLocale);
 const isZh = locale === 'zh';
-const backToHomeHref = `${getLocalizedPathname(locale, '/')}#products`;
-const backButtonLabel = isZh ? '返回' : 'Back';
 
 const page = isZh
   ? {
@@ -142,20 +140,6 @@ const page = isZh
 
 <Layout title={page.title} description={page.description} locale={locale}>
   <Header />
-  <button
-    type="button"
-    data-back-button
-    data-fallback-href={backToHomeHref}
-    aria-label={backButtonLabel}
-    class="fixed left-3 top-1/2 z-40 flex -translate-y-1/2 items-center gap-2 border border-white/55 bg-white/55 px-3 py-3 text-ink shadow-[0_10px_30px_rgba(22,24,29,0.08)] backdrop-blur-md transition-all duration-300 hover:bg-white/72 md:left-5"
-  >
-    <span class="flex h-9 w-9 items-center justify-center rounded-full border border-black/10 bg-white/70">
-      <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
-        <path d="M15 5l-7 7 7 7" />
-      </svg>
-    </span>
-    <span class="text-xs font-medium text-stone-700">{backButtonLabel}</span>
-  </button>
 
   <section class="page-band-clear px-4 pb-10 pt-32 md:px-8 md:pb-12 md:pt-36">
     <div class="mx-auto grid max-w-editorial gap-8 lg:grid-cols-[minmax(0,1.1fr)_24rem]">
@@ -442,15 +426,5 @@ const page = isZh
         renderConfigurator();
       });
     }
-  }
-</script>
-
-<script>
-  if (typeof window !== 'undefined') {
-    const backButton = document.querySelector('[data-back-button]');
-    backButton?.addEventListener('click', () => {
-      const fallbackHref = backButton.getAttribute('data-fallback-href') ?? '/';
-      window.location.href = fallbackHref;
-    });
   }
 </script>
